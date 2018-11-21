@@ -3,3 +3,6 @@ omit =
         ./sksurgerycore/_version.py
         ./sksurgerycore/__init__.py
         ./sksurgerycore/__main__.py
+        ./sksurgerycore/ui/__init__.py
+        ./sksurgerycore/ui/sksurgerycore_demo.py
+        ./sksurgerycore/ui/sksurgerycore_command_line.py
