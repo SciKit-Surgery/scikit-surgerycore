@@ -8,7 +8,7 @@ import pytest
 from sksurgerycore.utilities import file_utilities as f
 
 
-def test_invalid_file_name():
+def test_invalid_file_name_because_non_existent():
 
     with pytest.raises(ValueError):
         f.validate_is_file("/invalid/file/name")

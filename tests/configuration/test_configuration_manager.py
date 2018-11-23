@@ -4,7 +4,13 @@ import pytest
 import sksurgerycore.configuration.configuration_manager as cm
 
 
-def test_constructor_with_empty_filename():
+def test_constructor_fails_with_null_filename():
+
+    with pytest.raises(ValueError):
+        cm.ConfigurationManager(None)
+
+
+def test_constructor_fails_with_empty_filename():
 
     with pytest.raises(ValueError):
         cm.ConfigurationManager("")
