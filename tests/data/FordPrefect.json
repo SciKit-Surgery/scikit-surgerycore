@@ -1,12 +1,1 @@
-{
-    "researcher": {
-        "name": "Ford Prefect",
-        "species": "Betelgeusian",
-        "relatives": [
-            {
-                "name": "Zaphod Beeblebrox",
-                "species": "Betelgeusian"
-            }
-        ]
-    }
-}
+{"researcher": {"species": "Betelgeusian", "name": "Ford Anglia", "relatives": [{"species": "Betelgeusian", "name": "Zaphod Beeblebrox"}]}}

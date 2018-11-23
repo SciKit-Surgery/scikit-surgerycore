@@ -30,9 +30,9 @@ def test_constructor_fails_if_file_should_be_writable():
 
 def test_setter_getter_loop():
 
-    manager = cm.ConfigurationManager("tests/data/FordPrefect.json")
-    d = manager.get_copy()
+    m = cm.ConfigurationManager("tests/data/FordPrefect.json", True, True)
+    d = m.get_copy()
     d["researcher"]["name"] = "Ford Anglia"
-    manager.set_data(d)
-    e = manager.get_copy()
+    m.set_data(d)
+    e = m.get_copy()
     assert e["researcher"]["name"] == "Ford Anglia"
