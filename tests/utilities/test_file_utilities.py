@@ -30,9 +30,3 @@ def test_valid_writeable_file():
 
     result = f.validate_is_writable_file("tests/data/FordPrefect.json")
     assert result
-
-
-def test_valid_unwriteable_file():
-
-    with pytest.raises(ValueError):
-        f.validate_is_writable_file("tests/data/Unwritable.json")
