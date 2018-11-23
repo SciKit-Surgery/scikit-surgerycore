@@ -8,9 +8,9 @@ import os
 
 def validate_is_file(file_name):
     """
-    Check if file_name file exists.
+    Check if file_name exists.
     """
     if os.path.isfile(file_name):
         return True
 
-    raise ValueError('File:' + file_name + ' does not exist')
+    raise ValueError('File `' + file_name + '` does not exist')

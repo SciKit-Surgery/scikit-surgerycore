@@ -2,7 +2,9 @@
 
 """Class to load application configuration information from file."""
 
+import json
 import sksurgerycore.utilities.file_utilities as f
+
 
 class ConfigurationManager:
     """
@@ -10,7 +12,7 @@ class ConfigurationManager:
     at startup of an application.
 
     :param: config_file
-    :raises:
+    :raises: ValueError
     """
     def __init__(self, file_name, write_on_shutdown=False):
         """
@@ -20,8 +22,7 @@ class ConfigurationManager:
         :params: write_on_shutdown, if True, will write back to the same
         file when the destructor is called.
         """
-
-        if file_name is None:
+        if not file_name:
             raise ValueError("Empty file_name")
 
         f.validate_is_file(file_name)
@@ -31,5 +32,3 @@ class ConfigurationManager:
 
         self.file_name = file_name
         self.write_on_shutdown = write_on_shutdown
-
-

@@ -3,9 +3,8 @@
 """
 Tests for file_utilities.py
 """
+
 import pytest
-import six
-import os
 from sksurgerycore.utilities import file_utilities as f
 
 
@@ -17,6 +16,5 @@ def test_invalid_file_name():
 
 def test_valid_file_name():
 
-    six.print_("pwd=" + os.getcwd())
-    result = f.validate_is_file("data/FordPrefect.json")
+    result = f.validate_is_file("tests/data/FordPrefect.json")
     assert result
