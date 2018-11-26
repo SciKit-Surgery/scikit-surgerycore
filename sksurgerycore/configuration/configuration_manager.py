@@ -39,7 +39,7 @@ class ConfigurationManager:
             f.validate_is_writable_file(file_name)
 
         with open(file_name, "r") as read_file:
-            self.data = json.load(read_file)
+            self.config_data = json.load(read_file)
 
         self.file_name = file_name
         self.write_on_shutdown = write_on_shutdown
@@ -58,9 +58,9 @@ class ConfigurationManager:
 
         :returns: deep copy of whatever data structure is stored internally.
         """
-        return copy.deepcopy(self.data)
+        return copy.deepcopy(self.config_data)
 
-    def set_data(self, data):
+    def set_data(self, config_data):
         """ Stores the provided data internally.
 
         Note that: you would normally load settings from disk,
@@ -70,16 +70,16 @@ class ConfigurationManager:
         the settings you want to save, not just be a completely
         arbitrary data structure.
 
-        :param data: data structure representing your settings.
+        :param config_data: data structure representing your settings.
         """
         if self.write_on_setter:
             self._save_back_to_file()
 
-        self.data = copy.deepcopy(data)
+        self.config_data = copy.deepcopy(config_data)
 
     def _save_back_to_file(self):
         """ Writes the internal data back to the filename
         provided during object construction.
         """
         with open(self.file_name, "w") as write_file:
-            json.dump(self.data, write_file)
+            json.dump(self.config_data, write_file)
