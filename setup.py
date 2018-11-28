@@ -16,6 +16,7 @@ setup(
     cmdclass=versioneer.get_cmdclass(),
     description='scikit-surgerycore',
     long_description=long_description,
+    long_description_content_type='text/x-rst',
     url='https://weisslab.cs.ucl.ac.uk/WEISS/SoftwareRepositories/SNAPPY/scikit-surgerycore',
     author='Matt Clarkson',
     author_email='YOUR-EMAIL@ucl.ac.uk',
