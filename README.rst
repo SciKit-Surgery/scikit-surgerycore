@@ -28,11 +28,11 @@ scikit-surgerycore is part of the `SNAPPY`_ software project, developed at the `
 Installing
 ----------
 
-You can pip install directly from the repository as follows:
+You can pip install as follows:
 
 ::
 
-    pip install git+https://weisslab.cs.ucl.ac.uk/WEISS/SoftwareRepositories/SNAPPY/scikit-surgerycore
+    pip install scikit-surgerycore
 
 
 Developing
