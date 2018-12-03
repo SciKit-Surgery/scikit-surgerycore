@@ -17,7 +17,7 @@ def validate_camera_matrix(matrix):
         4. Has 3 columns
 
     :param matrix: camera matrix
-    :raises: TypeError, ValueError if it fails
+    :raises: TypeError, ValueError if not
     :returns: True
     """
     if not isinstance(matrix, np.ndarray):
@@ -43,7 +43,7 @@ def validate_distortion_coefficients(matrix):
 
 
     :param matrix: set of distortion coefficients
-    :raises: TypeError, ValueError if if fails
+    :raises: TypeError, ValueError if not
     :returns: True
     """
     if not isinstance(matrix, np.ndarray):
@@ -68,7 +68,7 @@ def validate_rotation_matrix(matrix):
         4. Has 3 columns
 
     :param matrix: rotation matrix
-    :raises: TypeError, ValueError if it fails
+    :raises: TypeError, ValueError if not
     :returns: True
     """
     if not isinstance(matrix, np.ndarray):
@@ -79,6 +79,7 @@ def validate_rotation_matrix(matrix):
         raise ValueError("Rotation matrix should have 3 rows.")
     if matrix.shape[1] != 3:
         raise ValueError("Rotation matrix should have 3 columns.")
+    return True
 
 
 # pylint: disable=invalid-name
@@ -92,7 +93,7 @@ def validate_translation_column_vector(matrix):
         4. Has 1 column
 
     :param matrix: translation matrix
-    :raises: TypeError, ValueError if it fails
+    :raises: TypeError, ValueError if not
     :return: True
     """
     if not isinstance(matrix, np.ndarray):
@@ -103,3 +104,4 @@ def validate_translation_column_vector(matrix):
         raise ValueError("Translation matrix  should have 3 rows.")
     if matrix.shape[1] != 1:
         raise ValueError("Translation matrix  should have 1 column.")
+    return True
