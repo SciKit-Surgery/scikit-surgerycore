@@ -11,6 +11,10 @@ import os
 def validate_is_file(file_name):
     """
     Check if file_name is a file.
+
+    :param file_name: string containing path name
+    :raises: ValueError if not
+    :returns: True
     """
     if not file_name:
         raise ValueError("Empty parameter file_name")
@@ -24,6 +28,10 @@ def validate_is_file(file_name):
 def validate_is_writable_file(file_name):
     """
     Check if file_name is a writable file.
+
+    :param file_name: string containing path name
+    :raises: ValueError if not
+    :returns: True
     """
     validate_is_file(file_name)
 

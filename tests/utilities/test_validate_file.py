@@ -5,7 +5,7 @@ Tests for file_utilities.py
 """
 
 import pytest
-from sksurgerycore.utilities import file_utilities as f
+from sksurgerycore.utilities import validate_file as f
 
 
 def test_invalid_file_name_because_non_existent():
