@@ -15,7 +15,7 @@ Design principles:
 
 import json
 import copy
-import sksurgerycore.utilities.file_utilities as f
+import sksurgerycore.utilities.validate_file as f
 
 
 class ConfigurationManager:
