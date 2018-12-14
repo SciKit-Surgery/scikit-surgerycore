@@ -51,3 +51,7 @@ def test_width_height_invalid_because_height_wrong_type():
 def test_width_height_invalid_because_height_too_low():
     with pytest.raises(ValueError):
         v.validate_width_height((1, 0))
+
+
+def test_width_height_valid():
+    assert v.validate_width_height((1, 1))
