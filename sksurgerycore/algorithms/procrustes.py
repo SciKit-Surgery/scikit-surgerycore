@@ -41,7 +41,6 @@ def validate_procrustes_inputs(fixed, moving):
         raise ValueError("fixed and moving should have "
                          + "the same number of points (rows)")
 
-# pylint: disable=assignment-from-no-return
 def compute_fre(fixed, moving, rotation, translation):
     """
     Computes the Fiducial Registration Error, equal
@@ -53,6 +52,8 @@ def compute_fre(fixed, moving, rotation, translation):
     :param translation: 3 x 1 ndarray
     :returns: Fiducial Registration Error (FRE)
     """
+    # pylint: disable=assignment-from-no-return
+
     validate_procrustes_inputs(fixed, moving)
 
     transformed_moving = np.matmul(rotation, moving.transpose()) + translation
