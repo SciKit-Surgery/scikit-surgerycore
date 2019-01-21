@@ -20,7 +20,7 @@ scikit-surgerycore
 
 
 
-scikit-surgerycore is a python project containing code to perform image guided surgery. 
+scikit-surgerycore implements algorithms and tools that are common to all scikit-surgery packages.
 
 scikit-surgerycore is part of the `SNAPPY`_ software project, developed at the `Wellcome EPSRC Centre for Interventional and Surgical Sciences`_, part of `University College London (UCL)`_.
 
