@@ -41,7 +41,7 @@ def validate_procrustes_inputs(fixed, moving):
         raise ValueError("fixed and moving should have "
                          + "the same number of points (rows)")
 
-
+# pylint: disable=assignment-from-no-return
 def compute_fre(fixed, moving, rotation, translation):
     """
     Computes the Fiducial Registration Error, equal
