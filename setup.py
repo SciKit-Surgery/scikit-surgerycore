@@ -14,7 +14,7 @@ setup(
     name='scikit-surgerycore',
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
-    description='scikit-surgerycore',
+    description='scikit-surgerycore contains commonly used Image Guided Surgery algortihms and tools',
     long_description=long_description,
     long_description_content_type='text/x-rst',
     url='https://weisslab.cs.ucl.ac.uk/WEISS/SoftwareRepositories/SNAPPY/scikit-surgerycore',
