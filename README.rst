@@ -27,9 +27,10 @@ scikit-surgerycore is part of the `SNAPPY`_ software project, developed at the `
 Features
 --------
 
-* Configuration manager
-* Transform manager
-* Proscurtes point based registration
+* A Configuration Manager to load parameters from a .json file
+* A Transform Manager to manage combinations of 4x4 transformation matrices
+* Corresponding point (i.e Landmark) based registration, based on `Arun et al., 1987`_.
+* Validation functions, checking a numpy array is a camera matrix, rotation matrix, rigid transform etc.
 
 Installing
 ----------
@@ -99,4 +100,5 @@ Supported by `Wellcome`_ and `EPSRC`_.
 .. _`EPSRC`: https://www.epsrc.ac.uk/
 .. _`contributing guidelines`: https://weisslab.cs.ucl.ac.uk/WEISS/SoftwareRepositories/SNAPPY/scikit-surgerycore/blob/master/CONTRIBUTING.rst
 .. _`license file`: https://weisslab.cs.ucl.ac.uk/WEISS/SoftwareRepositories/SNAPPY/scikit-surgerycore/blob/master/LICENSE
+.. _`Arun et al., 1987`: http://doi.ieeecomputersociety.org/10.1109/TPAMI.1987.4767965
 
