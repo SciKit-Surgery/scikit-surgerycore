@@ -14,12 +14,12 @@ setup(
     name='scikit-surgerycore',
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
-    description='scikit-surgerycore contains commonly used Image Guided Surgery algortihms and tools',
+    description='scikit-surgerycore contains commonly used Image Guided Surgery algorithms and tools',
     long_description=long_description,
     long_description_content_type='text/x-rst',
     url='https://weisslab.cs.ucl.ac.uk/WEISS/SoftwareRepositories/SNAPPY/scikit-surgerycore',
     author='Matt Clarkson',
-    author_email='YOUR-EMAIL@ucl.ac.uk',
+    author_email='m.clarkson@ucl.ac.uk',
     license='BSD-3 license',
     classifiers=[
         'Development Status :: 3 - Alpha',
@@ -53,7 +53,6 @@ setup(
     install_requires=[
         'six>=1.10',
         'numpy>=1.11',
-        'pillow',
     ],
 
     entry_points={

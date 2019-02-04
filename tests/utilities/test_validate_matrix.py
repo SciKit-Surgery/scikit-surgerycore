@@ -138,3 +138,27 @@ def test_translation_matrix_invalid_because_too_few_rows():
 def test_translation_matrix_valid():
     translation_matrix = np.zeros((3, 1))
     assert vm.validate_translation_column_vector(translation_matrix)
+
+
+def test_rigid_matrix_invalid_because_wrong_type():
+    with pytest.raises(TypeError):
+        vm.validate_rigid_matrix(None)
+
+
+def test_rigid_matrix_invalid_because_wrong_dimensions():
+    with pytest.raises(ValueError):
+        vm.validate_rigid_matrix(np.ones((2, 1, 2)))
+
+
+def test_rigid_matrix_invalid_because_wrong_rows():
+    with pytest.raises(ValueError):
+        vm.validate_rigid_matrix(np.ones((2, 2)))
+
+
+def test_rigid_matrix_invalid_because_wrong_columns():
+    with pytest.raises(ValueError):
+        vm.validate_rigid_matrix(np.ones((4, 2)))
+
+
+def test_rigid_matrix_valid_because_identity():
+    vm.validate_rigid_matrix(np.eye(4))
