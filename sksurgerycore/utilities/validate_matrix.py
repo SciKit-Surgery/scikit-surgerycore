@@ -105,3 +105,22 @@ def validate_translation_column_vector(matrix):
     if matrix.shape[1] != 1:
         raise ValueError("Translation matrix  should have 1 column.")
     return True
+
+
+def validate_rigid_matrix(matrix):
+    """
+    Validates that a matrix is a 4x4 rigid transform.
+
+    :param matrix: rigid transform
+    :raises: TypeError, ValueError if not
+    :return: True
+    """
+    if not isinstance(matrix, np.ndarray):
+        raise TypeError('Rigid matrix is not an np.ndarray')
+    if len(matrix.shape) != 2:
+        raise ValueError("Rigid matrix  should have 2 dimensions.")
+    if matrix.shape[0] != 4:
+        raise ValueError("Rigid matrix  should have 4 rows.")
+    if matrix.shape[1] != 4:
+        raise ValueError("Rigid matrix  should have 4 columns.")
+    validate_rotation_matrix(matrix[0:3, 0:3])
