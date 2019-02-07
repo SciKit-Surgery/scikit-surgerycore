@@ -67,7 +67,8 @@ def validate_rotation_matrix(matrix):
         3. Has 3 rows
         4. Has 3 columns
         5. Is orthogonal, i.e., transpose(matrix) * matrix = identity matrix.
-        6. Is its determinant positive (+1) (c.f., it is a reflection matrix if the determinant is negative (-1))
+        6. Is its determinant positive (+1) (c.f., it is a reflection matrix (improper rotation)
+           if the determinant is negative (-1))
 
     :param matrix: rotation matrix
     :raises: TypeError, ValueError if not
@@ -87,7 +88,7 @@ def validate_rotation_matrix(matrix):
     tolerance = 1e-6
     id = np.eye(3)
     residual = np.absolute(mat) - id
-    if np.flatnonzero(np.where(residual < -tolerance) & (residual > tolerance)).shape[0] > 0:
+    if np.flatnonzero(np.where((residual < -tolerance) | (residual > tolerance))).shape[0] > 0:
         raise ValueError("Rotation matrix should be orthogonal.")
 
     # Check if the determinant is positive

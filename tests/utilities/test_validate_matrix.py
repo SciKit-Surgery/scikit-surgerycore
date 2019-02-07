@@ -104,11 +104,13 @@ def test_rotation_matrix_invalid_because_too_few_columns():
     with pytest.raises(ValueError):
         vm.validate_rotation_matrix(np.ones((3, 2)))
 
+def test_rotation_matrix_invalid_because_not_orthogonal():
+    with pytest.raises(ValueError):
+        vm.validate_rotation_matrix(np.array([[3, -4, 1], [5, 3, -7], [-9, 2, 6]]))
 
 def test_rotation_matrix_valid():
     rotation_matrix = np.eye(3)
     assert vm.validate_rotation_matrix(rotation_matrix)
-
 
 def test_translation_matrix_invalid_because_wrong_type():
     with pytest.raises(TypeError):
