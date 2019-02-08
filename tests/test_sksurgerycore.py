@@ -27,10 +27,10 @@ def test_using_pytest_cookienewwithgitinit_withTK():
             six.print_("Got another error (not TCL), that's not OK.")
             assert False
 
-    except ModuleNotFoundError:
-        six.print_("Got module not found on tkinter, please check your python installation")
+    #except ModuleNotFoundError:
+        #six.print_("Got module not found on tkinter, please check your python installation")
         #we're not trying to test whether we have tkinter so this is ok
-        assert True
+        #assert True
     except ImportError:
         six.print_("Got import error on tkinter, please check your python installation")
         #we're not trying to test whether we have tkinter so this is ok
