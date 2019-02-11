@@ -1,6 +1,8 @@
-import numpy as np
+"""
+Construct 3x3 rotation matrices for rotating around the x, y, z axes.
+"""
 
-# pylint: disable=invalid_name
+import numpy as np
 
 
 def construct_rx_matrix(angle, is_in_radians=True):
@@ -14,10 +16,10 @@ def construct_rx_matrix(angle, is_in_radians=True):
     if not is_in_radians:
         angle = np.pi * angle / 180
 
-    cx = np.cos(angle)
-    sx = np.sin(angle)
+    cos_x = np.cos(angle)
+    sin_x = np.sin(angle)
 
-    rot_x = np.array([[1, 0, 0], [0, cx, -sx], [0, sx, cx]])
+    rot_x = np.array([[1, 0, 0], [0, cos_x, -sin_x], [0, sin_x, cos_x]])
 
     return rot_x
 
@@ -33,10 +35,10 @@ def construct_ry_matrix(angle, is_in_radians=True):
     if not is_in_radians:
         angle = np.pi * angle / 180
 
-    cy = np.cos(angle)
-    sy = np.sin(angle)
+    cos_y = np.cos(angle)
+    sin_y = np.sin(angle)
 
-    rot_y = np.array([[cy, 0, sy], [0, 1, 0], [-sy, 0, cy]])
+    rot_y = np.array([[cos_y, 0, sin_y], [0, 1, 0], [-sin_y, 0, cos_y]])
 
     return rot_y
 
@@ -52,9 +54,9 @@ def construct_rz_matrix(angle, is_in_radians=True):
     if not is_in_radians:
         angle = np.pi * angle / 180
 
-    cz = np.cos(angle)
-    sz = np.sin(angle)
+    cos_z = np.cos(angle)
+    sin_z = np.sin(angle)
 
-    rot_z = np.array([[cz, -sz, 0], [sz, cz, 0], [0, 0, 1]])
+    rot_z = np.array([[cos_z, -sin_z, 0], [sin_z, cos_z, 0], [0, 0, 1]])
 
     return rot_z
