@@ -24,34 +24,23 @@ class ConfigurationManager:
     For example, this might be used at the startup of an application.
 
     :param file_name: a json file to read.
-    :param write_on_shutdown: if True, will write back to the same file when the destructor is called.
     :param write_on_setter: if True, will write back to the same file whenever the setter is called.
     :raises: All errors raised as various Exceptions.
     """
     def __init__(self, file_name,
-                 write_on_shutdown=False,
                  write_on_setter=False
                  ):
         """ Constructor. """
         f.validate_is_file(file_name)
 
-        if write_on_shutdown or write_on_setter:
+        if write_on_setter:
             f.validate_is_writable_file(file_name)
 
         with open(file_name, "r") as read_file:
             self.config_data = json.load(read_file)
 
         self.file_name = file_name
-        self.write_on_shutdown = write_on_shutdown
         self.write_on_setter = write_on_setter
-
-    def __del__(self):
-        """ If the constructor was passed write_on_shutdown=True,
-        then the destructor will attempt to save back the config into
-        the file that it was read from.
-        """
-        if self.write_on_shutdown:
-            self._save_back_to_file()
 
     def get_copy(self):
         """ Returns a copy of the data read from file.
