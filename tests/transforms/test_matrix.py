@@ -70,132 +70,132 @@ def test_construct_rx_matrix():
     tiny = 0.0001
 
     new_point = check_construct_rx_matrix(90, 0, np.array([0, 1, 0]).T)
-    assert np.abs(new_point[0]) <= tiny
-    assert np.abs(new_point[1]) <= tiny
-    assert np.abs(new_point[2] - 1) <= tiny
+    assert np.abs(new_point[0]) < tiny
+    assert np.abs(new_point[1]) < tiny
+    assert np.abs(new_point[2] - 1) < tiny
 
     new_point = check_construct_rx_matrix(np.pi/2, 1, np.array([0, 1, 0]).T)
-    assert np.abs(new_point[0]) <= tiny
-    assert np.abs(new_point[1]) <= tiny
-    assert np.abs(new_point[2] - 1) <= tiny
+    assert np.abs(new_point[0]) < tiny
+    assert np.abs(new_point[1]) < tiny
+    assert np.abs(new_point[2] - 1) < tiny
 
     new_point = check_construct_rx_matrix(-90, 0, np.array([0, 1, 0]).T)
-    assert np.abs(new_point[0]) <= tiny
-    assert np.abs(new_point[1]) <= tiny
-    assert np.abs(new_point[2] + 1) <= tiny
+    assert np.abs(new_point[0]) < tiny
+    assert np.abs(new_point[1]) < tiny
+    assert np.abs(new_point[2] + 1) < tiny
 
     new_point = check_construct_rx_matrix(-np.pi/2, 1, np.array([0, 1, 0]).T)
-    assert np.abs(new_point[0]) <= tiny
-    assert np.abs(new_point[1]) <= tiny
-    assert np.abs(new_point[2] + 1) <= tiny
+    assert np.abs(new_point[0]) < tiny
+    assert np.abs(new_point[1]) < tiny
+    assert np.abs(new_point[2] + 1) < tiny
 
     new_point = check_construct_rx_matrix(180, 0, np.array([0, 1, 0]).T)
-    assert np.abs(new_point[0]) <= tiny
-    assert np.abs(new_point[1] + 1) <= tiny
-    assert np.abs(new_point[2]) <= tiny
+    assert np.abs(new_point[0]) < tiny
+    assert np.abs(new_point[1] + 1) < tiny
+    assert np.abs(new_point[2]) < tiny
 
     new_point = check_construct_rx_matrix(np.pi, 1, np.array([0, 1, 0]).T)
-    assert np.abs(new_point[0]) <= tiny
-    assert np.abs(new_point[1] + 1) <= tiny
-    assert np.abs(new_point[2]) <= tiny
+    assert np.abs(new_point[0]) < tiny
+    assert np.abs(new_point[1] + 1) < tiny
+    assert np.abs(new_point[2]) < tiny
 
     new_point = check_construct_rx_matrix(-180, 0, np.array([0, 1, 0]).T)
-    assert np.abs(new_point[0]) <= tiny
-    assert np.abs(new_point[1] + 1) <= tiny
-    assert np.abs(new_point[2]) <= tiny
+    assert np.abs(new_point[0]) < tiny
+    assert np.abs(new_point[1] + 1) < tiny
+    assert np.abs(new_point[2]) < tiny
 
     new_point = check_construct_rx_matrix(-np.pi, 1, np.array([0, 1, 0]).T)
-    assert np.abs(new_point[0]) <= tiny
-    assert np.abs(new_point[1] + 1) <= tiny
-    assert np.abs(new_point[2]) <= tiny
+    assert np.abs(new_point[0]) < tiny
+    assert np.abs(new_point[1] + 1) < tiny
+    assert np.abs(new_point[2]) < tiny
 
 
 def test_construct_ry_matrix():
     tiny = 0.0001
 
     new_point = check_construct_ry_matrix(90, 0, np.array([1, 0, 0]).T)
-    assert np.abs(new_point[0]) <= tiny
-    assert np.abs(new_point[1]) <= tiny
-    assert np.abs(new_point[2] + 1) <= tiny
+    assert np.abs(new_point[0]) < tiny
+    assert np.abs(new_point[1]) < tiny
+    assert np.abs(new_point[2] + 1) < tiny
 
     new_point = check_construct_ry_matrix(np.pi/2, 1, np.array([1, 0, 0]).T)
-    assert np.abs(new_point[0]) <= tiny
-    assert np.abs(new_point[1]) <= tiny
-    assert np.abs(new_point[2] + 1) <= tiny
+    assert np.abs(new_point[0]) < tiny
+    assert np.abs(new_point[1]) < tiny
+    assert np.abs(new_point[2] + 1) < tiny
 
     new_point = check_construct_ry_matrix(-90, 0, np.array([1, 0, 0]).T)
-    assert np.abs(new_point[0]) <= tiny
-    assert np.abs(new_point[1]) <= tiny
-    assert np.abs(new_point[2] - 1) <= tiny
+    assert np.abs(new_point[0]) < tiny
+    assert np.abs(new_point[1]) < tiny
+    assert np.abs(new_point[2] - 1) < tiny
 
     new_point = check_construct_ry_matrix(-np.pi/2, 1, np.array([1, 0, 0]).T)
-    assert np.abs(new_point[0]) <= tiny
-    assert np.abs(new_point[1]) <= tiny
-    assert np.abs(new_point[2] - 1) <= tiny
+    assert np.abs(new_point[0]) < tiny
+    assert np.abs(new_point[1]) < tiny
+    assert np.abs(new_point[2] - 1) < tiny
 
     new_point = check_construct_ry_matrix(180, 0, np.array([1, 0, 0]).T)
-    assert np.abs(new_point[0] + 1) <= tiny
+    assert np.abs(new_point[0] + 1) < tiny
     assert np.abs(new_point[1]) <= tiny
-    assert np.abs(new_point[2]) <= tiny
+    assert np.abs(new_point[2]) < tiny
 
     new_point = check_construct_ry_matrix(np.pi, 1, np.array([1, 0, 0]).T)
-    assert np.abs(new_point[0] + 1) <= tiny
-    assert np.abs(new_point[1]) <= tiny
-    assert np.abs(new_point[2]) <= tiny
+    assert np.abs(new_point[0] + 1) < tiny
+    assert np.abs(new_point[1]) < tiny
+    assert np.abs(new_point[2]) < tiny
 
     new_point = check_construct_ry_matrix(-180, 0, np.array([1, 0, 0]).T)
-    assert np.abs(new_point[0] + 1) <= tiny
-    assert np.abs(new_point[1]) <= tiny
-    assert np.abs(new_point[2]) <= tiny
+    assert np.abs(new_point[0] + 1) < tiny
+    assert np.abs(new_point[1]) < tiny
+    assert np.abs(new_point[2]) < tiny
 
     new_point = check_construct_ry_matrix(-np.pi, 1, np.array([1, 0, 0]).T)
-    assert np.abs(new_point[0] + 1) <= tiny
-    assert np.abs(new_point[1]) <= tiny
-    assert np.abs(new_point[2]) <= tiny
+    assert np.abs(new_point[0] + 1) < tiny
+    assert np.abs(new_point[1]) < tiny
+    assert np.abs(new_point[2]) < tiny
 
 
 def test_construct_rz_matrix():
     tiny = 0.0001
 
     new_point = check_construct_rz_matrix(90, 0, np.array([1, 0, 0]).T)
-    assert np.abs(new_point[0]) <= tiny
-    assert np.abs(new_point[1] - 1) <= tiny
-    assert np.abs(new_point[2]) <= tiny
+    assert np.abs(new_point[0]) < tiny
+    assert np.abs(new_point[1] - 1) < tiny
+    assert np.abs(new_point[2]) < tiny
 
     new_point = check_construct_rz_matrix(np.pi/2, 1, np.array([1, 0, 0]).T)
-    assert np.abs(new_point[0]) <= tiny
-    assert np.abs(new_point[1] - 1) <= tiny
-    assert np.abs(new_point[2]) <= tiny
+    assert np.abs(new_point[0]) < tiny
+    assert np.abs(new_point[1] - 1) < tiny
+    assert np.abs(new_point[2]) < tiny
 
     new_point = check_construct_rz_matrix(-90, 0, np.array([1, 0, 0]).T)
-    assert np.abs(new_point[0]) <= tiny
-    assert np.abs(new_point[1] + 1) <= tiny
-    assert np.abs(new_point[2]) <= tiny
+    assert np.abs(new_point[0]) < tiny
+    assert np.abs(new_point[1] + 1) < tiny
+    assert np.abs(new_point[2]) < tiny
 
     new_point = check_construct_rz_matrix(-np.pi/2, 1, np.array([1, 0, 0]).T)
-    assert np.abs(new_point[0]) <= tiny
-    assert np.abs(new_point[1] + 1) <= tiny
-    assert np.abs(new_point[2]) <= tiny
+    assert np.abs(new_point[0]) < tiny
+    assert np.abs(new_point[1] + 1) < tiny
+    assert np.abs(new_point[2]) < tiny
 
     new_point = check_construct_rz_matrix(180, 0, np.array([1, 0, 0]).T)
-    assert np.abs(new_point[0] + 1) <= tiny
-    assert np.abs(new_point[1]) <= tiny
-    assert np.abs(new_point[2]) <= tiny
+    assert np.abs(new_point[0] + 1) < tiny
+    assert np.abs(new_point[1]) < tiny
+    assert np.abs(new_point[2]) < tiny
 
     new_point = check_construct_rz_matrix(np.pi, 1, np.array([1, 0, 0]).T)
-    assert np.abs(new_point[0] + 1) <= tiny
-    assert np.abs(new_point[1]) <= tiny
-    assert np.abs(new_point[2]) <= tiny
+    assert np.abs(new_point[0] + 1) < tiny
+    assert np.abs(new_point[1]) < tiny
+    assert np.abs(new_point[2]) < tiny
 
     new_point = check_construct_rz_matrix(-180, 0, np.array([1, 0, 0]).T)
-    assert np.abs(new_point[0] + 1) <= tiny
-    assert np.abs(new_point[1]) <= tiny
-    assert np.abs(new_point[2]) <= tiny
+    assert np.abs(new_point[0] + 1) < tiny
+    assert np.abs(new_point[1]) < tiny
+    assert np.abs(new_point[2]) < tiny
 
     new_point = check_construct_rz_matrix(-np.pi, 1, np.array([1, 0, 0]).T)
-    assert np.abs(new_point[0] + 1) <= tiny
-    assert np.abs(new_point[1]) <= tiny
-    assert np.abs(new_point[2]) <= tiny
+    assert np.abs(new_point[0] + 1) < tiny
+    assert np.abs(new_point[1]) < tiny
+    assert np.abs(new_point[2]) < tiny
 
 
 def check_construct_rotm_from_euler(
@@ -228,43 +228,123 @@ def test_construct_rotm_from_euler():
 
     new_point = check_construct_rotm_from_euler(
         90, -90, 0,
+        'zxz', 0,
+        np.array([1, 0, -1]).T)
+    assert np.abs(new_point[0] - 1) < tiny
+    assert np.abs(new_point[1] - 1) < tiny
+    assert np.abs(new_point[2]) < tiny
+
+    new_point = check_construct_rotm_from_euler(
+        90, -90, 0,
         'zyz', 0,
         np.array([0, -1, -1]).T)
-    assert np.abs(new_point[0] - 1) <= tiny
-    assert np.abs(new_point[1] - 1) <= tiny
-    assert np.abs(new_point[2]) <= tiny
+    assert np.abs(new_point[0] - 1) < tiny
+    assert np.abs(new_point[1] - 1) < tiny
+    assert np.abs(new_point[2]) < tiny
 
     new_point = check_construct_rotm_from_euler(
         np.pi/2, -np.pi/2, 0,
         'zyz', 1,
         np.array([0, -1, -1]).T)
-    assert np.abs(new_point[0] - 1) <= tiny
-    assert np.abs(new_point[1] - 1) <= tiny
-    assert np.abs(new_point[2]) <= tiny
+    assert np.abs(new_point[0] - 1) < tiny
+    assert np.abs(new_point[1] - 1) < tiny
+    assert np.abs(new_point[2]) < tiny
 
     new_point = check_construct_rotm_from_euler(
-        90, -90, 0,
-        'zxz', 0,
-        np.array([1, 0, -1]).T)
-    assert np.abs(new_point[0] - 1) <= tiny
-    assert np.abs(new_point[1] - 1) <= tiny
-    assert np.abs(new_point[2]) <= tiny
+        0, 45, 45,
+        'xyx', 0,
+        np.array([0, 1, 1]).T)
+    assert np.abs(new_point[0] - 1) < tiny
+    assert np.abs(new_point[1]) < tiny
+    assert np.abs(new_point[2] - 1) < tiny
 
     new_point = check_construct_rotm_from_euler(
-        0, 90, -90,
-        'zyx', 0,
-        np.array([0, -1, 1]).T)
-    assert np.abs(new_point[0] - 1) <= tiny
-    assert np.abs(new_point[1] - 1) <= tiny
-    assert np.abs(new_point[2]) <= tiny
+        0, -45, -45,
+        'xzx', 0,
+        np.array([0, 1, 1]).T)
+    assert np.abs(new_point[0] - 1) < tiny
+    assert np.abs(new_point[1] - 1) < tiny
+    assert np.abs(new_point[2]) < tiny
+
+    new_point = check_construct_rotm_from_euler(
+        45, 45, -90,
+        'yxy', 0,
+        np.array([1, 1, 0]).T)
+    assert np.abs(new_point[0] - 1) < tiny
+    assert np.abs(new_point[1]) < tiny
+    assert np.abs(new_point[2] - 1) < tiny
+
+    new_point = check_construct_rotm_from_euler(
+        45, 45, 180,
+        'yzy', 0,
+        np.array([1, 1, 0]).T)
+    assert np.abs(new_point[0] + 1) < tiny
+    assert np.abs(new_point[1]) < tiny
+    assert np.abs(new_point[2] - 1) < tiny
 
     new_point = check_construct_rotm_from_euler(
         0, 90, -90,
         'xyz', 0,
         np.array([-1, 0, 1]).T)
-    assert np.abs(new_point[0] - 1) <= tiny
-    assert np.abs(new_point[1] - 1) <= tiny
-    assert np.abs(new_point[2]) <= tiny
+    assert np.abs(new_point[0] - 1) < tiny
+    assert np.abs(new_point[1] - 1) < tiny
+    assert np.abs(new_point[2]) < tiny
+
+    new_point = check_construct_rotm_from_euler(
+        0, 90, -90,
+        'zyx', 0,
+        np.array([0, -1, 1]).T)
+    assert np.abs(new_point[0] - 1) < tiny
+    assert np.abs(new_point[1] - 1) < tiny
+    assert np.abs(new_point[2]) < tiny
+
+    new_point = check_construct_rotm_from_euler(
+        0, -45, -45,
+        'xyz', 0,
+        np.array([1, 1, 0]).T)
+    assert np.abs(new_point[0] - 1) < tiny
+    assert np.abs(new_point[1]) <= tiny
+    assert np.abs(new_point[2] - 1) < tiny
+
+    new_point = check_construct_rotm_from_euler(
+        0, -np.pi/4, -np.pi/4,
+        'xyz', 1,
+        np.array([1, 1, 0]).T)
+    assert np.abs(new_point[0] - 1) < tiny
+    assert np.abs(new_point[1]) <= tiny
+    assert np.abs(new_point[2] - 1) < tiny
 
 
-test_construct_rotm_from_euler()
+def test_construct_rigid_transformation():
+    tiny = 0.0001
+
+    rot_m = mat.construct_rx_matrix(np.pi/2)
+    vm.validate_rotation_matrix(rot_m)
+
+    trans_v = np.array([[10], [10], [10]])
+    vm.validate_translation_column_vector(trans_v)
+
+    rigid_transformation = mat.construct_rigid_transformation(
+        rot_m, trans_v)
+    vm.validate_rigid_matrix(rigid_transformation)
+
+    assert np.abs(rigid_transformation[0][0] - 1) < tiny
+    assert np.abs(rigid_transformation[0][1]) < tiny
+    assert np.abs(rigid_transformation[0][2]) < tiny
+    assert np.abs(rigid_transformation[0][3] - 10) < tiny
+    assert np.abs(rigid_transformation[1][0]) < tiny
+    assert np.abs(rigid_transformation[1][1]) < tiny
+    assert np.abs(rigid_transformation[1][2] + 1) < tiny
+    assert np.abs(rigid_transformation[1][3] - 10) < tiny
+    assert np.abs(rigid_transformation[2][0]) < tiny
+    assert np.abs(rigid_transformation[2][1] - 1) < tiny
+    assert np.abs(rigid_transformation[2][2]) < tiny
+    assert np.abs(rigid_transformation[2][3] - 10) < tiny
+    assert np.abs(rigid_transformation[3][0]) < tiny
+    assert np.abs(rigid_transformation[3][1]) < tiny
+    assert np.abs(rigid_transformation[3][2]) < tiny
+    assert np.abs(rigid_transformation[3][3] - 1) < tiny
+
+
+# test_construct_rigid_transformation()
+

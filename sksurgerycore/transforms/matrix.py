@@ -11,9 +11,9 @@ def construct_rx_matrix(angle, is_in_radians=True):
     """
     Construct a rotation matrix for rotation around the x axis.
 
-    :param angle: the angle to rotate
-    :param is_in_radians: if angle is in radians or not, default being True
-    :returns: rot_x -- the 3x3 rotation matrix constructed
+    :param angle: the angle to rotate, float
+    :param is_in_radians: if angle is in radians, default being True, bool
+    :returns: rot_x -- the 3x3 rotation matrix constructed, numpy array
     """
     if not is_in_radians:
         angle = np.pi * angle / 180
@@ -30,9 +30,9 @@ def construct_ry_matrix(angle, is_in_radians=True):
     """
     Construct a rotation matrix for rotation around the y axis.
 
-    :param angle: the angle to rotate
-    :param is_in_radians: if angle is in radians or not, default being True
-    :returns: rot_y -- the 3x3 rotation matrix constructed
+    :param angle: the angle to rotate, float
+    :param is_in_radians: if angle is in radians, default being True, bool
+    :returns: rot_y -- the 3x3 rotation matrix constructed, numpy array
     """
     if not is_in_radians:
         angle = np.pi * angle / 180
@@ -49,9 +49,9 @@ def construct_rz_matrix(angle, is_in_radians=True):
     """
     Construct a rotation matrix for rotation around the z axis.
 
-    :param angle: the angle to rotate
-    :param is_in_radians: if angle is in radians or not, default being True
-    :returns: rot_z -- the 3x3 rotation matrix constructed
+    :param angle: the angle to rotate, float
+    :param is_in_radians: if angle is in radians, default being True, bool
+    :returns: rot_z -- the 3x3 rotation matrix constructed, numpy array
     """
     if not is_in_radians:
         angle = np.pi * angle / 180
@@ -76,13 +76,14 @@ def construct_rotm_from_euler(
     INTRINSIC axes. They can also be interpreted to be about the EXTRINSIC axes,
     in the reverse order.
 
-    :param angle_a: first Euler angle
-    :param angle_b: second Euler angle
-    :param angle_c: third Euler angle
+    :param angle_a: first Euler angle, float
+    :param angle_b: second Euler angle, float
+    :param angle_c: third Euler angle, float
     :param sequence: the sequence of axes the three elemental rotations are
-    about, with respect to the intrinsic axes
-    :param is_in_radians: if angle is in radians or not, default being True
-    :returns: rot_m -- the 3x3 rotation matrix
+    about, with respect to the intrinsic axes, string
+    :param is_in_radians: if the angles are in radians, default being True,
+    bool
+    :returns: rot_m -- the 3x3 rotation matrix, numpy array
     """
     while True:
         if sequence == 'zxz':
@@ -91,22 +92,16 @@ def construct_rotm_from_euler(
             rot_c = construct_rz_matrix(angle_c, is_in_radians)
             break
 
-        if sequence == 'xyx':
-            rot_a = construct_rx_matrix(angle_a, is_in_radians)
-            rot_b = construct_ry_matrix(angle_b, is_in_radians)
-            rot_c = construct_rx_matrix(angle_c, is_in_radians)
-            break
-
-        if sequence == 'yzy':
-            rot_a = construct_ry_matrix(angle_a, is_in_radians)
-            rot_b = construct_rz_matrix(angle_b, is_in_radians)
-            rot_c = construct_ry_matrix(angle_c, is_in_radians)
-            break
-
         if sequence == 'zyz':
             rot_a = construct_rz_matrix(angle_a, is_in_radians)
             rot_b = construct_ry_matrix(angle_b, is_in_radians)
             rot_c = construct_rz_matrix(angle_c, is_in_radians)
+            break
+
+        if sequence == 'xyx':
+            rot_a = construct_rx_matrix(angle_a, is_in_radians)
+            rot_b = construct_ry_matrix(angle_b, is_in_radians)
+            rot_c = construct_rx_matrix(angle_c, is_in_radians)
             break
 
         if sequence == 'xzx':
@@ -118,6 +113,12 @@ def construct_rotm_from_euler(
         if sequence == 'yxy':
             rot_a = construct_ry_matrix(angle_a, is_in_radians)
             rot_b = construct_rx_matrix(angle_b, is_in_radians)
+            rot_c = construct_ry_matrix(angle_c, is_in_radians)
+            break
+
+        if sequence == 'yzy':
+            rot_a = construct_ry_matrix(angle_a, is_in_radians)
+            rot_b = construct_rz_matrix(angle_b, is_in_radians)
             rot_c = construct_ry_matrix(angle_c, is_in_radians)
             break
 
@@ -139,3 +140,25 @@ def construct_rotm_from_euler(
     rot_m = np.matmul(rot_tmp, rot_c)
 
     return rot_m
+
+
+def construct_rigid_transformation(rot_m, trans_v):
+    """Construct a 4x4 rigid-body transformation from a 3x3 rotation matrix and
+    a 3x1 vector as translation
+
+    :param rot_m: 3x3 rotation matrix, numpy array
+    :param trans_v: 3x1 vector as translation, numpy array
+    :returns: rigid_transformation -- 4x4 rigid transformation matrix,
+    numpy array
+    """
+    rigid_transformation = np.identity(4)
+
+    for i in range(3):
+        for j in range(3):
+            rigid_transformation[i][j] = rot_m[i][j]
+
+    rigid_transformation[0][3] = trans_v[0]
+    rigid_transformation[1][3] = trans_v[1]
+    rigid_transformation[2][3] = trans_v[2]
+
+    return rigid_transformation
