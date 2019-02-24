@@ -47,19 +47,26 @@ def pivot_calibration(matrices4x4):
         a_values[i * 3 + 1, 5] = 0
         a_values[i * 3 + 2, 5] = -1
 
-    # For passing lint tests only temporary.
-    x_values = x_values + 0
+    # To calculate Singular Value Decomposition
 
-    # a,b,c = svd(data)
-    #
-    # # Zero out diagonal values less than threshold
-    #
-    # rank = 0
-    #
-    #
-    #
-    # for i in range(len(a)):
-    #     if a[i,0] < 0.01:
-    #         a[i, 0] = 0
-    #     if a[i,0] != 0:
-    #         rank += 1
+    u_values, s_values, v_values = np.linalg.svd(a_values, full_matrices=False)
+    c_values = np.dot(u_values.T, b_values)
+    w_values = np.linalg.solve(np.diag(s_values), c_values)
+    x_values = np.dot(v_values.T, w_values)
+
+    # Back substitution
+
+    # Calculating the rank
+
+    rank = 0
+    for i in range(len(s_values)):
+        if s_values[i] < 0.01:
+            s_values[i] = 0
+        if s_values[i] != 0:
+            rank += 1
+    if rank < 6:
+        print("PivotCalibration: Failed. Rank < 6")
+
+    # Residual Matrix
+
+    # Output
