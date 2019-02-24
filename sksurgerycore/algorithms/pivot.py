@@ -69,4 +69,27 @@ def pivot_calibration(matrices4x4):
 
     # Residual Matrix
 
+    x_values = np.transpose(x_values)
+    residualMatrix = (a_values * x_values - b_values)
+    residualError = 0.0;
+    for i in range(number_of_matrices * 3):
+        residualError = residualError + residualMatrix[i, 0] * residualMatrix[i, 0]
+
+    residualError = residualError / float(number_of_matrices * 3)
+    residualError = np.sqrt(residualError)
+
     # Output
+    # MakeIdentity(outputMatrix);
+
+    outputMatrix = np.identity(4)
+
+    x_values = np.transpose(x_values)
+
+    outputMatrix[0, 3] = x_values[0, 0]
+    outputMatrix[1, 3] = x_values[1, 0]
+    outputMatrix[2, 3] = x_values[2, 0]
+
+    print("DoPivotCalibration:Pivot = (", x_values[3, 0], ", ", x_values[4, 0], ", ",
+          x_values[5, 0], "), residual= ", residualError)
+    return residualError
+
