@@ -6,9 +6,6 @@ import numpy as np
 # from numpy.linalg import svd
 
 
-def add(number1, number2):
-    return number1 + number2
-
 def pivot_calibration(matricesNx4x4):
     """
     Performs Pivot Calibration and returns Residual Error.
