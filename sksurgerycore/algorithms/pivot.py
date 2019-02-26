@@ -6,6 +6,7 @@ import numpy as np
 
 
 def pivot_calibration(matrices4x4):
+    print(matrices4x4)
     """
     Performs Pivot Calibration and returns Residual Error.
 
@@ -23,7 +24,7 @@ def pivot_calibration(matrices4x4):
     if not matrices4x4.shape[1] == 4:  # pylint: disable=literal-comparison
         raise ValueError("matrices4x4 should have 4 columns per matrix")
 
-    if not matrices4x4.shape[0] == 4:  # pylint: disable=literal-comparison
+    if not matrices4x4.shape[2] == 4:  # pylint: disable=literal-comparison
         raise ValueError("matrices4x4 should have 4 rows per matrix")
 
     number_of_matrices = len(matrices4x4)
@@ -85,7 +86,7 @@ def pivot_calibration(matrices4x4):
 
     # Residual Matrix
 
-    residual_matrix = (np.dot(a_values , x_values) - b_values)
+    residual_matrix = (np.dot(a_values, x_values) - b_values)
     residual_error = 0.0
     for i in range(number_of_matrices * 3):
         residual_error = residual_error + np.dot(residual_matrix[i, 0], residual_matrix[i, 0])
@@ -103,4 +104,5 @@ def pivot_calibration(matrices4x4):
     output_matrix[2, 3] = x_values[2, 0]
 
     print("pivotCalibration=(", x_values[3, 0], ",", x_values[4, 0], ",", x_values[5, 0], "),residual=", residual_error)
+
     return residual_error
