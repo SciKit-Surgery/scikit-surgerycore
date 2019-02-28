@@ -3,7 +3,7 @@
 """Functions for point based registration using Orthogonal Procrustes."""
 
 import numpy as np
-from sksurgerycore.algorithms.errors import compute_fre
+import sksurgerycore.algorithms.errors as e
 
 
 def validate_procrustes_inputs(fixed, moving):
@@ -116,6 +116,6 @@ def orthogonal_procrustes(fixed, moving):
     T[0][0] = tmp[0]
     T[1][0] = tmp[1]
     T[2][0] = tmp[2]
-    fre = compute_fre(fixed, moving, R, T)
+    fre = e.compute_fre(fixed, moving, R, T)
 
     return R, T, fre
