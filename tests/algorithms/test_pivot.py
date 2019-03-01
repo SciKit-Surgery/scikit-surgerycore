@@ -16,7 +16,7 @@ def test_empty_matrices4x4():
 def test_rank_lt_six():
 
     with pytest.raises(SystemExit):
-        file_names = glob('tests/algorithms/PivotCalibration/1378476416922755200.txt')
+        file_names = glob('tests/data/PivotCalibration/1378476416922755200.txt')
         arrays = [np.loadtxt(f) for f in file_names]
         matrices = np.concatenate(arrays)
         numberOf4x4Matrices = int(matrices.size/16)
@@ -38,9 +38,10 @@ def test_four_rows_matrices4x4():
 
 def test_return_value():
 
-    file_names = glob('tests/algorithms/PivotCalibration/*')
+    file_names = glob('tests/data/PivotCalibration/*')
     arrays = [np.loadtxt(f) for f in file_names]
     matrices = np.concatenate(arrays)
     numberOf4x4Matrices = int(matrices.size/16)
     matrices4x4 = matrices.reshape(numberOf4x4Matrices, 4, 4)
     assert 1.8385 == round(p.pivot_calibration(matrices4x4), 4)
+
