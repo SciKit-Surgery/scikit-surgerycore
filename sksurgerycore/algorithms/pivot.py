@@ -24,31 +24,16 @@ def pivot_calibration(matrices4x4):
     if not matrices4x4.shape[1] == 4:  # pylint: disable=literal-comparison
         raise ValueError("matrices4x4 should have 4 columns per matrix")
 
-    if not matrices4x4.shape[2] == 4:  # pylint: disable=literal-comparison
-        raise ValueError("matrices4x4 should have 4 rows per matrix")
-
     number_of_matrices = len(matrices4x4)
 
     size_a = 3 * number_of_matrices, 6
     a_values = np.zeros(size_a, dtype=np.float64)
 
-    if not a_values.shape[1] == 6:  # pylint: disable=literal-comparison
-        raise ValueError("a_values should have 6 columns per matrix")
-
     size_x = 6, 1
     x_values = np.zeros(size_x, dtype=np.float64)
 
-    if not x_values.shape[0] == 6:  # pylint: disable=literal-comparison
-        raise ValueError("x_values should have 6 rows per matrix")
-
-    if not x_values.shape[1] == 1:  # pylint: disable=literal-comparison
-        raise ValueError("x_values should have 1 columns per matrix")
-
     size_b = 3 * number_of_matrices, 1
     b_values = np.zeros(size_b, dtype=np.float64)
-
-    if not b_values.shape[1] == 1:  # pylint: disable=literal-comparison
-        raise ValueError("b_values should have 1 columns per matrix")
 
     for i in range(number_of_matrices):
         b_values[i * 3 + 0, 0] = -1 * matrices4x4[i, 0, 3]
@@ -74,12 +59,6 @@ def pivot_calibration(matrices4x4):
         a_values[i * 3 + 0, 5] = 0
         a_values[i * 3 + 1, 5] = 0
         a_values[i * 3 + 2, 5] = -1
-
-    if not a_values.shape[1] == 6:  # pylint: disable=literal-comparison
-        raise ValueError("a_values should have 6 columns per matrix")
-
-    if not b_values.shape[1] == 1:  # pylint: disable=literal-comparison
-        raise ValueError("b_values should have 1 columns per matrix")
 
     # To calculate Singular Value Decomposition
 
