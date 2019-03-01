@@ -13,7 +13,7 @@ def test_empty_matrices4x4():
         p.pivot_calibration(None)
 
 
-def test_range_le_six():
+def test_rank_lt_six():
 
     with pytest.raises(SystemExit):
         file_names = glob('tests/algorithms/PivotCalibration/1378476416922755200.txt')
