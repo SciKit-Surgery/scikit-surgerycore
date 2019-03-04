@@ -15,7 +15,7 @@ def test_empty_matrices4x4():
 
 def test_rank_lt_six():
 
-    with pytest.raises(SystemExit):
+    with pytest.raises(ValueError):
         file_names = glob('tests/data/PivotCalibration/1378476416922755200.txt')
         arrays = [np.loadtxt(f) for f in file_names]
         matrices = np.concatenate(arrays)
@@ -56,7 +56,7 @@ def test_rank_if_condition():
     # This test will be checking a specific if condition.
     # But at the moment I dont know what data I need
     # To get proper s_values to cover that if condition.
-    with pytest.raises(SystemExit):
+    with pytest.raises(ValueError):
         file_names = glob('tests/data/test_case_data.txt')
         arrays = [np.loadtxt(f) for f in file_names]
         matrices = np.concatenate(arrays)

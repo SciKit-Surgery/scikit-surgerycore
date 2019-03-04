@@ -77,7 +77,8 @@ def pivot_calibration(matrices4x4):
             s_values[i] = 0
         if s_values[i] != 0:
             rank += 1
-    if rank < 6:
+
+    if rank < 6: # pylint: disable=literal-comparison
         raise ValueError("PivotCalibration: Failed. Rank < 6")
 
     # Residual Matrix
