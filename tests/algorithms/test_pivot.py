@@ -50,7 +50,6 @@ def test_return_value():
     assert -7.558 == round(x_value_3, 3)
 
 
-
 def test_rank_if_condition():
 
     # This test will be checking a specific if condition.
