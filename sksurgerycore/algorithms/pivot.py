@@ -1,12 +1,11 @@
 #  -*- coding: utf-8 -*-
-
 """Functions for pivot calibration."""
 
 import numpy as np
 
 
 def pivot_calibration(matrices4x4):
-    print(matrices4x4)
+
     """
     Performs Pivot Calibration and returns Residual Error.
 
