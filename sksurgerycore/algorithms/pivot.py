@@ -86,7 +86,9 @@ def pivot_calibration(matrices4x4):
     residual_matrix = (np.dot(a_values, x_values) - b_values)
     residual_error = 0.0
     for i in range(number_of_matrices * 3):
-        residual_error = residual_error + np.dot(residual_matrix[i, 0], residual_matrix[i, 0])
+        residual_error = residual_error + \
+                         np.dot(residual_matrix[i, 0],
+                                residual_matrix[i, 0])
 
     residual_error = residual_error / float(number_of_matrices * 3)
     residual_error = np.sqrt(residual_error)
@@ -100,6 +102,8 @@ def pivot_calibration(matrices4x4):
     output_matrix[1, 3] = x_values[1, 0]
     output_matrix[2, 3] = x_values[2, 0]
 
-    print("pivotCalibration=(", x_values[3, 0], ",", x_values[4, 0], ",", x_values[5, 0], "),residual=", residual_error)
+    print("pivotCalibration=(", x_values[3, 0], ","
+          , x_values[4, 0], ",", x_values[5, 0],
+          "),residual=", residual_error)
 
     return residual_error, x_values[0, 0], x_values[1, 0], x_values[2, 0]
