@@ -78,8 +78,7 @@ def pivot_calibration(matrices4x4):
         if s_values[i] != 0:
             rank += 1
     if rank < 6:
-        print("PivotCalibration: Failed. Rank < 6")
-        exit()
+        raise ValueError("PivotCalibration: Failed. Rank < 6")
 
     # Residual Matrix
 
