@@ -71,10 +71,10 @@ def pivot_calibration(matrices4x4):
     # Calculating the rank
 
     rank = 0
-    for i in range(len(s_values)):
-        if s_values[i] < 0.01:
-            s_values[i] = 0
-        if s_values[i] != 0:
+    for i, item in enumerate(s_values):
+        if item < 0.01:
+            item = 0
+        if item != 0:
             rank += 1
 
     if rank < 6: # pylint: disable=literal-comparison
