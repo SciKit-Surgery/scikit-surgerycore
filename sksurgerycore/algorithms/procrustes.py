@@ -123,7 +123,7 @@ def orthogonal_procrustes(fixed, moving):
         raise ValueError("Registration fails as determinant < 0"
                          " and no singular values are close enough to zero")
 
-    elif det_X < 0 and np.any(np.isclose(svd[1], np.zeros((3, 1)))):
+    if det_X < 0 and (np.any(np.isclose(svd[1], np.zeros((3, 1))))):
 
         # Implement 2a in section VI in Arun paper.
         v_prime = svd[2].transpose()
@@ -131,6 +131,7 @@ def orthogonal_procrustes(fixed, moving):
         v_prime[1][2] *= -1
         v_prime[2][2] *= -1
         X = np.matmul(v_prime, svd[0].transpose())
+
 
     # Compute output
     R = X
