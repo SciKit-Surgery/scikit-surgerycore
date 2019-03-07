@@ -3,44 +3,9 @@
 """Functions for point based registration using Orthogonal Procrustes."""
 
 import numpy as np
-import sksurgerycore.algorithms.errors as e
+from sksurgerycore.algorithms.errors \
+    import validate_procrustes_inputs, compute_fre
 
-
-def validate_procrustes_inputs(fixed, moving):
-    """
-    Validates the fixed and moving set of points
-
-    1. fixed and moving must be numpy array
-    2. fixed and moving should have 3 columns
-    3. fixed and moving should have at least 3 rows
-    4. fixed and moving should have the same number of rows
-
-    :param fixed: point set, N x 3 ndarray
-    :param moving: point set, N x 3 ndarray of corresponding points
-    :returns: nothing
-    :raises: TypeError, ValueError
-    """
-    if not isinstance(fixed, np.ndarray):
-        raise TypeError("fixed is not a numpy array'")
-
-    if not isinstance(moving, np.ndarray):
-        raise TypeError("moving is not a numpy array")
-
-    if not fixed.shape[1] == 3:  # pylint: disable=literal-comparison
-        raise ValueError("fixed should have 3 columns")
-
-    if not moving.shape[1] == 3:  # pylint: disable=literal-comparison
-        raise ValueError("moving should have 3 columns")
-
-    if fixed.shape[0] < 3:
-        raise ValueError("fixed should have at least 3 points (rows)")
-
-    if moving.shape[0] < 3:
-        raise ValueError("moving should have at least 3 points (rows)")
-
-    if not fixed.shape[0] == moving.shape[0]:
-        raise ValueError("fixed and moving should have "
-                         + "the same number of points (rows)")
 
 # pylint: disable=invalid-name, line-too-long
 
@@ -101,7 +66,7 @@ def orthogonal_procrustes(fixed, moving):
         raise ValueError("Registration fails as determinant < 0"
                          " and no singular values are close enough to zero")
 
-    elif det_X < 0 and np.any(np.isclose(svd[1], np.zeros((3, 1)))):
+    if det_X < 0 and np.any(np.isclose(svd[1], np.zeros((3, 1)))):
 
         # Implement 2a in section VI in Arun paper.
         v_prime = svd[2].transpose()
@@ -116,6 +81,6 @@ def orthogonal_procrustes(fixed, moving):
     T[0][0] = tmp[0]
     T[1][0] = tmp[1]
     T[2][0] = tmp[2]
-    fre = e.compute_fre(fixed, moving, R, T)
+    fre = compute_fre(fixed, moving, R, T)
 
     return R, T, fre
