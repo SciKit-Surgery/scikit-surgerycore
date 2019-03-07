@@ -75,6 +75,7 @@ def orthogonal_procrustes(fixed, moving):
         v_prime[2][2] *= -1
         X = np.matmul(v_prime, svd[0].transpose())
 
+
     # Compute output
     R = X
     tmp = p_prime.transpose() - np.matmul(R, p.transpose())
