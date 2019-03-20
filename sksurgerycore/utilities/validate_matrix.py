@@ -85,7 +85,7 @@ def validate_rotation_matrix(matrix):
 
     # Check the orthogonality: transpose(matrix) * matrix = identity matrix.
     mat = np.matmul(np.transpose(matrix), matrix)
-    tolerance = 1e-6
+    tolerance = 2e-6
     identity = np.eye(3)
     residual = np.absolute(mat) - identity
     if np.flatnonzero(np.where(
