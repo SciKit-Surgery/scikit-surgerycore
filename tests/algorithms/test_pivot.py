@@ -43,7 +43,8 @@ def test_return_value():
     matrices = np.concatenate(arrays)
     numberOf4x4Matrices = int(matrices.size/16)
     matrices4x4 = matrices.reshape(numberOf4x4Matrices, 4, 4)
-    residual_error, x_value_1, x_value_2, x_value_3 = p.pivot_calibration(matrices4x4)
+    residual_error, x_value_1, x_value_2, x_value_3, p_value_1, p_value_2, \
+    p_value_3 = p.pivot_calibration(matrices4x4)
     assert 1.838 == round(residual_error, 3)
     assert -14.476 == round(x_value_1, 3)
     assert 395.143 == round(x_value_2, 3)

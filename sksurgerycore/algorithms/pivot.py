@@ -105,4 +105,5 @@ def pivot_calibration(matrices4x4):
           , x_values[4, 0], ",", x_values[5, 0],
           "),residual=", residual_error)
 
-    return residual_error, x_values[0, 0], x_values[1, 0], x_values[2, 0]
+    return residual_error, x_values[0, 0], x_values[1, 0], x_values[2, 0], \
+           x_values[0, 0], x_values[1, 0], x_values[2, 0]
