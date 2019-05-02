@@ -9,13 +9,13 @@ def run_demo(console, text):
 
     six.print_(text)
 
-    if not console:
-        from tkinter import Tk, Label
-
-        root = Tk()
-
-        label = Label(root, text=text)
-        label.pack()
+    # if not console:
+    #     from tkinter import Tk, Label
+    #
+    #     root = Tk()
+    #
+    #     label = Label(root, text=text)
+    #     label.pack()
 
         #uncomment root.mainloop() to enter tk main loop.
         #Delete any unit tests covering this section first
