@@ -45,12 +45,12 @@ def test_return_value():
     matrices4x4 = matrices.reshape(numberOf4x4Matrices, 4, 4)
     x_values, residual_error =p.pivot_calibration(matrices4x4)
     assert 1.838 == round(residual_error, 3)
-    assert -14.476 == round(x_values[0, 1])
-    assert 395.143 == round(x_values[0, 2])
-    assert -7.558 == round(x_values[0, 3])
-    assert -805.284 == round(x_values[0, 4])
-    assert -85.447 == round(x_values[0, 5])
-    assert -2112.066 == round(x_values[0, 6])
+    assert -14.476 == round(x_values[0, 0])
+    assert 395.143 == round(x_values[1, 0])
+    assert -7.558 == round(x_values[2, 0])
+    assert -805.284 == round(x_values[3, 0])
+    assert -85.447 == round(x_values[4, 0])
+    assert -2112.066 == round(x_values[5, 0])
 
 
 def test_rank_if_condition():
