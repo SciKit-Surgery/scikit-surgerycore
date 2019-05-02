@@ -48,8 +48,8 @@ def test_return_value():
     assert -14.476 == round(x_values[0, 0], 3)
     assert 395.143 == round(x_values[1, 0], 3)
     assert -7.558 == round(x_values[2, 0], 3)
-    assert -805.284 == round(x_values[3, 0], 3)
-    assert -85.447 == round(x_values[4, 0], 3)
+    assert -805.285 == round(x_values[3, 0], 3)
+    assert -85.448 == round(x_values[4, 0], 3)
     assert -2112.066 == round(x_values[5, 0], 3)
 
 
