@@ -43,11 +43,14 @@ def test_return_value():
     matrices = np.concatenate(arrays)
     numberOf4x4Matrices = int(matrices.size/16)
     matrices4x4 = matrices.reshape(numberOf4x4Matrices, 4, 4)
-    residual_error, x_value_1, x_value_2, x_value_3 = p.pivot_calibration(matrices4x4)
+    x_values, residual_error =p.pivot_calibration(matrices4x4)
     assert 1.838 == round(residual_error, 3)
-    assert -14.476 == round(x_value_1, 3)
-    assert 395.143 == round(x_value_2, 3)
-    assert -7.558 == round(x_value_3, 3)
+    assert -14.476 == round(x_values[0, 0], 3)
+    assert 395.143 == round(x_values[1, 0], 3)
+    assert -7.558 == round(x_values[2, 0], 3)
+    assert -805.285 == round(x_values[3, 0], 3)
+    assert -85.448 == round(x_values[4, 0], 3)
+    assert -2112.066 == round(x_values[5, 0], 3)
 
 
 def test_rank_if_condition():

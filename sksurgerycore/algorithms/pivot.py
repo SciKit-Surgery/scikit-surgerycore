@@ -77,7 +77,7 @@ def pivot_calibration(matrices4x4):
         if item != 0:
             rank += 1
 
-    if rank < 6: # pylint: disable=literal-comparison
+    if rank < 6:  # pylint: disable=literal-comparison
         raise ValueError("PivotCalibration: Failed. Rank < 6")
 
     # Residual Matrix
@@ -95,14 +95,16 @@ def pivot_calibration(matrices4x4):
     # Output
     # MakeIdentity matrix
 
-    output_matrix = np.identity(4)
+    # output_matrix = np.identity(4)
+    #
+    # output_matrix[0, 3] = x_values[0, 0]
+    # output_matrix[1, 3] = x_values[1, 0]
+    # output_matrix[2, 3] = x_values[2, 0]
 
-    output_matrix[0, 3] = x_values[0, 0]
-    output_matrix[1, 3] = x_values[1, 0]
-    output_matrix[2, 3] = x_values[2, 0]
+    # print("pivotCalibration=(", x_values[3, 0], ","
+    #       , x_values[4, 0], ",", x_values[5, 0],
+    #       "),residual=", residual_error)
 
-    print("pivotCalibration=(", x_values[3, 0], ","
-          , x_values[4, 0], ",", x_values[5, 0],
-          "),residual=", residual_error)
+    # print(x_values)
 
-    return residual_error, x_values[0, 0], x_values[1, 0], x_values[2, 0]
+    return np.matrix(x_values), residual_error
