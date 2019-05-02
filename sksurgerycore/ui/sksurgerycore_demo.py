@@ -8,6 +8,7 @@ def run_demo(console, text):
     """Show message"""
 
     six.print_(text)
+    six.print_(console)
 
     # if not console:
     #     from tkinter import Tk, Label
