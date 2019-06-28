@@ -63,7 +63,7 @@ def construct_rz_matrix(angle, is_in_radians=True):
 
     return rot_z
 
-
+# pylint: disable=too-many-branches
 def construct_rotm_from_euler(
         angle_a, angle_b, angle_c,
         sequence, is_in_radians=True):
@@ -98,6 +98,18 @@ def construct_rotm_from_euler(
             rot_c = construct_rz_matrix(angle_c, is_in_radians)
             break
 
+        if sequence == 'zxy':
+            rot_a = construct_rz_matrix(angle_a, is_in_radians)
+            rot_b = construct_rx_matrix(angle_b, is_in_radians)
+            rot_c = construct_ry_matrix(angle_c, is_in_radians)
+            break
+
+        if sequence == 'zyx':
+            rot_a = construct_rz_matrix(angle_a, is_in_radians)
+            rot_b = construct_ry_matrix(angle_b, is_in_radians)
+            rot_c = construct_rx_matrix(angle_c, is_in_radians)
+            break
+
         if sequence == 'xyx':
             rot_a = construct_rx_matrix(angle_a, is_in_radians)
             rot_b = construct_ry_matrix(angle_b, is_in_radians)
@@ -108,6 +120,18 @@ def construct_rotm_from_euler(
             rot_a = construct_rx_matrix(angle_a, is_in_radians)
             rot_b = construct_rz_matrix(angle_b, is_in_radians)
             rot_c = construct_rx_matrix(angle_c, is_in_radians)
+            break
+
+        if sequence == 'xyz':
+            rot_a = construct_rx_matrix(angle_a, is_in_radians)
+            rot_b = construct_ry_matrix(angle_b, is_in_radians)
+            rot_c = construct_rz_matrix(angle_c, is_in_radians)
+            break
+
+        if sequence == 'xzy':
+            rot_a = construct_rx_matrix(angle_a, is_in_radians)
+            rot_b = construct_rz_matrix(angle_b, is_in_radians)
+            rot_c = construct_ry_matrix(angle_c, is_in_radians)
             break
 
         if sequence == 'yxy':
@@ -122,15 +146,15 @@ def construct_rotm_from_euler(
             rot_c = construct_ry_matrix(angle_c, is_in_radians)
             break
 
-        if sequence == 'xyz':
-            rot_a = construct_rx_matrix(angle_a, is_in_radians)
-            rot_b = construct_ry_matrix(angle_b, is_in_radians)
+        if sequence == 'yxz':
+            rot_a = construct_ry_matrix(angle_a, is_in_radians)
+            rot_b = construct_rx_matrix(angle_b, is_in_radians)
             rot_c = construct_rz_matrix(angle_c, is_in_radians)
             break
 
-        if sequence == 'zyx':
-            rot_a = construct_rz_matrix(angle_a, is_in_radians)
-            rot_b = construct_ry_matrix(angle_b, is_in_radians)
+        if sequence == 'yzx':
+            rot_a = construct_ry_matrix(angle_a, is_in_radians)
+            rot_b = construct_rz_matrix(angle_b, is_in_radians)
             rot_c = construct_rx_matrix(angle_c, is_in_radians)
             break
 
