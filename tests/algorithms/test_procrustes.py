@@ -65,7 +65,10 @@ def test_identity_result():
 
 
 def test_reflection_data():
-
+    """This seems to be testing that a rotation
+    is prefered to a reflection. To transform these
+    points you can either reflect through yz, or
+    rotate 180 about y"""
     fixed = np.zeros((4, 3))
     fixed[0][1] = 1
     fixed[2][0] = 2
@@ -80,6 +83,9 @@ def test_reflection_data():
     expected_rotation = np.eye(3)
     expected_rotation[0][0] = -1
     expected_rotation[2][2] = -1
+    print (np.linalg.det(rotation))
+    print (rotation)
+    assert False
 
     assert np.allclose(rotation, expected_rotation, 0.0000001)
     assert np.allclose(translation, np.zeros((3, 1)), 0.0000001)

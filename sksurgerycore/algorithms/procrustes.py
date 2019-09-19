@@ -58,6 +58,9 @@ def orthogonal_procrustes(fixed, moving):
 
     # Arun step 5, after equation 13.
     det_X = np.linalg.det(X)
+    print ("X = ", X)
+    print ("Determinate of X = ", det_X)
+    print ("SVD[1] = ", svd[1])
 
     if det_X < 0 and np.all(np.flip(np.isclose(svd[1], np.zeros((3, 1))))):
 
@@ -66,8 +69,8 @@ def orthogonal_procrustes(fixed, moving):
         raise ValueError("Registration fails as determinant < 0"
                          " and no singular values are close enough to zero")
 
-    if det_X < 0 and np.any(np.isclose(svd[1], np.zeros((3, 1)))):
-
+    if det_X < 0: #and np.any(np.isclose(svd[1], np.zeros((3, 1)))):
+        print ("Doing Arun 2a")
         # Implement 2a in section VI in Arun paper.
         v_prime = svd[2].transpose()
         v_prime[0][2] *= -1
