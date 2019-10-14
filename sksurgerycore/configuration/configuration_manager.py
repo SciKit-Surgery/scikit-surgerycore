@@ -47,10 +47,10 @@ class ConfigurationManager:
 
     def get_file_name(self):
         """
-        Returns the filename that was used when the ConfigurationManager
-        was created.
+        Returns the absolute filename that was used when
+        the ConfigurationManager was created.
 
-        :return: str file name
+        :return: str absolute file name
         """
         return self.file_name
 
@@ -58,6 +58,7 @@ class ConfigurationManager:
         """
         Returns the directory name of the file that was used when
         creating the ConfigurationManager.
+
         :return: str dir name
         """
         return os.path.dirname(self.file_name)
