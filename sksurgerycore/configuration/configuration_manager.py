@@ -13,8 +13,10 @@ Design principles:
     | its up to the consumer to know where to find the data.
 """
 
+import os
 import json
 import copy
+import sksurgerycore.utilities.file_utilities as fu
 import sksurgerycore.utilities.validate_file as f
 
 
@@ -30,17 +32,35 @@ class ConfigurationManager:
     def __init__(self, file_name,
                  write_on_setter=False
                  ):
-        """ Constructor. """
-        f.validate_is_file(file_name)
+
+        abs_file = fu.get_absolute_path_of_file(file_name)
+        f.validate_is_file(abs_file)
 
         if write_on_setter:
-            f.validate_is_writable_file(file_name)
+            f.validate_is_writable_file(abs_file)
 
-        with open(file_name, "r") as read_file:
+        with open(abs_file, "r") as read_file:
             self.config_data = json.load(read_file)
 
-        self.file_name = file_name
+        self.file_name = abs_file
         self.write_on_setter = write_on_setter
+
+    def get_file_name(self):
+        """
+        Returns the filename that was used when the ConfigurationManager
+        was created.
+
+        :return: str file name
+        """
+        return self.file_name
+
+    def get_dir_name(self):
+        """
+        Returns the directory name of the file that was used when
+        creating the ConfigurationManager.
+        :return: str dir name
+        """
+        return os.path.dirname(self.file_name)
 
     def get_copy(self):
         """ Returns a copy of the data read from file.
