@@ -236,12 +236,14 @@ class TransformManager:
             return
 
         for candidate in candidates:
+
             if candidate in list_of_nodes:
                 continue
-            else:
-                list_of_nodes.append(candidate)
-                self.__get_list(candidate, after, list_of_nodes)
-                if list_of_nodes[-1] == after:
-                    break
-                else:
-                    list_of_nodes.pop()
+
+            list_of_nodes.append(candidate)
+            self.__get_list(candidate, after, list_of_nodes)
+
+            if list_of_nodes[-1] == after:
+                break
+
+            list_of_nodes.pop()
