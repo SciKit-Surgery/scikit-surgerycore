@@ -85,11 +85,57 @@ def test_reflection_data():
     expected_rotation[2][2] = -1
     print (np.linalg.det(rotation))
     print (rotation)
-    assert False
 
     assert np.allclose(rotation, expected_rotation, 0.0000001)
     assert np.allclose(translation, np.zeros((3, 1)), 0.0000001)
     assert error < 0.0000001
+
+def test_reflection_BARD_data():
+    """This is a reflection test using data taken from using
+    BARD at the 2019 summer school. With this data I
+    consistently got reflections which was not the case when
+    using C++ BARD"""
+    ct_fids = np.zeros((4,3))
+    world_fids = np.zeros((4,3))
+
+    ct_fids[0][0] = 37.82
+    ct_fids[0][1] = 52.99
+    ct_fids[0][2] = -191.00
+    ct_fids[1][0] = 310.90
+    ct_fids[1][1] = 70.36
+    ct_fids[1][2] = -196.50
+    ct_fids[2][0] = 171.98
+    ct_fids[2][1] = 57.59
+    ct_fids[2][2] = -376.96
+    ct_fids[3][0] = 176.56
+    ct_fids[3][1] = 71.30
+    ct_fids[3][2] = -7.42
+
+    world_fids[0][0] = -7.060625292517708829e+01
+    world_fids[0][1] = -4.340731346419998715e+01
+    world_fids[0][2] = -7.678145283688323275e+01
+    world_fids[1][0] = -8.290290497289761618e+01
+    world_fids[1][1] = 2.365685716505672360e+02
+    world_fids[1][2] = -6.248063455571644909e+01
+    world_fids[2][0] = 1.061984137321565527e+02
+    world_fids[2][1] = 1.054365783777915624e+02
+    world_fids[2][2] = -6.347752061138085367e+01
+    world_fids[3][0] = -2.658595567434794020e+02
+    world_fids[3][1] = 9.556619277927123335e+01
+    world_fids[3][2] = -7.335614476329364209e+01
+
+    rotation, translation, error = p.orthogonal_procrustes(world_fids, ct_fids)
+    expected_rotation = np.eye(3)
+    expected_rotation[0][0] = -0.04933494
+    expected_rotation[0][1] = -0.01438556
+    expected_rotation[0][2] = -0.99867869
+    expected_rotation[1][0] = 0.99212873
+    expected_rotation[1][1] = 0.11451658
+    expected_rotation[1][2] = -0.05066094
+    expected_rotation[2][0] = 0.11509405
+    expected_rotation[2][1] = -0.99331717
+    expected_rotation[2][2] = 0.00862266
+    assert np.allclose(rotation, expected_rotation, 0.0000001)
 
 
 def test_translation_result():

@@ -6,7 +6,6 @@ import numpy as np
 from sksurgerycore.algorithms.errors \
     import validate_procrustes_inputs, compute_fre
 
-
 # pylint: disable=invalid-name, line-too-long
 
 
@@ -58,9 +57,6 @@ def orthogonal_procrustes(fixed, moving):
 
     # Arun step 5, after equation 13.
     det_X = np.linalg.det(X)
-    print ("X = ", X)
-    print ("Determinate of X = ", det_X)
-    print ("SVD[1] = ", svd[1])
 
     if det_X < 0 and np.all(np.flip(np.isclose(svd[1], np.zeros((3, 1))))):
 
@@ -69,8 +65,7 @@ def orthogonal_procrustes(fixed, moving):
         raise ValueError("Registration fails as determinant < 0"
                          " and no singular values are close enough to zero")
 
-    if det_X < 0: #and np.any(np.isclose(svd[1], np.zeros((3, 1)))):
-        print ("Doing Arun 2a")
+    if det_X < 0 and np.any(np.isclose(svd[1], np.zeros((3, 1)))):
         # Implement 2a in section VI in Arun paper.
         v_prime = svd[2].transpose()
         v_prime[0][2] *= -1
@@ -88,3 +83,14 @@ def orthogonal_procrustes(fixed, moving):
     fre = compute_fre(fixed, moving, R, T)
 
     return R, T, fre
+
+def _fitzpatricks_X(svd):
+    """Replace Arun Equation 13 with Fitzpatrick, chapter 8, page 470."""
+    VU = np.matmul(svd[2].transpose(), svd[0])
+    detVU = np.linalg.det(VU)
+
+    diag = np.eye(3, 3)
+    diag[2][2] = detVU
+
+    X = np.matmul(svd[2].transpose(), np.matmul(diag, svd[0].transpose()))
+    return X
