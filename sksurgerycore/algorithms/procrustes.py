@@ -52,8 +52,9 @@ def orthogonal_procrustes(fixed, moving):
     # Note: numpy factors h = u * np.diag(s) * v
     svd = np.linalg.svd(H)
 
-    # Arun equation 13
-    X = np.matmul(svd[2].transpose(), svd[0].transpose())
+    # Replace Arun Equation 13 with Fitzpatrick, chapter 8, page 470,
+    # to avoid reflections, see issue #19
+    X = _fitzpatricks_X(svd)
 
     # Arun step 5, after equation 13.
     det_X = np.linalg.det(X)
@@ -85,7 +86,11 @@ def orthogonal_procrustes(fixed, moving):
     return R, T, fre
 
 def _fitzpatricks_X(svd):
-    """Replace Arun Equation 13 with Fitzpatrick, chapter 8, page 470."""
+    """This is from Fitzpatrick, chapter 8, page 470.
+       it's used in preference to Arun's equation 13,
+       X = np.matmul(svd[2].transpose(), svd[0].transpose())
+       to avoid reflections.
+    """
     VU = np.matmul(svd[2].transpose(), svd[0])
     detVU = np.linalg.det(VU)
 

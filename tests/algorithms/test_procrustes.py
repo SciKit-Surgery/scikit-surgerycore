@@ -92,9 +92,9 @@ def test_reflection_data():
 
 def test_reflection_BARD_data():
     """This is a reflection test using data taken from using
-    BARD at the 2019 summer school. With this data I
-    consistently got reflections which was not the case when
-    using C++ BARD"""
+    BARD at the 2019 summer school. This data set will give
+    you reflections, unless you replace equation 13 from Arun 
+    with Fitzpatrick's modification. This was done at issue #19"""
     ct_fids = np.zeros((4,3))
     world_fids = np.zeros((4,3))
 
