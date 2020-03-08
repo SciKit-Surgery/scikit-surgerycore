@@ -7,7 +7,7 @@ import numpy as np
 # pylint: disable=literal-comparison
 
 
-def pivot_calibration_one_step(tracking_matrices):
+def pivot_calibration(tracking_matrices):
 
     """
     Performs Pivot Calibration, using Algebraic One Step method,
@@ -35,9 +35,6 @@ def pivot_calibration_one_step(tracking_matrices):
 
     size_a = 3 * number_of_matrices, 6
     a_values = np.zeros(size_a, dtype=np.float64)
-
-    size_x = 6, 1
-    x_values = np.zeros(size_x, dtype=np.float64)
 
     size_b = 3 * number_of_matrices, 1
     b_values = np.zeros(size_b, dtype=np.float64)
@@ -75,11 +72,10 @@ def pivot_calibration_one_step(tracking_matrices):
 
     u_values, s_values, v_values = np.linalg.svd(a_values, full_matrices=False)
     c_values = np.dot(u_values.T, b_values)
-    w_values = np.linalg.solve(np.diag(s_values), c_values)
+    w_values = np.dot(np.diag(1 / s_values), c_values)
     x_values = np.dot(v_values.T, w_values)
 
-    # Calculating the rank
-
+    # Calculating the rank, and removing close to zero singular values.
     rank = 0
     for i, item in enumerate(s_values):
         if item < 0.01:
@@ -87,18 +83,12 @@ def pivot_calibration_one_step(tracking_matrices):
         if item != 0:
             rank += 1
 
-    if rank < 6:  # pylint: disable=literal-comparison
+    if rank < 6:
         raise ValueError("PivotCalibration: Failed. Rank < 6")
 
-    # Residual Matrix
-
+    # Compute RMS error.
     residual_matrix = (np.dot(a_values, x_values) - b_values)
-    residual_error = 0.0
-    for i in range(number_of_matrices * 3):
-        residual_error = residual_error + \
-                         np.dot(residual_matrix[i, 0],
-                                residual_matrix[i, 0])
-
+    residual_error = np.sum(residual_matrix * residual_matrix)
     residual_error = residual_error / float(number_of_matrices * 3)
     residual_error = np.sqrt(residual_error)
 

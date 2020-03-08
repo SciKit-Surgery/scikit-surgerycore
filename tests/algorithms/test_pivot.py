@@ -10,7 +10,7 @@ from glob import glob
 def test_empty_matrices():
 
     with pytest.raises(TypeError):
-        p.pivot_calibration_one_step(None)
+        p.pivot_calibration(None)
 
 
 def test_rank_lt_six():
@@ -21,19 +21,19 @@ def test_rank_lt_six():
         matrices = np.concatenate(arrays)
         number_of_matrices = int(matrices.size/16)
         matrices = matrices.reshape(number_of_matrices, 4, 4)
-        p.pivot_calibration_one_step(matrices)
+        p.pivot_calibration(matrices)
 
 
 def test_four_columns_matrices4x4():
 
     with pytest.raises(ValueError):
-        p.pivot_calibration_one_step(np.arange(2, 11, dtype=float).reshape(3, 3))
+        p.pivot_calibration(np.arange(2, 11, dtype=float).reshape(3, 3))
 
 
 def test_four_rows_matrices4x4():
 
     with pytest.raises(ValueError):
-        p.pivot_calibration_one_step(np.arange(2, 11, dtype=float).reshape(3, 3))
+        p.pivot_calibration(np.arange(2, 11, dtype=float).reshape(3, 3))
 
 
 def test_return_value():
@@ -43,7 +43,7 @@ def test_return_value():
     matrices = np.concatenate(arrays)
     number_of_matrices = int(matrices.size/16)
     matrices = matrices.reshape(number_of_matrices, 4, 4)
-    x_values, residual_error =p.pivot_calibration_one_step(matrices)
+    x_values, residual_error =p.pivot_calibration(matrices)
     assert 1.838 == round(residual_error, 3)
     assert -14.476 == round(x_values[0, 0], 3)
     assert 395.143 == round(x_values[1, 0], 3)
@@ -64,6 +64,6 @@ def test_rank_if_condition():
         matrices = np.concatenate(arrays)
         number_of_matrices = int(matrices.size/16)
         matrices = matrices.reshape(number_of_matrices, 4, 4)
-        p.pivot_calibration_one_step(matrices)
+        p.pivot_calibration(matrices)
 
 
