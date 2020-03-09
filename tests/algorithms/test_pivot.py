@@ -79,6 +79,9 @@ def test_pivot_with_ransac():
     model_2, residual_2 = p.pivot_calibration_with_ransac(matrices, 10, 3, 0.5)
     print("With RANSAC:" + str(model_2) + ", RMS=" + str(residual_2))
     assert residual_2 < residual_1
+    model_3, residual_3 = p.pivot_calibration_with_ransac(matrices, 10, 3, 0.5, early_exit=True)
+    print("With Early Exit RANSAC:" + str(model_3) + ", RMS=" + str(residual_3))
+
 
 
 
