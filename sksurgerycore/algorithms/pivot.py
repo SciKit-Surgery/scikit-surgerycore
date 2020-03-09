@@ -93,7 +93,7 @@ def pivot_calibration(tracking_matrices):
     residual_error = residual_error / float(number_of_matrices * 3)
     residual_error = np.sqrt(residual_error)
 
-    return np.matrix(x_values), residual_error
+    return x_values, residual_error
 
 
 def pivot_calibration_with_ransac(tracking_matrices,
@@ -148,7 +148,7 @@ def pivot_calibration_with_ransac(tracking_matrices,
         inlier_indices = []
         for matrix_counter in range(number_of_matrices):
             offset = np.vstack((model[0:3], 1))
-            transformed_point = tracking_matrices[matrix_counter] * offset
+            transformed_point = tracking_matrices[matrix_counter] @ offset
             diff = world_point - transformed_point[0:3]
             norm = np.linalg.norm(diff)
             if norm < error_threshold:
