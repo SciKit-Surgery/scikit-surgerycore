@@ -157,16 +157,16 @@ def pivot_calibration_with_ransac(tracking_matrices,
 
         percentage_inliers = number_of_inliers / number_of_matrices
 
-        # Early exit condition, as soon as we find model with enough fit.
-        if percentage_inliers > concensus_threshold and early_exit:
-            return best_model, best_rms
-
         # Keep the best model so far, based on the highest number of inliers.
         if percentage_inliers > concensus_threshold \
                 and number_of_inliers > highest_number_of_inliers:
             highest_number_of_inliers = number_of_inliers
             inlier_matrices = tracking_matrices[inlier_indices]
             best_model, best_rms = pivot_calibration(inlier_matrices)
+
+        # Early exit condition, as soon as we find model with enough fit.
+        if percentage_inliers > concensus_threshold and early_exit:
+            return best_model, best_rms
 
     if best_model is None:
         raise ValueError("Failed to find a model using RANSAC.")
