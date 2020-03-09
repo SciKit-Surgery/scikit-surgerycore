@@ -67,3 +67,18 @@ def test_rank_if_condition():
         p.pivot_calibration(matrices)
 
 
+def test_pivot_with_ransac():
+
+    file_names = glob('tests/data/PivotCalibration/*')
+    arrays = [np.loadtxt(f) for f in file_names]
+    matrices = np.concatenate(arrays)
+    number_of_matrices = int(matrices.size/16)
+    matrices = matrices.reshape(number_of_matrices, 4, 4)
+    model_1, residual_1 = p.pivot_calibration(matrices)
+    print("Without RANSAC:" + str(model_1) + ", RMS=" + str(residual_1))
+    model_2, residual_2 = p.pivot_calibration_with_ransac(matrices, 10, 3, 0.5)
+    print("With RANSAC:" + str(model_2) + ", RMS=" + str(residual_2))
+    assert residual_2 < residual_1
+
+
+
