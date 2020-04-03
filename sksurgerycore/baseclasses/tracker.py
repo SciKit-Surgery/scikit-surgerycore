@@ -2,7 +2,7 @@
 from abc import ABCMeta, abstractmethod
 
 @abstractmethod
-class Tracker(metaclass=ABCMeta):
+class SKSBaseTracker(metaclass=ABCMeta):
     """Abstract base class for trackers using in sksurgery.
     Defines methods that all trackers should implement.
     """

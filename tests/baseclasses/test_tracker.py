@@ -4,11 +4,11 @@ Tests for matrix.py
 
 import pytest
 
-from sksurgerycore.baseclasses.tracker import Tracker
+from sksurgerycore.baseclasses.tracker import SKSBaseTracker
 
 def test_tracker_baseclass():
 
-    class BadTracker(Tracker):
+    class BadTracker(SKSBaseTracker):
         def close(self):
             pass
 
@@ -16,7 +16,7 @@ def test_tracker_baseclass():
         bad_tracker = BadTracker()
     
 
-    class GoodTracker(Tracker):
+    class GoodTracker(SKSBaseTracker):
         def close(self):
             super().close()
         def get_frame(self):
