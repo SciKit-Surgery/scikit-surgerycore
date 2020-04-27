@@ -8,6 +8,7 @@ def pivot_calibration(tracking_matrices):
     depreciated from v0.6.0, please use
     skscurgerycalibration.algorithms.pivot_calibration from
     from scikit-surgerycalibration instead
+    
     :raises: NotImplementedError
     """
 
@@ -28,6 +29,7 @@ def pivot_calibration_with_ransac(tracking_matrices,
     depreciated from v0.6.0, please use
     skscurgerycalibration.algorithms.pivot_calibration_with_ransac from
     from scikit-surgerycalibration instead
+    
     :raises: NotImplementedError
     """
 
