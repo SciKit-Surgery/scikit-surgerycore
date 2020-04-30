@@ -6,7 +6,7 @@ name: Python application
 on: push
 
 jobs:
-  test ubuntu:
+  test_ubuntu:
 
     runs-on: ubuntu-latest
 
@@ -25,9 +25,9 @@ jobs:
       run: |
         tox
       
-  test mac:
+  test_mac:
 
-    runs-on: mac-os-latest
+    runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -44,7 +44,7 @@ jobs:
       run: |
         tox
 
-  test windows:
+  test_windows:
 
     runs-on: windows-latest
 
