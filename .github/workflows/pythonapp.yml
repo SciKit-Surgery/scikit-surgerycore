@@ -6,9 +6,47 @@ name: Python application
 on: push
 
 jobs:
-  build:
+  test ubuntu:
 
     runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install tox
+        
+    - name: Run tox
+      run: |
+        tox
+      
+  test mac:
+
+    runs-on: mac-os-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install tox
+        
+    - name: Run tox
+      run: |
+        tox
+
+  test windows:
+
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v2
