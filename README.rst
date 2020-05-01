@@ -7,7 +7,7 @@ scikit-surgerycore
    :target: https://github.com/UCL/scikit-surgerycore
    :alt: Logo
 
-.. image:: https://github.com/UCL/scikit-surgerycore/workflows/ci.yml/badge.svg
+.. image:: https://github.com/UCL/scikit-surgerycore/.github/workflows/ci.yml/badge.svg
    :target: https://github.com/UCL/scikit-surgerycore/actions
    :alt: GitHub Actions CI status
 
