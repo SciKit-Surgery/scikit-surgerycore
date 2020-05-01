@@ -39,7 +39,13 @@ jobs:
       - name: Build wheel
         run: python setup.py bdist_wheel
 
-      - name: Publish package
+      - name: Publish package to Test PyPI
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          password: ${{ secrets.PYPY_API_TOKEN }}
+          repository_url: https://test.pypi.org/legacy/
+
+      - name: Publish package if tagged release
         if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
         uses: pypa/gh-action-pypi-publish@master
         with:
