@@ -23,7 +23,7 @@ jobs:
         run: |
           tox
 
-      - name: Coveralls
+      - name: Publish Coveralls Report
         if: startsWith(matrix.os, 'ubuntu')
         uses: coverallsapp/github-action@master
         with:
