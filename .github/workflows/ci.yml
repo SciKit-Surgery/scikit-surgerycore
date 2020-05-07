@@ -23,6 +23,11 @@ jobs:
         run: |
           tox
 
+      - name: Run coveralls
+        run: |
+          pip install coveralls pyyaml
+          coveralls
+
   deploy:
     runs-on: ubuntu-18.04
     needs: test
