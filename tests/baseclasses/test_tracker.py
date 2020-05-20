@@ -1,5 +1,5 @@
 """
-Tests for matrix.py
+Tests for skcore baseclasses
 """
 
 import pytest
@@ -7,25 +7,34 @@ import pytest
 from sksurgerycore.baseclasses.tracker import SKSBaseTracker
 
 def test_tracker_baseclass():
-
-    class BadTracker(SKSBaseTracker):
+    """
+    We should throw not implemented error when we make a tracker without
+    the required functions.
+    """
+    class BadTracker(SKSBaseTracker):# pylint: disable=abstract-method
+        """
+        A tracker class without the necessary member functions.
+        """
         def close(self):
             pass
 
     with pytest.raises(TypeError):
-        bad_tracker = BadTracker()
-    
+        _ = BadTracker() # pylint: disable=abstract-class-instantiated
+
 
     class GoodTracker(SKSBaseTracker):
-        def close(self):
+        """
+        A tracker class with the necessary member functions.
+        """
+        def close(self):# pylint: disable=useless-super-delegation
             super().close()
-        def get_frame(self):
+        def get_frame(self):# pylint: disable=useless-super-delegation
             super().get_frame()
-        def get_tool_descriptions(self):
+        def get_tool_descriptions(self):# pylint: disable=useless-super-delegation
             super().get_tool_descriptions()
-        def start_tracking(self):
+        def start_tracking(self):# pylint: disable=useless-super-delegation
             super().start_tracking()
-        def stop_tracking(self):
+        def stop_tracking(self):# pylint: disable=useless-super-delegation
             super().stop_tracking()
 
     good_tracker = GoodTracker()
@@ -35,7 +44,7 @@ def test_tracker_baseclass():
 
     with pytest.raises(NotImplementedError):
         good_tracker.get_frame()
-    
+
     with pytest.raises(NotImplementedError):
         good_tracker.get_tool_descriptions()
 
