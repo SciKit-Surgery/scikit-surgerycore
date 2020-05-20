@@ -1,6 +1,5 @@
 #  -*- coding: utf-8 -*-
 
-import six
 import numpy as np
 import pytest
 import sksurgerycore.algorithms.errors as e

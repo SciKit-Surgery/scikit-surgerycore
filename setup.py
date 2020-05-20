@@ -51,13 +51,9 @@ setup(
     ),
 
     install_requires=[
-        'six>=1.10',
         'numpy>=1.11',
     ],
 
     entry_points={
-        'console_scripts': [
-            'sksurgerycore=sksurgerycore.__main__:main',
-        ],
     },
 )

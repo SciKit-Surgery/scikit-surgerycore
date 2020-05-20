@@ -2,7 +2,6 @@
 
 """Tests for load_mps"""
 
-import six
 import pytest
 import sksurgerycore.io.load_mps as lmps
 
