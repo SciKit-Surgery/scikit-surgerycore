@@ -2,6 +2,8 @@
 
 """ Tests concerning computing TRE from FLE. """
 
+# pylint: skip-file
+
 import pytest
 import numpy as np
 import sksurgerycore.algorithms.errors as err

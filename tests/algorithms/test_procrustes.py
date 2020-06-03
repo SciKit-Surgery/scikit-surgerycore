@@ -1,5 +1,7 @@
 #  -*- coding: utf-8 -*-
 
+# pylint: skip-file
+
 import numpy as np
 import pytest
 import sksurgerycore.algorithms.procrustes as p
