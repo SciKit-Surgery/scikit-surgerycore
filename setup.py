@@ -54,6 +54,4 @@ setup(
         'numpy>=1.11',
     ],
 
-    entry_points={
-    },
 )
