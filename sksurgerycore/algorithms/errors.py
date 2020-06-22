@@ -123,3 +123,28 @@ def compute_tre_from_fle(fiducials, mean_fle_squared, target_point):
     mean_tre_squared = (mean_fle_squared / fiducials.shape[0]) * \
                        (1 + (1./3.) * inner_sum)
     return mean_tre_squared
+
+
+def compute_fre_from_fle(fiducials, mean_fle_squared):
+    """
+    Computes an estimation of FRE from FLE and a list of fiducial locations.
+
+    See:
+    `Fitzpatrick (1998), equation 10 <http://dx.doi.org/10.1109/42.736021>`_.
+
+    :param fiducials: Nx3 ndarray of fiducial points
+    :param mean_fle_squared: expected (mean) FLE squared
+    :return: mean FRE squared
+    """
+    # pylint: disable=literal-comparison
+    if not isinstance(fiducials, np.ndarray):
+        raise TypeError("fiducials is not a numpy array'")
+    if not fiducials.shape[1] == 3:
+        raise ValueError("fiducials should have 3 columns")
+    if fiducials.shape[0] < 3:
+        raise ValueError("fiducials should have at least 3 rows")
+
+    number_of_fiducials = fiducials.shape[0]
+
+    fre_sq = (1 - (2.0 / number_of_fiducials)) * mean_fle_squared
+    return fre_sq
