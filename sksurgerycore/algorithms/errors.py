@@ -117,7 +117,8 @@ def compute_tre_from_fle(fiducials, mean_fle_squared, target_point):
         d_k = vm.distance_from_line(centroid,
                                     eigen_vectors_matrix[axis_index],
                                     target_point)
-        inner_sum = inner_sum + (d_k * d_k / f_array[axis_index])
+        inner_sum = inner_sum + (d_k * d_k / (f_array[axis_index] *
+                                              f_array[axis_index]))
 
     mean_tre_squared = (mean_fle_squared / fiducials.shape[0]) * \
                        (1 + (1./3.) * inner_sum)
