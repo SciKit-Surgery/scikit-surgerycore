@@ -15,9 +15,11 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
+
 import os
 import sys
-sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(0, os.path.abspath('../../'))
+
 
 # -- Project information -----------------------------------------------------
 
@@ -28,7 +30,7 @@ author = 'Matt Clarkson'
 # The short X.Y version
 version = ''
 # The full version, including alpha/beta/rc tags
-release = '0.7.7'
+release = '0.0.7'
 
 
 # -- General configuration ---------------------------------------------------
@@ -42,9 +44,7 @@ release = '0.7.7'
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
-    'sphinx.ext.coverage',
-    'sphinx.ext.ifconfig',
-    'sphinx.ext.napoleon',
+    'sphinx_rtd_theme',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -69,7 +69,7 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = []
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = None
