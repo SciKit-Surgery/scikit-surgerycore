@@ -8,7 +8,7 @@
 .pytest_cache/
 
 # PyInstaller
-build/
+# build/
 dist/
 
 # Virtual Environment

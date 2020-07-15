@@ -1,0 +1,507 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sksurgerycore.transforms package &mdash; scikit-surgerycore 0.0.7 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="sksurgerycore.utilities package" href="sksurgerycore.utilities.html" />
+    <link rel="prev" title="sksurgerycore.io package" href="sksurgerycore.io.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> scikit-surgerycore
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Readme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">scikit-surgerycore</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Docstring</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">sksurgerycore</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="sksurgerycore.html">sksurgerycore package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="sksurgerycore.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="sksurgerycore.algorithms.html">sksurgerycore.algorithms package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sksurgerycore.baseclasses.html">sksurgerycore.baseclasses package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sksurgerycore.configuration.html">sksurgerycore.configuration package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sksurgerycore.io.html">sksurgerycore.io package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">sksurgerycore.transforms package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sksurgerycore.utilities.html">sksurgerycore.utilities package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sksurgerycore.html#module-sksurgerycore">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../indices.html">Indices and tables</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">scikit-surgerycore</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">sksurgerycore</a> &raquo;</li>
+        
+          <li><a href="sksurgerycore.html">sksurgerycore package</a> &raquo;</li>
+        
+      <li>sksurgerycore.transforms package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/docstring/sksurgerycore.transforms.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sksurgerycore-transforms-package">
+<h1>sksurgerycore.transforms package<a class="headerlink" href="#sksurgerycore-transforms-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-sksurgerycore.transforms.matrix">
+<span id="sksurgerycore-transforms-matrix-module"></span><h2>sksurgerycore.transforms.matrix module<a class="headerlink" href="#module-sksurgerycore.transforms.matrix" title="Permalink to this headline">¶</a></h2>
+<p>Construct 3x3 rotation matrices for rotating around the x, y and z axes
+individually, as well as 3x3 rotation matrices from sequences of three
+Euler angles.</p>
+<dl class="py function">
+<dt id="sksurgerycore.transforms.matrix.construct_rigid_transformation">
+<code class="sig-prename descclassname">sksurgerycore.transforms.matrix.</code><code class="sig-name descname">construct_rigid_transformation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rot_m</span></em>, <em class="sig-param"><span class="n">trans_v</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.transforms.matrix.construct_rigid_transformation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a 4x4 rigid-body transformation from a 3x3 rotation matrix and
+a 3x1 vector as translation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rot_m</strong> – 3x3 rotation matrix, numpy array</p></li>
+<li><p><strong>trans_v</strong> – 3x1 vector as translation, numpy array</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>rigid_transformation – 4x4 rigid transformation matrix,</p>
+</dd>
+</dl>
+<p>numpy array</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="sksurgerycore.transforms.matrix.construct_rotm_from_euler">
+<code class="sig-prename descclassname">sksurgerycore.transforms.matrix.</code><code class="sig-name descname">construct_rotm_from_euler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">angle_a</span></em>, <em class="sig-param"><span class="n">angle_b</span></em>, <em class="sig-param"><span class="n">angle_c</span></em>, <em class="sig-param"><span class="n">sequence</span></em>, <em class="sig-param"><span class="n">is_in_radians</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.transforms.matrix.construct_rotm_from_euler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a rotation matrix from a sequence of three Euler angles, to
+pre-multiply column vectors. In the case of tracking, the column vector is
+under the local coordinate system and the resulting vector is under the
+world (reference) coordinate system.
+The three elemental rotations represented by the Euler angles are about the
+INTRINSIC axes. They can also be interpreted to be about the EXTRINSIC axes,
+in the reverse order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angle_a</strong> – first Euler angle, float</p></li>
+<li><p><strong>angle_b</strong> – second Euler angle, float</p></li>
+<li><p><strong>angle_c</strong> – third Euler angle, float</p></li>
+<li><p><strong>sequence</strong> – the sequence of axes the three elemental rotations are</p></li>
+</ul>
+</dd>
+</dl>
+<p>about, with respect to the intrinsic axes, string
+:param is_in_radians: if the angles are in radians, default being True,
+bool
+:returns: rot_m – the 3x3 rotation matrix, numpy array</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="sksurgerycore.transforms.matrix.construct_rx_matrix">
+<code class="sig-prename descclassname">sksurgerycore.transforms.matrix.</code><code class="sig-name descname">construct_rx_matrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">angle</span></em>, <em class="sig-param"><span class="n">is_in_radians</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.transforms.matrix.construct_rx_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a rotation matrix for rotation around the x axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angle</strong> – the angle to rotate, float</p></li>
+<li><p><strong>is_in_radians</strong> – if angle is in radians, default being True, bool</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>rot_x – the 3x3 rotation matrix constructed, numpy array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="sksurgerycore.transforms.matrix.construct_ry_matrix">
+<code class="sig-prename descclassname">sksurgerycore.transforms.matrix.</code><code class="sig-name descname">construct_ry_matrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">angle</span></em>, <em class="sig-param"><span class="n">is_in_radians</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.transforms.matrix.construct_ry_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a rotation matrix for rotation around the y axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angle</strong> – the angle to rotate, float</p></li>
+<li><p><strong>is_in_radians</strong> – if angle is in radians, default being True, bool</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>rot_y – the 3x3 rotation matrix constructed, numpy array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="sksurgerycore.transforms.matrix.construct_rz_matrix">
+<code class="sig-prename descclassname">sksurgerycore.transforms.matrix.</code><code class="sig-name descname">construct_rz_matrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">angle</span></em>, <em class="sig-param"><span class="n">is_in_radians</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.transforms.matrix.construct_rz_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a rotation matrix for rotation around the z axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angle</strong> – the angle to rotate, float</p></li>
+<li><p><strong>is_in_radians</strong> – if angle is in radians, default being True, bool</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>rot_z – the 3x3 rotation matrix constructed, numpy array</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-sksurgerycore.transforms.transform_manager">
+<span id="sksurgerycore-transforms-transform-manager-module"></span><h2>sksurgerycore.transforms.transform_manager module<a class="headerlink" href="#module-sksurgerycore.transforms.transform_manager" title="Permalink to this headline">¶</a></h2>
+<p>Class implementing a general purpose 4x4 transformation matrix manager.</p>
+<dl class="py class">
+<dt id="sksurgerycore.transforms.transform_manager.TransformManager">
+<em class="property">class </em><code class="sig-prename descclassname">sksurgerycore.transforms.transform_manager.</code><code class="sig-name descname">TransformManager</code><a class="headerlink" href="#sksurgerycore.transforms.transform_manager.TransformManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for managing 4x4 transformation matrices.
+This class is NOT designed to be thread-safe.</p>
+<p>The transforms are required to be 4x4 matrices.
+There is no checking that the upper left 3x3 is
+an orthonormal rotation matrix.</p>
+<p>Usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tm</span> <span class="o">=</span> <span class="n">TransformManager</span><span class="p">()</span>
+
+<span class="c1"># Imagine some example transformations:</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">t3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Add transformations to the TransformManager.</span>
+<span class="n">tm</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;model2world&quot;</span><span class="p">,</span> <span class="n">t1</span><span class="p">)</span>
+<span class="n">tm</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;hand2eye&quot;</span><span class="p">,</span><span class="n">t2</span><span class="p">)</span>
+<span class="n">tm</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;hand2world&quot;</span><span class="p">,</span><span class="n">t3</span><span class="p">)</span>
+
+<span class="c1"># Returns a transform from model to eye,</span>
+<span class="c1"># by working through the above transforms.</span>
+<span class="n">t4</span> <span class="o">=</span> <span class="n">tm</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;model2eye&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and so on.</p>
+<dl class="py method">
+<dt id="sksurgerycore.transforms.transform_manager.TransformManager.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">transform</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.transforms.transform_manager.TransformManager.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a transform called name.
+If the name already exists, the corresponding
+transform is replaced without warning.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – the name of the transform, e.g. model2world</p></li>
+<li><p><strong>transform</strong> – the transform, e.g. 4x4 matrix</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sksurgerycore.transforms.transform_manager.TransformManager.count">
+<code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.transforms.transform_manager.TransformManager.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns how many transforms are in the manager.
+Internally this class also stores the inverse,
+so this method will count those matrices as well.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sksurgerycore.transforms.transform_manager.TransformManager.exists">
+<code class="sig-name descname">exists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.transforms.transform_manager.TransformManager.exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if the transform exists in the manager,
+and False otherwise. Internally this class stores
+the inverse. So, if you add model2world, you are
+also implicitly adding world2model, so this
+method will return True for both the originally
+added transform, and its own inverse.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sksurgerycore.transforms.transform_manager.TransformManager.flip_name">
+<em class="property">static </em><code class="sig-name descname">flip_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.transforms.transform_manager.TransformManager.flip_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the inverse name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – the name of a transformation, e.g. model2world</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>str – the opposite transformation name, e.g. world2model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sksurgerycore.transforms.transform_manager.TransformManager.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.transforms.transform_manager.TransformManager.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the named transform or throws ValueError.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p>ValueError</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sksurgerycore.transforms.transform_manager.TransformManager.is_valid_name">
+<em class="property">static </em><code class="sig-name descname">is_valid_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.transforms.transform_manager.TransformManager.is_valid_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates the name, which must match “^([a-z]+)2([a-z]+)$”.</p>
+<p>i.e. one or more lowercase letters, followed by the number
+2, followed by one or more lowercase letters.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a2b</span>
+<span class="n">model2world</span>
+</pre></div>
+</div>
+<p>Identity transforms such as model2model raise ValueError.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – the name of the transform, eg. model2world</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p>TypeError, ValueError</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>str, str – parts of string before and after the 2.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sksurgerycore.transforms.transform_manager.TransformManager.is_valid_transform">
+<em class="property">static </em><code class="sig-name descname">is_valid_transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">transform</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.transforms.transform_manager.TransformManager.is_valid_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates the transform as a 4x4 numpy matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>transform</strong> – 4x4 transformation matrix.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p>TypeError, ValueError</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sksurgerycore.transforms.transform_manager.TransformManager.multiply_point">
+<code class="sig-name descname">multiply_point</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">points</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.transforms.transform_manager.TransformManager.multiply_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multiplies points (4xN) by the named transform (4x4).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>ndarray – 4xN matrix of transformed points</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p>ValueError</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sksurgerycore.transforms.transform_manager.TransformManager.remove">
+<code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.transforms.transform_manager.TransformManager.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes a transform from the manager.
+If the transform name doesn’t exist, will throw ValueError.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p>ValueError</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sksurgerycore.transforms">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-sksurgerycore.transforms" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sksurgerycore.utilities.html" class="btn btn-neutral float-right" title="sksurgerycore.utilities package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sksurgerycore.io.html" class="btn btn-neutral float-left" title="sksurgerycore.io package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Matt Clarkson, Stephen Thompson, Thomas Dowrick, Mian Ahmad
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

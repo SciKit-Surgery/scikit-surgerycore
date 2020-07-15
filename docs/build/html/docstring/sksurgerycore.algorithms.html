@@ -1,0 +1,528 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sksurgerycore.algorithms package &mdash; scikit-surgerycore 0.0.7 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="sksurgerycore.baseclasses package" href="sksurgerycore.baseclasses.html" />
+    <link rel="prev" title="sksurgerycore package" href="sksurgerycore.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> scikit-surgerycore
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Readme</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">scikit-surgerycore</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Docstring</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">sksurgerycore</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="sksurgerycore.html">sksurgerycore package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="sksurgerycore.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">sksurgerycore.algorithms package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sksurgerycore.baseclasses.html">sksurgerycore.baseclasses package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sksurgerycore.configuration.html">sksurgerycore.configuration package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sksurgerycore.io.html">sksurgerycore.io package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sksurgerycore.transforms.html">sksurgerycore.transforms package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sksurgerycore.utilities.html">sksurgerycore.utilities package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sksurgerycore.html#module-sksurgerycore">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../indices.html">Indices and tables</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">scikit-surgerycore</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">sksurgerycore</a> &raquo;</li>
+        
+          <li><a href="sksurgerycore.html">sksurgerycore package</a> &raquo;</li>
+        
+      <li>sksurgerycore.algorithms package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/docstring/sksurgerycore.algorithms.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sksurgerycore-algorithms-package">
+<h1>sksurgerycore.algorithms package<a class="headerlink" href="#sksurgerycore-algorithms-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-sksurgerycore.algorithms.averagequaternions">
+<span id="sksurgerycore-algorithms-averagequaternions-module"></span><h2>sksurgerycore.algorithms.averagequaternions module<a class="headerlink" href="#module-sksurgerycore.algorithms.averagequaternions" title="Permalink to this headline">¶</a></h2>
+<p>Quaternion averaging functions</p>
+<dl class="py function">
+<dt id="sksurgerycore.algorithms.averagequaternions.average_quaternions">
+<code class="sig-prename descclassname">sksurgerycore.algorithms.averagequaternions.</code><code class="sig-name descname">average_quaternions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">quaternions</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.algorithms.averagequaternions.average_quaternions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate average quaternion</p>
+<dl class="field-list simple">
+<dt class="field-odd">Params quaternions</dt>
+<dd class="field-odd"><p>is a Nx4 numpy matrix and contains the quaternions
+to average in the rows.
+The quaternions are arranged as (w,x,y,z), with w being the scalar</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the average quaternion of the input. Note that the signs
+of the output quaternion can be reversed, since q and -q
+describe the same orientation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="sksurgerycore.algorithms.averagequaternions.weighted_average_quaternions">
+<code class="sig-prename descclassname">sksurgerycore.algorithms.averagequaternions.</code><code class="sig-name descname">weighted_average_quaternions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">quaternions</span></em>, <em class="sig-param"><span class="n">weights</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.algorithms.averagequaternions.weighted_average_quaternions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Average multiple quaternions with specific weights</p>
+<dl class="field-list simple">
+<dt class="field-odd">Params quaternions</dt>
+<dd class="field-odd"><p>is a Nx4 numpy matrix and contains the quaternions
+to average in the rows.
+The quaternions are arranged as (w,x,y,z), with w being the scalar</p>
+</dd>
+<dt class="field-even">Params weights</dt>
+<dd class="field-even"><p>The weight vector w must be of the same length as
+the number of rows in the</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the average quaternion of the input. Note that the signs
+of the output quaternion can be reversed, since q and -q
+describe the same orientation</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p>ValueError if all weights are zero</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-sksurgerycore.algorithms.errors">
+<span id="sksurgerycore-algorithms-errors-module"></span><h2>sksurgerycore.algorithms.errors module<a class="headerlink" href="#module-sksurgerycore.algorithms.errors" title="Permalink to this headline">¶</a></h2>
+<p>Functions for point based registration using Orthogonal Procrustes.</p>
+<dl class="py function">
+<dt id="sksurgerycore.algorithms.errors.compute_fre">
+<code class="sig-prename descclassname">sksurgerycore.algorithms.errors.</code><code class="sig-name descname">compute_fre</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fixed</span></em>, <em class="sig-param"><span class="n">moving</span></em>, <em class="sig-param"><span class="n">rotation</span></em>, <em class="sig-param"><span class="n">translation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.algorithms.errors.compute_fre" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the Fiducial Registration Error, equal
+to the root mean squared error between corresponding fiducials.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fixed</strong> – point set, N x 3 ndarray</p></li>
+<li><p><strong>moving</strong> – point set, N x 3 ndarray of corresponding points</p></li>
+<li><p><strong>rotation</strong> – 3 x 3 ndarray</p></li>
+<li><p><strong>translation</strong> – 3 x 1 ndarray</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Fiducial Registration Error (FRE)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="sksurgerycore.algorithms.errors.compute_fre_from_fle">
+<code class="sig-prename descclassname">sksurgerycore.algorithms.errors.</code><code class="sig-name descname">compute_fre_from_fle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fiducials</span></em>, <em class="sig-param"><span class="n">mean_fle_squared</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.algorithms.errors.compute_fre_from_fle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes an estimation of FRE from FLE and a list of fiducial locations.</p>
+<p>See:
+<a class="reference external" href="http://dx.doi.org/10.1109/42.736021">Fitzpatrick (1998), equation 10</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fiducials</strong> – Nx3 ndarray of fiducial points</p></li>
+<li><p><strong>mean_fle_squared</strong> – expected (mean) FLE squared</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>mean FRE squared</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="sksurgerycore.algorithms.errors.compute_tre_from_fle">
+<code class="sig-prename descclassname">sksurgerycore.algorithms.errors.</code><code class="sig-name descname">compute_tre_from_fle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fiducials</span></em>, <em class="sig-param"><span class="n">mean_fle_squared</span></em>, <em class="sig-param"><span class="n">target_point</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.algorithms.errors.compute_tre_from_fle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes an estimation of TRE from FLE and a list of fiducial locations.</p>
+<p>See:
+<a class="reference external" href="http://dx.doi.org/10.1109/42.736021">Fitzpatrick (1998), equation 46</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fiducials</strong> – Nx3 ndarray of fiducial points</p></li>
+<li><p><strong>mean_fle_squared</strong> – expected (mean) FLE squared</p></li>
+<li><p><strong>target_point</strong> – a point for which to compute TRE.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>mean TRE squared</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="sksurgerycore.algorithms.errors.validate_procrustes_inputs">
+<code class="sig-prename descclassname">sksurgerycore.algorithms.errors.</code><code class="sig-name descname">validate_procrustes_inputs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fixed</span></em>, <em class="sig-param"><span class="n">moving</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.algorithms.errors.validate_procrustes_inputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates the fixed and moving set of points</p>
+<ol class="arabic simple">
+<li><p>fixed and moving must be numpy array</p></li>
+<li><p>fixed and moving should have 3 columns</p></li>
+<li><p>fixed and moving should have at least 3 rows</p></li>
+<li><p>fixed and moving should have the same number of rows</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fixed</strong> – point set, N x 3 ndarray</p></li>
+<li><p><strong>moving</strong> – point set, N x 3 ndarray of corresponding points</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>nothing</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p>TypeError, ValueError</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-sksurgerycore.algorithms.pivot">
+<span id="sksurgerycore-algorithms-pivot-module"></span><h2>sksurgerycore.algorithms.pivot module<a class="headerlink" href="#module-sksurgerycore.algorithms.pivot" title="Permalink to this headline">¶</a></h2>
+<p>Functions for pivot calibration.</p>
+<dl class="py function">
+<dt id="sksurgerycore.algorithms.pivot.pivot_calibration">
+<code class="sig-prename descclassname">sksurgerycore.algorithms.pivot.</code><code class="sig-name descname">pivot_calibration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tracking_matrices</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.algorithms.pivot.pivot_calibration" title="Permalink to this definition">¶</a></dt>
+<dd><p>sksurgerycore.algorithms.pivot_calibration is
+depreciated from v0.6.0, please use
+skscurgerycalibration.algorithms.pivot_calibration from
+from scikit-surgerycalibration instead</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p>NotImplementedError</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="sksurgerycore.algorithms.pivot.pivot_calibration_with_ransac">
+<code class="sig-prename descclassname">sksurgerycore.algorithms.pivot.</code><code class="sig-name descname">pivot_calibration_with_ransac</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tracking_matrices</span></em>, <em class="sig-param"><span class="n">number_iterations</span></em>, <em class="sig-param"><span class="n">error_threshold</span></em>, <em class="sig-param"><span class="n">concensus_threshold</span></em>, <em class="sig-param"><span class="n">early_exit</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.algorithms.pivot.pivot_calibration_with_ransac" title="Permalink to this definition">¶</a></dt>
+<dd><p>sksurgerycore.algorithms.pivot_calibration_with_ransac is
+depreciated from v0.6.0, please use
+skscurgerycalibration.algorithms.pivot_calibration_with_ransac from
+from scikit-surgerycalibration instead</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p>NotImplementedError</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-sksurgerycore.algorithms.procrustes">
+<span id="sksurgerycore-algorithms-procrustes-module"></span><h2>sksurgerycore.algorithms.procrustes module<a class="headerlink" href="#module-sksurgerycore.algorithms.procrustes" title="Permalink to this headline">¶</a></h2>
+<p>Functions for point based registration using Orthogonal Procrustes.</p>
+<dl class="py function">
+<dt id="sksurgerycore.algorithms.procrustes.orthogonal_procrustes">
+<code class="sig-prename descclassname">sksurgerycore.algorithms.procrustes.</code><code class="sig-name descname">orthogonal_procrustes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fixed</span></em>, <em class="sig-param"><span class="n">moving</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.algorithms.procrustes.orthogonal_procrustes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements point based registration via the Orthogonal Procrustes method.</p>
+<p>Based on Arun’s method:</p>
+<blockquote>
+<div><p>Least-Squares Fitting of two, 3-D Point Sets, Arun, 1987,
+<a class="reference external" href="http://dx.doi.org/10.1109/TPAMI.1987.4767965">10.1109/TPAMI.1987.4767965</a>.</p>
+</div></blockquote>
+<p>Also see <a class="reference external" href="http://eecs.vanderbilt.edu/people/mikefitzpatrick/papers/2009_Medim_Fitzpatrick_TRE_FRE_uncorrelated_as_published.pdf">this</a>
+and <a class="reference external" href="http://tango.andrew.cmu.edu/~gustavor/42431-intro-bioimaging/readings/ch8.pdf">this</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fixed</strong> – point set, N x 3 ndarray</p></li>
+<li><p><strong>moving</strong> – point set, N x 3 ndarray of corresponding points</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>3x3 rotation ndarray, 3x1 translation ndarray, FRE</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p>ValueError</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-sksurgerycore.algorithms.tracking_smoothing">
+<span id="sksurgerycore-algorithms-tracking-smoothing-module"></span><h2>sksurgerycore.algorithms.tracking_smoothing module<a class="headerlink" href="#module-sksurgerycore.algorithms.tracking_smoothing" title="Permalink to this headline">¶</a></h2>
+<p>Classes and functions for smoothing tracking data</p>
+<dl class="py class">
+<dt id="sksurgerycore.algorithms.tracking_smoothing.RollingMean">
+<em class="property">class </em><code class="sig-prename descclassname">sksurgerycore.algorithms.tracking_smoothing.</code><code class="sig-name descname">RollingMean</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vector_size</span><span class="o">=</span><span class="default_value">3</span></em>, <em class="sig-param"><span class="n">buffer_size</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.algorithms.tracking_smoothing.RollingMean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Performs rolling average calculations on numpy arrays</p>
+<dl class="py method">
+<dt id="sksurgerycore.algorithms.tracking_smoothing.RollingMean.getmean">
+<code class="sig-name descname">getmean</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.algorithms.tracking_smoothing.RollingMean.getmean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the mean vector across the buffer, ignoring  NaNs</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sksurgerycore.algorithms.tracking_smoothing.RollingMean.pop">
+<code class="sig-name descname">pop</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vector</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.algorithms.tracking_smoothing.RollingMean.pop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a new vector to the buffer, removing the oldest one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Params vector</dt>
+<dd class="field-odd"><p>A new vector to place at the start of the buffer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="sksurgerycore.algorithms.tracking_smoothing.RollingMeanRotation">
+<em class="property">class </em><code class="sig-prename descclassname">sksurgerycore.algorithms.tracking_smoothing.</code><code class="sig-name descname">RollingMeanRotation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">buffer_size</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.algorithms.tracking_smoothing.RollingMeanRotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sksurgerycore.algorithms.tracking_smoothing.RollingMean" title="sksurgerycore.algorithms.tracking_smoothing.RollingMean"><code class="xref py py-class docutils literal notranslate"><span class="pre">sksurgerycore.algorithms.tracking_smoothing.RollingMean</span></code></a></p>
+<p>Performs rolling average calculations on rotation vectors</p>
+<dl class="py method">
+<dt id="sksurgerycore.algorithms.tracking_smoothing.RollingMeanRotation.getmean">
+<code class="sig-name descname">getmean</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.algorithms.tracking_smoothing.RollingMeanRotation.getmean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the mean quaternion across the buffer, ignoring NaNs</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="sksurgerycore.algorithms.tracking_smoothing.RollingMeanRotation.pop">
+<code class="sig-name descname">pop</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rvector</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.algorithms.tracking_smoothing.RollingMeanRotation.pop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a new vector to the buffer, removing the oldest one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Params vector</dt>
+<dd class="field-odd"><p>A new rotation vector to place at the start of the
+buffer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="sksurgerycore.algorithms.tracking_smoothing.quaternion_to_matrix">
+<code class="sig-prename descclassname">sksurgerycore.algorithms.tracking_smoothing.</code><code class="sig-name descname">quaternion_to_matrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">quat</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.algorithms.tracking_smoothing.quaternion_to_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a quaternion to a rotation vector</p>
+<dl class="field-list simple">
+<dt class="field-odd">Params quat</dt>
+<dd class="field-odd"><p>the quaternion (1x4)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the rotation matrix (4x4)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-sksurgerycore.algorithms.vector_math">
+<span id="sksurgerycore-algorithms-vector-math-module"></span><h2>sksurgerycore.algorithms.vector_math module<a class="headerlink" href="#module-sksurgerycore.algorithms.vector_math" title="Permalink to this headline">¶</a></h2>
+<p>Various small maths utilities.</p>
+<dl class="py function">
+<dt id="sksurgerycore.algorithms.vector_math.distance_from_line">
+<code class="sig-prename descclassname">sksurgerycore.algorithms.vector_math.</code><code class="sig-name descname">distance_from_line</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p_1</span></em>, <em class="sig-param"><span class="n">p_2</span></em>, <em class="sig-param"><span class="n">p_3</span></em><span class="sig-paren">)</span><a class="headerlink" href="#sksurgerycore.algorithms.vector_math.distance_from_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes distance of a point p_3, from a line defined by p_1 and p_2.</p>
+<p>See <a class="reference external" href="https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line">here</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>euclidean distance</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-sksurgerycore.algorithms">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-sksurgerycore.algorithms" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sksurgerycore.baseclasses.html" class="btn btn-neutral float-right" title="sksurgerycore.baseclasses package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sksurgerycore.html" class="btn btn-neutral float-left" title="sksurgerycore package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Matt Clarkson, Stephen Thompson, Thomas Dowrick, Mian Ahmad
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
