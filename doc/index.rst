@@ -1,14 +1,25 @@
-.. include:: ../README.rst
+.. scikit-surgerycore documentation master file, created by
+   sphinx-quickstart on Wed Jul 15 21:28:18 2020.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
 
-Contents
-~~~~~~~~
+Welcome to scikit-surgerycore's documentation!
+==============================================
+
 .. toctree::
-  :maxdepth: 1
+   :maxdepth: 2
+   :caption: Readme
 
-  requirements
-  pycharm
-  Module Contents <modules>
+   readme
 
-* :ref:`modindex`
-* :ref:`genindex`
-* :ref:`search`
+.. toctree::
+   :maxdepth: 2
+   :caption: Docstring
+
+   Module contents <docstring/modules>
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Index
+
+   indices

@@ -1,9 +1,10 @@
-.. _pycharm:
+..
+  .. _pycharm:
 
 Some Hints for Developing with PyCharm
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-PyCharm is a popular python editor. This is a quickstart guide setting up 
+PyCharm is a popular python editor. This is a quickstart guide setting up
 PyCharm for developing sksurgerycore.
 This assumes you have PyCharm installed and configured to support virtual environments.
 
@@ -27,4 +28,3 @@ This assumes you have PyCharm installed and configured to support virtual enviro
 18. Right-click on the Tests folder and choose "Run Unittests in tests". This will create a new configuration for running tests
 19. Right-click on sksurgerycore and select Run sksurgerycore. This will create a new configuration for running the project.
 20. Switch between the program and test configurations using the drop-down at the top of the screen, and the green arrow to run or the green bug to debug.
-
