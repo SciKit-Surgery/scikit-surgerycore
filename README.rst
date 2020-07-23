@@ -68,17 +68,6 @@ You can run the unit tests by installing and running tox:
      tox
 
 
-Requirements
-^^^^^^^^^^^^
-
-To check all the requirements for scikit-surgerycore, please see `requirement`_.
-
-Developing with PyCharm
-^^^^^^^^^^^^^^^^^^^^^^^
-
-For hints when developing with PyCharm, please see the `developing with PyCharm`_.
-
-
 Contributing
 ^^^^^^^^^^^^
 
@@ -114,5 +103,3 @@ Supported by `Wellcome`_ and `EPSRC`_.
 .. _`contributing guidelines`: https://github.com/UCL/scikit-surgerycore/blob/master/CONTRIBUTING.rst
 .. _`license file`: https://github.com/UCL/scikit-surgerycore/blob/master/LICENSE
 .. _`Arun et al., 1987`: http://doi.ieeecomputersociety.org/10.1109/TPAMI.1987.4767965
-.. _`developing with Pycharm`: https://github.com/UCL/scikit-surgerycore/blob/master/doc/pycharm.rst
-.. _`requirement`: https://github.com/UCL/scikit-surgerycore/blob/master/doc/requirements.rst
