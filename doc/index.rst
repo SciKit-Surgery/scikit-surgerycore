@@ -8,18 +8,12 @@ Welcome to scikit-surgerycore's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Readme
+   :caption: Introduction
 
    readme
 
 .. toctree::
    :maxdepth: 2
-   :caption: API documentation
+   :caption: Module Reference
 
-   Module contents <docstring/modules>
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Index
-
-   indices
+   module_ref
