@@ -2,11 +2,9 @@ scikit-surgerycore
 ===============================
 
 .. image:: https://github.com/UCL/scikit-surgerycore /raw/master/weiss_logo.png
-   :height: 128px
-   :width: 128px
    :target: https://github.com/UCL/scikit-surgerycore
    :alt: Logo
-
+|
 .. image:: https://github.com/UCL/scikit-surgerycore/workflows/.github/workflows/ci.yml/badge.svg
    :target: https://github.com/UCL/scikit-surgerycore/actions
    :alt: GitHub Actions CI status
