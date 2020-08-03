@@ -1,7 +1,7 @@
 scikit-surgerycore
 ===============================
 
-.. image:: https://github.com/UCL/scikit-surgerycore /raw/master/project-icon.png
+.. image:: https://github.com/UCL/scikit-surgerycore /raw/master/weiss_logo.png
    :height: 128px
    :width: 128px
    :target: https://github.com/UCL/scikit-surgerycore
@@ -26,13 +26,18 @@ scikit-surgerycore implements algorithms and tools that are common to all scikit
 
 scikit-surgerycore is part of the `SNAPPY`_ software project, developed at the `Wellcome EPSRC Centre for Interventional and Surgical Sciences`_, part of `University College London (UCL)`_.
 
-Features
---------
+.. include:: doc/features.rst
 
-* A Configuration Manager to load parameters from a .json file
-* A Transform Manager to manage combinations of 4x4 transformation matrices
-* Corresponding point (i.e Landmark) based registration, based on `Arun et al., 1987`_.
-* Validation functions, checking a numpy array is a camera matrix, rotation matrix, rigid transform etc.
+Citing
+------
+If you make use of SciKit-Surgery libraries in your work, please cite the following paper:
+
+
+    | Thompson S, Dowrick T, Ahmad M, et al.
+    | SciKit-Surgery: compact libraries for surgical navigation.
+    | International Journal of Computer Assisted Radiology and Surgery. May 2020. 
+    | DOI: 10.1007/s11548-020-02180-5
+
 
 Installing
 ----------
