@@ -17,7 +17,7 @@ setup(
     description='scikit-surgerycore contains commonly used Image Guided Surgery algorithms and tools',
     long_description=long_description,
     long_description_content_type='text/x-rst',
-    url='https://weisslab.cs.ucl.ac.uk/WEISS/SoftwareRepositories/SNAPPY/scikit-surgerycore',
+    url='https://github.com/UCL/scikit-surgerycore',
     author='Matt Clarkson',
     author_email='m.clarkson@ucl.ac.uk',
     license='BSD-3 license',
