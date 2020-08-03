@@ -14,3 +14,5 @@ dist/
 # Virtual Environment
 venv/
 
+#docstring directory
+docs/docstring

@@ -1,6 +1,6 @@
 #  -*- coding: utf-8 -*-
 
-""" Functions for point based registration using Orthogonal Procrustes. """
+""" Registration Error Calculations """
 
 import numpy as np
 import sksurgerycore.algorithms.vector_math as vm
