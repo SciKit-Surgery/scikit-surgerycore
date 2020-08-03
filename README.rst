@@ -26,8 +26,18 @@ scikit-surgerycore implements algorithms and tools that are common to all scikit
 
 scikit-surgerycore is part of the `SNAPPY`_ software project, developed at the `Wellcome EPSRC Centre for Interventional and Surgical Sciences`_, part of `University College London (UCL)`_.
 
+.. features-start
 
-.. include:: features.rst
+Features
+--------
+
+* A `Configuration Manager <https://scikit-surgerycore.readthedocs.io/en/latest/module_ref.html#module-sksurgerycore.configuration.configuration_manager>`_ to load parameters from a .json file
+* A `Transform Manager <https://scikit-surgerycore.readthedocs.io/en/latest/module_ref.html#module-sksurgerycore.transforms.transform_manager>`_ to manage combinations of 4x4 transformation matrices
+* `Corresponding point <https://scikit-surgerycore.readthedocs.io/en/latest/module_ref.html#module-sksurgerycore.algorithms.procrustes>`_ (i.e Landmark) based registration, based on `Arun et al., 1987`_.
+* `Rotaiton/translation Matrix construction <https://scikit-surgerycore.readthedocs.io/en/latest/module_ref.html#module-sksurgerycore.transforms.matrix>`_ and `validation functions <https://scikit-surgerycore.readthedocs.io/en/latest/module_ref.html#matrix-validation>`_, 
+  checking a numpy array is a camera matrix, rotation matrix, rigid transform etc.
+
+.. features-end
 
 Citing
 ------
