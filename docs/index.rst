@@ -6,7 +6,7 @@
 scikit-surgerycore documentation
 ================================
 
-.. include:: features.rst
+.. include:: ../features.rst
 
 .. toctree::
    :maxdepth: 2

@@ -27,7 +27,7 @@ scikit-surgerycore implements algorithms and tools that are common to all scikit
 scikit-surgerycore is part of the `SNAPPY`_ software project, developed at the `Wellcome EPSRC Centre for Interventional and Surgical Sciences`_, part of `University College London (UCL)`_.
 
 
-.. include:: docs/features.rst
+.. include:: features.rst
 
 Citing
 ------
