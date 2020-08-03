@@ -22,3 +22,10 @@ scikit-surgerycore documentation
    :caption: Module Reference
 
    module_ref
+
+.. toctree::
+   :glob:
+   :maxdepth: 2
+   :caption: Tutorials
+
+   tutorials/*
