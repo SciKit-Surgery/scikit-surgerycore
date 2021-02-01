@@ -64,7 +64,6 @@
 #
 
 import numpy
-import numpy.matlib as npm
 
 def average_quaternions(quaternions):
     """
@@ -81,7 +80,7 @@ def average_quaternions(quaternions):
 
     # Number of quaternions to average
     samples = quaternions.shape[0]
-    mat_a = npm.zeros(shape=(4, 4))
+    mat_a = numpy.zeros(shape=(4, 4), dtype=numpy.float64)
 
     for i in range(0, samples):
         quat = quaternions[i, :]
@@ -95,7 +94,7 @@ def average_quaternions(quaternions):
     # Sort by largest eigenvalue
     eigen_vectors = eigen_vectors[:, eigen_values.argsort()[::-1]]
     # return the real part of the largest eigenvector (has only real part)
-    return numpy.real(eigen_vectors[:, 0].A1)
+    return numpy.real(numpy.ravel(eigen_vectors[:, 0]))
 
 
 def weighted_average_quaternions(quaternions, weights):
@@ -116,7 +115,7 @@ def weighted_average_quaternions(quaternions, weights):
     """
     # Number of quaternions to average
     samples = quaternions.shape[0]
-    mat_a = npm.zeros(shape=(4, 4))
+    mat_a = numpy.zeros(shape=(4, 4), dtype=numpy.float64)
     weight_sum = 0
 
     for i in range(0, samples):
@@ -137,4 +136,4 @@ def weighted_average_quaternions(quaternions, weights):
     eigen_vectors = eigen_vectors[:, eigen_values.argsort()[::-1]]
 
     # return the real part of the largest eigenvector (has only real part)
-    return numpy.real(eigen_vectors[:, 0].A1)
+    return numpy.real(numpy.ravel(eigen_vectors[:, 0]))
