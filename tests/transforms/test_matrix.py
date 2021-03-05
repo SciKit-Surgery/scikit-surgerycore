@@ -223,7 +223,7 @@ def check_construct_rotm_from_euler(
     return new_point
 
 
-def test_construct_rotm_from_euler():
+def test_construct_rotm_from_euler(recwarn):
     tiny = 0.0001
 
     new_point = check_construct_rotm_from_euler(
@@ -313,6 +313,16 @@ def test_construct_rotm_from_euler():
     assert np.abs(new_point[0] - 1) < tiny
     assert np.abs(new_point[1]) <= tiny
     assert np.abs(new_point[2] - 1) < tiny
+
+    #we want to avoid an np.VisibleDepreciationWarning
+    start_warns = len(recwarn)
+    rot_m = mat.construct_rotm_from_euler(
+        np.full((1,), 90., dtype=np.float64),
+        np.full((1,), -90., dtype=np.float64),
+        np.full((1,), 0., dtype=np.float64),
+        'xyz', 0)
+    assert (len(recwarn) == start_warns)
+
 
 
 def test_construct_rigid_transformation():
