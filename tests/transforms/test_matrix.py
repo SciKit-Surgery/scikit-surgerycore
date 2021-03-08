@@ -69,7 +69,7 @@ def check_construct_rz_matrix(angle, is_in_radians, point):
 def test_construct_rx_matrix():
     tiny = 0.0001
 
-    new_point = check_construct_rx_matrix(90, 0, np.array([0, 1, 0]).T)
+    new_point = check_construct_rx_matrix(90., 0, np.array([0, 1, 0]).T)
     assert np.abs(new_point[0]) < tiny
     assert np.abs(new_point[1]) < tiny
     assert np.abs(new_point[2] - 1) < tiny
@@ -79,7 +79,7 @@ def test_construct_rx_matrix():
     assert np.abs(new_point[1]) < tiny
     assert np.abs(new_point[2] - 1) < tiny
 
-    new_point = check_construct_rx_matrix(-90, 0, np.array([0, 1, 0]).T)
+    new_point = check_construct_rx_matrix(-90., 0, np.array([0, 1, 0]).T)
     assert np.abs(new_point[0]) < tiny
     assert np.abs(new_point[1]) < tiny
     assert np.abs(new_point[2] + 1) < tiny
@@ -89,7 +89,7 @@ def test_construct_rx_matrix():
     assert np.abs(new_point[1]) < tiny
     assert np.abs(new_point[2] + 1) < tiny
 
-    new_point = check_construct_rx_matrix(180, 0, np.array([0, 1, 0]).T)
+    new_point = check_construct_rx_matrix(180., 0, np.array([0, 1, 0]).T)
     assert np.abs(new_point[0]) < tiny
     assert np.abs(new_point[1] + 1) < tiny
     assert np.abs(new_point[2]) < tiny
@@ -99,7 +99,7 @@ def test_construct_rx_matrix():
     assert np.abs(new_point[1] + 1) < tiny
     assert np.abs(new_point[2]) < tiny
 
-    new_point = check_construct_rx_matrix(-180, 0, np.array([0, 1, 0]).T)
+    new_point = check_construct_rx_matrix(-180., 0, np.array([0, 1, 0]).T)
     assert np.abs(new_point[0]) < tiny
     assert np.abs(new_point[1] + 1) < tiny
     assert np.abs(new_point[2]) < tiny
@@ -109,11 +109,14 @@ def test_construct_rx_matrix():
     assert np.abs(new_point[1] + 1) < tiny
     assert np.abs(new_point[2]) < tiny
 
+    #check for bad types
+    with pytest.raises(ValueError):
+        mat.construct_ry_matrix(bool(10.), 1)
 
 def test_construct_ry_matrix():
     tiny = 0.0001
 
-    new_point = check_construct_ry_matrix(90, 0, np.array([1, 0, 0]).T)
+    new_point = check_construct_ry_matrix(90., 0, np.array([1, 0, 0]).T)
     assert np.abs(new_point[0]) < tiny
     assert np.abs(new_point[1]) < tiny
     assert np.abs(new_point[2] + 1) < tiny
@@ -123,7 +126,7 @@ def test_construct_ry_matrix():
     assert np.abs(new_point[1]) < tiny
     assert np.abs(new_point[2] + 1) < tiny
 
-    new_point = check_construct_ry_matrix(-90, 0, np.array([1, 0, 0]).T)
+    new_point = check_construct_ry_matrix(-90., 0, np.array([1, 0, 0]).T)
     assert np.abs(new_point[0]) < tiny
     assert np.abs(new_point[1]) < tiny
     assert np.abs(new_point[2] - 1) < tiny
@@ -133,7 +136,7 @@ def test_construct_ry_matrix():
     assert np.abs(new_point[1]) < tiny
     assert np.abs(new_point[2] - 1) < tiny
 
-    new_point = check_construct_ry_matrix(180, 0, np.array([1, 0, 0]).T)
+    new_point = check_construct_ry_matrix(180., 0, np.array([1, 0, 0]).T)
     assert np.abs(new_point[0] + 1) < tiny
     assert np.abs(new_point[1]) <= tiny
     assert np.abs(new_point[2]) < tiny
@@ -143,7 +146,7 @@ def test_construct_ry_matrix():
     assert np.abs(new_point[1]) < tiny
     assert np.abs(new_point[2]) < tiny
 
-    new_point = check_construct_ry_matrix(-180, 0, np.array([1, 0, 0]).T)
+    new_point = check_construct_ry_matrix(-180., 0, np.array([1, 0, 0]).T)
     assert np.abs(new_point[0] + 1) < tiny
     assert np.abs(new_point[1]) < tiny
     assert np.abs(new_point[2]) < tiny
@@ -152,12 +155,16 @@ def test_construct_ry_matrix():
     assert np.abs(new_point[0] + 1) < tiny
     assert np.abs(new_point[1]) < tiny
     assert np.abs(new_point[2]) < tiny
+    
+    #check for bad types
+    with pytest.raises(ValueError):
+        mat.construct_ry_matrix(int(10.), 1)
 
 
 def test_construct_rz_matrix():
     tiny = 0.0001
 
-    new_point = check_construct_rz_matrix(90, 0, np.array([1, 0, 0]).T)
+    new_point = check_construct_rz_matrix(90., 0, np.array([1, 0, 0]).T)
     assert np.abs(new_point[0]) < tiny
     assert np.abs(new_point[1] - 1) < tiny
     assert np.abs(new_point[2]) < tiny
@@ -167,7 +174,7 @@ def test_construct_rz_matrix():
     assert np.abs(new_point[1] - 1) < tiny
     assert np.abs(new_point[2]) < tiny
 
-    new_point = check_construct_rz_matrix(-90, 0, np.array([1, 0, 0]).T)
+    new_point = check_construct_rz_matrix(-90., 0, np.array([1, 0, 0]).T)
     assert np.abs(new_point[0]) < tiny
     assert np.abs(new_point[1] + 1) < tiny
     assert np.abs(new_point[2]) < tiny
@@ -177,7 +184,7 @@ def test_construct_rz_matrix():
     assert np.abs(new_point[1] + 1) < tiny
     assert np.abs(new_point[2]) < tiny
 
-    new_point = check_construct_rz_matrix(180, 0, np.array([1, 0, 0]).T)
+    new_point = check_construct_rz_matrix(180., 0, np.array([1, 0, 0]).T)
     assert np.abs(new_point[0] + 1) < tiny
     assert np.abs(new_point[1]) < tiny
     assert np.abs(new_point[2]) < tiny
@@ -187,7 +194,7 @@ def test_construct_rz_matrix():
     assert np.abs(new_point[1]) < tiny
     assert np.abs(new_point[2]) < tiny
 
-    new_point = check_construct_rz_matrix(-180, 0, np.array([1, 0, 0]).T)
+    new_point = check_construct_rz_matrix(-180., 0, np.array([1, 0, 0]).T)
     assert np.abs(new_point[0] + 1) < tiny
     assert np.abs(new_point[1]) < tiny
     assert np.abs(new_point[2]) < tiny
@@ -196,7 +203,10 @@ def test_construct_rz_matrix():
     assert np.abs(new_point[0] + 1) < tiny
     assert np.abs(new_point[1]) < tiny
     assert np.abs(new_point[2]) < tiny
-
+    
+    #check for bad types
+    with pytest.raises(ValueError):
+        mat.construct_rz_matrix(100, 1)
 
 def check_construct_rotm_from_euler(
         angle_a, angle_b, angle_c,
