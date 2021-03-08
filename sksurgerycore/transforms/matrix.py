@@ -14,7 +14,11 @@ def construct_rx_matrix(angle, is_in_radians=True):
     :param angle: the angle to rotate, float
     :param is_in_radians: if angle is in radians, default being True, bool
     :returns: rot_x -- the 3x3 rotation matrix constructed, numpy array
+    :raises: ValueError if angle is not float
     """
+    if not isinstance(angle, (np.float32, np.float64, float)):
+        raise ValueError("Input angles should be float or double not, ",
+                            type(angle))
     if not is_in_radians:
         angle = np.pi * angle / 180
 
@@ -33,7 +37,11 @@ def construct_ry_matrix(angle, is_in_radians=True):
     :param angle: the angle to rotate, float
     :param is_in_radians: if angle is in radians, default being True, bool
     :returns: rot_y -- the 3x3 rotation matrix constructed, numpy array
+    :raises: ValueError if angle is not float
     """
+    if not isinstance(angle, (np.float32, np.float64, float)):
+        raise ValueError("Input angles should be float or double not, ",
+                            type(angle))
     if not is_in_radians:
         angle = np.pi * angle / 180
 
@@ -52,7 +60,11 @@ def construct_rz_matrix(angle, is_in_radians=True):
     :param angle: the angle to rotate, float
     :param is_in_radians: if angle is in radians, default being True, bool
     :returns: rot_z -- the 3x3 rotation matrix constructed, numpy array
+    :raises: ValueError if angle is not float
     """
+    if not isinstance(angle, (np.float32, np.float64, float)):
+        raise ValueError("Input angles should be float or double not, ",
+                            type(angle))
     if not is_in_radians:
         angle = np.pi * angle / 180
 
@@ -80,9 +92,9 @@ def construct_rotm_from_euler(
     :param angle_b: second Euler angle, float
     :param angle_c: third Euler angle, float
     :param sequence: the sequence of axes the three elemental rotations are
-    about, with respect to the intrinsic axes, string
+        about, with respect to the intrinsic axes, string
     :param is_in_radians: if the angles are in radians, default being True,
-    bool
+        bool
     :returns: rot_m -- the 3x3 rotation matrix, numpy array
     :raises: ValueError if angles are not float or of difference types
     """
