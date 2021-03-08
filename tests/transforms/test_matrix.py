@@ -227,7 +227,7 @@ def test_construct_rotm_from_euler(recwarn):
     tiny = 0.0001
 
     new_point = check_construct_rotm_from_euler(
-        90, -90, 0,
+        90., -90., 0.,
         'zxz', 0,
         np.array([1, 0, -1]).T)
     assert np.abs(new_point[0] - 1) < tiny
@@ -235,7 +235,7 @@ def test_construct_rotm_from_euler(recwarn):
     assert np.abs(new_point[2]) < tiny
 
     new_point = check_construct_rotm_from_euler(
-        90, -90, 0,
+        90., -90., 0.,
         'zyz', 0,
         np.array([0, -1, -1]).T)
     assert np.abs(new_point[0] - 1) < tiny
@@ -243,7 +243,7 @@ def test_construct_rotm_from_euler(recwarn):
     assert np.abs(new_point[2]) < tiny
 
     new_point = check_construct_rotm_from_euler(
-        np.pi/2, -np.pi/2, 0,
+        np.pi/2, -np.pi/2, 0.,
         'zyz', 1,
         np.array([0, -1, -1]).T)
     assert np.abs(new_point[0] - 1) < tiny
@@ -251,7 +251,7 @@ def test_construct_rotm_from_euler(recwarn):
     assert np.abs(new_point[2]) < tiny
 
     new_point = check_construct_rotm_from_euler(
-        0, 45, 45,
+        0., 45., 45.,
         'xyx', 0,
         np.array([0, 1, 1]).T)
     assert np.abs(new_point[0] - 1) < tiny
@@ -259,7 +259,7 @@ def test_construct_rotm_from_euler(recwarn):
     assert np.abs(new_point[2] - 1) < tiny
 
     new_point = check_construct_rotm_from_euler(
-        0, -45, -45,
+        0., -45., -45.,
         'xzx', 0,
         np.array([0, 1, 1]).T)
     assert np.abs(new_point[0] - 1) < tiny
@@ -267,7 +267,7 @@ def test_construct_rotm_from_euler(recwarn):
     assert np.abs(new_point[2]) < tiny
 
     new_point = check_construct_rotm_from_euler(
-        45, 45, -90,
+        45., 45., -90.,
         'yxy', 0,
         np.array([1, 1, 0]).T)
     assert np.abs(new_point[0] - 1) < tiny
@@ -275,7 +275,7 @@ def test_construct_rotm_from_euler(recwarn):
     assert np.abs(new_point[2] - 1) < tiny
 
     new_point = check_construct_rotm_from_euler(
-        45, 45, 180,
+        45., 45., 180.,
         'yzy', 0,
         np.array([1, 1, 0]).T)
     assert np.abs(new_point[0] + 1) < tiny
@@ -283,7 +283,7 @@ def test_construct_rotm_from_euler(recwarn):
     assert np.abs(new_point[2] - 1) < tiny
 
     new_point = check_construct_rotm_from_euler(
-        0, 90, -90,
+        0., 90., -90.,
         'xyz', 0,
         np.array([-1, 0, 1]).T)
     assert np.abs(new_point[0] - 1) < tiny
@@ -291,7 +291,7 @@ def test_construct_rotm_from_euler(recwarn):
     assert np.abs(new_point[2]) < tiny
 
     new_point = check_construct_rotm_from_euler(
-        0, 90, -90,
+        0., 90., -90.,
         'zyx', 0,
         np.array([0, -1, 1]).T)
     assert np.abs(new_point[0] - 1) < tiny
@@ -299,7 +299,7 @@ def test_construct_rotm_from_euler(recwarn):
     assert np.abs(new_point[2]) < tiny
 
     new_point = check_construct_rotm_from_euler(
-        0, -45, -45,
+        0., -45., -45.,
         'xyz', 0,
         np.array([1, 1, 0]).T)
     assert np.abs(new_point[0] - 1) < tiny
@@ -307,22 +307,30 @@ def test_construct_rotm_from_euler(recwarn):
     assert np.abs(new_point[2] - 1) < tiny
 
     new_point = check_construct_rotm_from_euler(
-        0, -np.pi/4, -np.pi/4,
+        0., -np.pi/4, -np.pi/4,
         'xyz', 1,
         np.array([1, 1, 0]).T)
     assert np.abs(new_point[0] - 1) < tiny
     assert np.abs(new_point[1]) <= tiny
     assert np.abs(new_point[2] - 1) < tiny
 
-    #we want to avoid an np.VisibleDepreciationWarning
-    start_warns = len(recwarn)
-    rot_m = mat.construct_rotm_from_euler(
-        np.full((1,), 90., dtype=np.float64),
-        np.full((1,), -90., dtype=np.float64),
-        np.full((1,), 0., dtype=np.float64),
-        'xyz', 0)
-    assert (len(recwarn) == start_warns)
+    #we want to avoid an np.tests to check parameter values
+    with pytest.raises(ValueError):
+        new_point = mat.construct_rotm_from_euler(
+            np.float32(0), np.float64(-np.pi/4), -np.pi/4,
+            'xyz', 1)
 
+    #this fails because parameter is implicitly defined as int
+    with pytest.raises(ValueError):
+        new_point = mat.construct_rotm_from_euler(
+            0., -np.pi/4, 0,
+            'xyz', 1)
+
+    #this fails because parameters are implicitly defined as int
+    with pytest.raises(ValueError):
+        new_point = mat.construct_rotm_from_euler(
+            -90, 90, 0,
+            'xyz', 1)
 
 
 def test_construct_rigid_transformation():

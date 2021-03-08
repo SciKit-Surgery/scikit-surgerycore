@@ -84,7 +84,15 @@ def construct_rotm_from_euler(
     :param is_in_radians: if the angles are in radians, default being True,
     bool
     :returns: rot_m -- the 3x3 rotation matrix, numpy array
+    :raises: ValueError if angles are not float or of difference types
     """
+    if not (isinstance(angle_b, type(angle_a)) and
+                isinstance(angle_c, type(angle_a))):
+        raise ValueError("All input angles should be same type")
+    if not isinstance(angle_a, (np.float32, np.float64, float)):
+        raise ValueError("Input angles should be float or double not, ",
+                            type(angle_a))
+
     while True:
         if sequence == 'zxz':
             rot_a = construct_rz_matrix(angle_a, is_in_radians)
