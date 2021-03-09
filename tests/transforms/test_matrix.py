@@ -111,7 +111,7 @@ def test_construct_rx_matrix():
 
     #check for bad types
     with pytest.raises(TypeError):
-        mat.construct_rx_matrix(bool(10.), 1)
+        mat.construct_rx_matrix(str('10.'), False)
 
 def test_construct_ry_matrix():
     tiny = 0.0001
@@ -158,7 +158,7 @@ def test_construct_ry_matrix():
     
     #check for bad types
     with pytest.raises(TypeError):
-        mat.construct_ry_matrix(int(10.), 1)
+        mat.construct_ry_matrix(int(10.), True)
 
 
 def test_construct_rz_matrix():
@@ -206,7 +206,7 @@ def test_construct_rz_matrix():
     
     #check for bad types
     with pytest.raises(TypeError):
-        mat.construct_rz_matrix(100, 1)
+        mat.construct_rz_matrix(100, True)
 
 def check_construct_rotm_from_euler(
         angle_a, angle_b, angle_c,
@@ -237,8 +237,8 @@ def test_construct_rotm_from_euler(recwarn):
     tiny = 0.0001
 
     new_point = check_construct_rotm_from_euler(
-        90., -90., 0.,
-        'zxz', 0,
+        90, -90, 0,
+        'zxz', False,
         np.array([1, 0, -1]).T)
     assert np.abs(new_point[0] - 1) < tiny
     assert np.abs(new_point[1] - 1) < tiny

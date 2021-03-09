@@ -6,21 +6,35 @@ Euler angles.
 
 import numpy as np
 
+def _to_radians(angle, is_in_radians):
+    """
+    Internal function to convert angle to radians
+    :param angle: float or int, the angle, must be float if in radians,
+        can be int or float if in degrees
+    :param: is_in_radians, bool, True if angle is already in radians
+    """
+    if is_in_radians:
+        if not isinstance(angle, (np.float32, np.float64, float)):
+            raise TypeError("Angle should be float, float32, or float64 when "
+                            "using radians not ",  type(angle))
+        return angle
+
+    if not isinstance(angle, (int, np.float32, np.float64, float)):
+        raise TypeError("Angle should be int, float, float32, or float64 when "
+                            "using degrees not ",  type(angle))
+
+    return np.pi * angle / 180.0
+
 
 def construct_rx_matrix(angle, is_in_radians=True):
     """
     Construct a rotation matrix for rotation around the x axis.
 
-    :param angle: the angle to rotate, float
-    :param is_in_radians: if angle is in radians, default being True, bool
+    :param angle: the angle to rotate radians, float
     :returns: rot_x -- the 3x3 rotation matrix constructed, numpy array
-    :raises: TypeError if angle is not float
+    :raises: TypeError if angle is not float or int
     """
-    if not isinstance(angle, (np.float32, np.float64, float)):
-        raise TypeError("Angle should be float or double not, ",
-                            type(angle))
-    if not is_in_radians:
-        angle = np.pi * angle / 180
+    angle = _to_radians(angle, is_in_radians)
 
     cos_x = np.cos(angle)
     sin_x = np.sin(angle)
@@ -37,13 +51,9 @@ def construct_ry_matrix(angle, is_in_radians=True):
     :param angle: the angle to rotate, float
     :param is_in_radians: if angle is in radians, default being True, bool
     :returns: rot_y -- the 3x3 rotation matrix constructed, numpy array
-    :raises: TypeError if angle is not float
+    :raises: TypeError if angle is not float or int
     """
-    if not isinstance(angle, (np.float32, np.float64, float)):
-        raise TypeError("Angle should be float or double not, ",
-                            type(angle))
-    if not is_in_radians:
-        angle = np.pi * angle / 180
+    angle = _to_radians(angle, is_in_radians)
 
     cos_y = np.cos(angle)
     sin_y = np.sin(angle)
@@ -60,13 +70,9 @@ def construct_rz_matrix(angle, is_in_radians=True):
     :param angle: the angle to rotate, float
     :param is_in_radians: if angle is in radians, default being True, bool
     :returns: rot_z -- the 3x3 rotation matrix constructed, numpy array
-    :raises: TypeError if angle is not float
+    :raises: TypeError if angle is not float or int
     """
-    if not isinstance(angle, (np.float32, np.float64, float)):
-        raise TypeError("Angle should be float or double not, ",
-                            type(angle))
-    if not is_in_radians:
-        angle = np.pi * angle / 180
+    angle = _to_radians(angle, is_in_radians)
 
     cos_z = np.cos(angle)
     sin_z = np.sin(angle)
@@ -88,9 +94,9 @@ def construct_rotm_from_euler(
     INTRINSIC axes. They can also be interpreted to be about the EXTRINSIC axes,
     in the reverse order.
 
-    :param angle_a: first Euler angle, float
-    :param angle_b: second Euler angle, float
-    :param angle_c: third Euler angle, float
+    :param angle_a: first Euler angle, float, int allowed if in degrees
+    :param angle_b: second Euler angle, float, int allowed if in degrees
+    :param angle_c: third Euler angle, float, int allowed if in degrees
     :param sequence: the sequence of axes the three elemental rotations are
         about, with respect to the intrinsic axes, string
     :param is_in_radians: if the angles are in radians, default being True,
@@ -101,9 +107,6 @@ def construct_rotm_from_euler(
     if not (isinstance(angle_b, type(angle_a)) and
                 isinstance(angle_c, type(angle_a))):
         raise TypeError("All input angles should be same type")
-    if not isinstance(angle_a, (np.float32, np.float64, float)):
-        raise TypeError("Input angles should be float or double not, ",
-                            type(angle_a))
 
     while True:
         if sequence == 'zxz':
