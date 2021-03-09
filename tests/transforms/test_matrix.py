@@ -342,6 +342,54 @@ def test_construct_rotm_from_euler(recwarn):
             -90, 90, 0,
             'xyz', 1)
 
+    #bad sequences
+    with pytest.raises(ValueError):
+        new_point = mat.construct_rotm_from_euler(
+            -90., 90., 0.,
+            'xpz', 1)
+    
+    with pytest.raises(ValueError):
+        new_point = mat.construct_rotm_from_euler(
+            -90., 90., 0.,
+            'xxyz', 1)
+
+
+
+def test_construct_rigid_transformation():
+    tiny = 0.0001
+
+    rot_m = mat.construct_rx_matrix(np.pi/2)
+    vm.validate_rotation_matrix(rot_m)
+
+    trans_v = np.array([[10], [10], [10]])
+    vm.validate_translation_column_vector(trans_v)
+
+    rigid_transformation = mat.construct_rigid_transformation(
+        rot_m, trans_v)
+    vm.validate_rigid_matrix(rigid_transformation)
+
+    assert np.abs(rigid_transformation[0][0] - 1) < tiny
+    assert np.abs(rigid_transformation[0][1]) < tiny
+    assert np.abs(rigid_transformation[0][2]) < tiny
+    assert np.abs(rigid_transformation[0][3] - 10) < tiny
+    assert np.abs(rigid_transformation[1][0]) < tiny
+    assert np.abs(rigid_transformation[1][1]) < tiny
+    assert np.abs(rigid_transformation[1][2] + 1) < tiny
+    assert np.abs(rigid_transformation[1][3] - 10) < tiny
+    assert np.abs(rigid_transformation[2][0]) < tiny
+    assert np.abs(rigid_transformation[2][1] - 1) < tiny
+    assert np.abs(rigid_transformation[2][2]) < tiny
+    assert np.abs(rigid_transformation[2][3] - 10) < tiny
+    assert np.abs(rigid_transformation[3][0]) < tiny
+    assert np.abs(rigid_transformation[3][1]) < tiny
+    assert np.abs(rigid_transformation[3][2]) < tiny
+    assert np.abs(rigid_transformation[3][3] - 1) < tiny
+
+
+# test_construct_rigid_transformation()
+
+
+
 
 def test_construct_rigid_transformation():
     tiny = 0.0001

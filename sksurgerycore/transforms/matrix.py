@@ -81,7 +81,6 @@ def construct_rz_matrix(angle, is_in_radians=True):
 
     return rot_z
 
-# pylint: disable=too-many-branches
 def construct_rotm_from_euler(
         angle_a, angle_b, angle_c,
         sequence, is_in_radians=True):
@@ -103,88 +102,33 @@ def construct_rotm_from_euler(
         bool
     :returns: rot_m -- the 3x3 rotation matrix, numpy array
     :raises: TypeError if angles are not float or of difference types
+    :raises: ValueError if sequence is not 3 letters long or contains letters
+        other than x, y or z
     """
     if not (isinstance(angle_b, type(angle_a)) and
                 isinstance(angle_c, type(angle_a))):
         raise TypeError("All input angles should be same type")
 
-    while True:
-        if sequence == 'zxz':
-            rot_a = construct_rz_matrix(angle_a, is_in_radians)
-            rot_b = construct_rx_matrix(angle_b, is_in_radians)
-            rot_c = construct_rz_matrix(angle_c, is_in_radians)
-            break
-
-        if sequence == 'zyz':
-            rot_a = construct_rz_matrix(angle_a, is_in_radians)
-            rot_b = construct_ry_matrix(angle_b, is_in_radians)
-            rot_c = construct_rz_matrix(angle_c, is_in_radians)
-            break
-
-        if sequence == 'zxy':
-            rot_a = construct_rz_matrix(angle_a, is_in_radians)
-            rot_b = construct_rx_matrix(angle_b, is_in_radians)
-            rot_c = construct_ry_matrix(angle_c, is_in_radians)
-            break
-
-        if sequence == 'zyx':
-            rot_a = construct_rz_matrix(angle_a, is_in_radians)
-            rot_b = construct_ry_matrix(angle_b, is_in_radians)
-            rot_c = construct_rx_matrix(angle_c, is_in_radians)
-            break
-
-        if sequence == 'xyx':
-            rot_a = construct_rx_matrix(angle_a, is_in_radians)
-            rot_b = construct_ry_matrix(angle_b, is_in_radians)
-            rot_c = construct_rx_matrix(angle_c, is_in_radians)
-            break
-
-        if sequence == 'xzx':
-            rot_a = construct_rx_matrix(angle_a, is_in_radians)
-            rot_b = construct_rz_matrix(angle_b, is_in_radians)
-            rot_c = construct_rx_matrix(angle_c, is_in_radians)
-            break
-
-        if sequence == 'xyz':
-            rot_a = construct_rx_matrix(angle_a, is_in_radians)
-            rot_b = construct_ry_matrix(angle_b, is_in_radians)
-            rot_c = construct_rz_matrix(angle_c, is_in_radians)
-            break
-
-        if sequence == 'xzy':
-            rot_a = construct_rx_matrix(angle_a, is_in_radians)
-            rot_b = construct_rz_matrix(angle_b, is_in_radians)
-            rot_c = construct_ry_matrix(angle_c, is_in_radians)
-            break
-
-        if sequence == 'yxy':
-            rot_a = construct_ry_matrix(angle_a, is_in_radians)
-            rot_b = construct_rx_matrix(angle_b, is_in_radians)
-            rot_c = construct_ry_matrix(angle_c, is_in_radians)
-            break
-
-        if sequence == 'yzy':
-            rot_a = construct_ry_matrix(angle_a, is_in_radians)
-            rot_b = construct_rz_matrix(angle_b, is_in_radians)
-            rot_c = construct_ry_matrix(angle_c, is_in_radians)
-            break
-
-        if sequence == 'yxz':
-            rot_a = construct_ry_matrix(angle_a, is_in_radians)
-            rot_b = construct_rx_matrix(angle_b, is_in_radians)
-            rot_c = construct_rz_matrix(angle_c, is_in_radians)
-            break
-
-        if sequence == 'yzx':
-            rot_a = construct_ry_matrix(angle_a, is_in_radians)
-            rot_b = construct_rz_matrix(angle_b, is_in_radians)
-            rot_c = construct_rx_matrix(angle_c, is_in_radians)
-            break
-
+    rot_matrices = []
+    angles = [angle_a, angle_b, angle_c]
+    if len(sequence) == 3:
+        for index, letter in enumerate(sequence):
+            if letter not in 'xyz':
+                raise ValueError(sequence + " is not a valid sequence.")
+            if letter == 'x':
+                rot_matrices.append(construct_rx_matrix(angles[index],
+                        is_in_radians))
+            if letter == 'y':
+                rot_matrices.append(construct_ry_matrix(angles[index],
+                        is_in_radians))
+            if letter == 'z':
+                rot_matrices.append(construct_rz_matrix(angles[index],
+                        is_in_radians))
+    else:
         raise ValueError(sequence + " is not a valid sequence.")
 
-    rot_tmp = np.matmul(rot_a, rot_b)
-    rot_m = np.matmul(rot_tmp, rot_c)
+    rot_tmp = np.matmul(rot_matrices[0], rot_matrices[1])
+    rot_m = np.matmul(rot_tmp, rot_matrices[2])
 
     return rot_m
 
