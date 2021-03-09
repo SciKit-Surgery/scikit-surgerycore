@@ -110,8 +110,8 @@ def test_construct_rx_matrix():
     assert np.abs(new_point[2]) < tiny
 
     #check for bad types
-    with pytest.raises(ValueError):
-        mat.construct_ry_matrix(bool(10.), 1)
+    with pytest.raises(TypeError):
+        mat.construct_rx_matrix(bool(10.), 1)
 
 def test_construct_ry_matrix():
     tiny = 0.0001
@@ -157,7 +157,7 @@ def test_construct_ry_matrix():
     assert np.abs(new_point[2]) < tiny
     
     #check for bad types
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         mat.construct_ry_matrix(int(10.), 1)
 
 
@@ -205,7 +205,7 @@ def test_construct_rz_matrix():
     assert np.abs(new_point[2]) < tiny
     
     #check for bad types
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         mat.construct_rz_matrix(100, 1)
 
 def check_construct_rotm_from_euler(
@@ -324,20 +324,20 @@ def test_construct_rotm_from_euler(recwarn):
     assert np.abs(new_point[1]) <= tiny
     assert np.abs(new_point[2] - 1) < tiny
 
-    #we want to avoid an np.tests to check parameter values
-    with pytest.raises(ValueError):
+    #tests to check parameter types 
+    with pytest.raises(TypeError):
         new_point = mat.construct_rotm_from_euler(
             np.float32(0), np.float64(-np.pi/4), -np.pi/4,
             'xyz', 1)
 
     #this fails because parameter is implicitly defined as int
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         new_point = mat.construct_rotm_from_euler(
             0., -np.pi/4, 0,
             'xyz', 1)
 
     #this fails because parameters are implicitly defined as int
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         new_point = mat.construct_rotm_from_euler(
             -90, 90, 0,
             'xyz', 1)

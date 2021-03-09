@@ -14,10 +14,10 @@ def construct_rx_matrix(angle, is_in_radians=True):
     :param angle: the angle to rotate, float
     :param is_in_radians: if angle is in radians, default being True, bool
     :returns: rot_x -- the 3x3 rotation matrix constructed, numpy array
-    :raises: ValueError if angle is not float
+    :raises: TypeError if angle is not float
     """
     if not isinstance(angle, (np.float32, np.float64, float)):
-        raise ValueError("Input angles should be float or double not, ",
+        raise TypeError("Angle should be float or double not, ",
                             type(angle))
     if not is_in_radians:
         angle = np.pi * angle / 180
@@ -37,10 +37,10 @@ def construct_ry_matrix(angle, is_in_radians=True):
     :param angle: the angle to rotate, float
     :param is_in_radians: if angle is in radians, default being True, bool
     :returns: rot_y -- the 3x3 rotation matrix constructed, numpy array
-    :raises: ValueError if angle is not float
+    :raises: TypeError if angle is not float
     """
     if not isinstance(angle, (np.float32, np.float64, float)):
-        raise ValueError("Input angles should be float or double not, ",
+        raise TypeError("Angle should be float or double not, ",
                             type(angle))
     if not is_in_radians:
         angle = np.pi * angle / 180
@@ -60,10 +60,10 @@ def construct_rz_matrix(angle, is_in_radians=True):
     :param angle: the angle to rotate, float
     :param is_in_radians: if angle is in radians, default being True, bool
     :returns: rot_z -- the 3x3 rotation matrix constructed, numpy array
-    :raises: ValueError if angle is not float
+    :raises: TypeError if angle is not float
     """
     if not isinstance(angle, (np.float32, np.float64, float)):
-        raise ValueError("Input angles should be float or double not, ",
+        raise TypeError("Angle should be float or double not, ",
                             type(angle))
     if not is_in_radians:
         angle = np.pi * angle / 180
@@ -96,13 +96,13 @@ def construct_rotm_from_euler(
     :param is_in_radians: if the angles are in radians, default being True,
         bool
     :returns: rot_m -- the 3x3 rotation matrix, numpy array
-    :raises: ValueError if angles are not float or of difference types
+    :raises: TypeError if angles are not float or of difference types
     """
     if not (isinstance(angle_b, type(angle_a)) and
                 isinstance(angle_c, type(angle_a))):
-        raise ValueError("All input angles should be same type")
+        raise TypeError("All input angles should be same type")
     if not isinstance(angle_a, (np.float32, np.float64, float)):
-        raise ValueError("Input angles should be float or double not, ",
+        raise TypeError("Input angles should be float or double not, ",
                             type(angle_a))
 
     while True:
