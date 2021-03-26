@@ -59,7 +59,7 @@ class RollingMean():
     """
     Performs rolling average calculations on numpy arrays
     """
-    def __init__(self, vector_size=3, buffer_size=1):
+    def __init__(self, vector_size=3, buffer_size=1, datatype = float):
         """
         Performs rolling average calculations on numpy arrays
 
@@ -70,8 +70,12 @@ class RollingMean():
         if buffer_size < 1:
             raise ValueError("Buffer size must be a least 1")
 
-        self._buffer = np.empty((buffer_size, vector_size), dtype=np.float64)
-        self._buffer[:] = np.NaN
+        self._buffer = np.empty((buffer_size, vector_size), dtype=datatype)
+        if datatype in [float, np.float32, np.float64]:
+            self._buffer[:] = np.NaN
+        else:
+            self._buffer[:] = -1
+            
         self._vector_size = vector_size
 
     def pop(self, vector):

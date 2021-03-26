@@ -1,11 +1,48 @@
 """An abstract base class for trackers used in sksurgery"""
 from abc import ABCMeta, abstractmethod
+from sksurgerycore.algorithms.tracking_smoothing import RollingMean, \
+                RollingMeanRotation
 
-@abstractmethod
 class SKSBaseTracker(metaclass=ABCMeta):
     """Abstract base class for trackers using in sksurgery.
     Defines methods that all trackers should implement.
     """
+
+    def __init__(self, configuration = None, tracked_objects = None):
+        buffer_size = 1
+        if configuration is not None:
+            buffer_size = configuration.get('smoothing buffer', 1)
+
+        #actually, we need a buffer for each rigid body. What
+        #do we do for things like the aruco, where we can have 
+        #dynamically occuring rigid bodies?
+        self.port_handles = []
+        self.time_stamps = []
+        self.frame_numbers = []
+        self.qualities = []
+        self.rvec_rolling_means = []
+        self.tvec_rolling_means = []
+       
+        if tracked_objects is not None:
+            for tracked_object in tracked_objects:
+                self.port_handles.append(tracked_object.name);
+                self.time_stamps.append(RollingMean(1, buffer_size, datatype = float))
+                self.frame_numbers.append(RollingMean(1, buffer_size, datatype = int))
+                self.qualities.append(RollingMean(1, buffer_size, datatype = float))
+                self.rvec_rolling_means.append(RollingMeanRotation(buffer_size))
+                self.tvec_rolling_means.append(RollingMean(3, buffer_size))
+        else:
+            self.rvec_rolling_means.append(RollingMeanRotation(buffer_size))
+            self.tvec_rolling_means.append(RollingMean(3, buffer_size))
+
+
+    
+    def smooth_tracking(self, port_handles, tracking, etc):
+       """
+       Can be called by derived classes to smooth the tracking
+       """
+       return
+
     @abstractmethod
     def close(self):
         """Closes the connection to the tracker"""
