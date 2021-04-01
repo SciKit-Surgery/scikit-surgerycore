@@ -75,7 +75,7 @@ class RollingMean():
             self._buffer[:] = np.NaN
         else:
             self._buffer[:] = -1
-            
+
         self._vector_size = vector_size
 
     def pop(self, vector):
@@ -92,7 +92,7 @@ class RollingMean():
         Returns the mean vector across the buffer, ignoring  NaNs
         """
         with warnings.catch_warnings():
-            #nanmean raises a warning if all values are non,
+            #nanmean raises a warning if all values are nan,
             #we're not concerned with that, as long as it returns nan
             warnings.simplefilter("ignore", category=RuntimeWarning)
             return np.nanmean(self._buffer, 0)
@@ -110,15 +110,19 @@ class RollingMeanRotation(RollingMean):
         """
         super().__init__(4, buffer_size)
 
-    def pop(self, rvector):
+    def pop(self, rvector, is_quaternion = False):
         """
         Adds a new vector to the buffer, removing the oldest one.
 
         :params vector: A new rotation vector to place at the start of the
             buffer.
+        :params is_quaternion: if true treat the rvector as a quaternion
         """
-
-        quaternion = _rvec_to_quaternion(rvector)
+        quaternion = None
+        if is_quaternion:
+            quaternion = rvector
+        else:
+            quaternion = _rvec_to_quaternion(rvector)
         super().pop(quaternion)
 
     def getmean(self):
