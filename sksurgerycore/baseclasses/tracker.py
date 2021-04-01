@@ -41,6 +41,7 @@ class SKSBaseTracker(metaclass=ABCMeta):
     def get_smooth_frame(self, port_handles):
         """
         Called by derived classes to return smoothed data
+
         :param port_handles: a list of port handles to get data for
 
         :returns:
@@ -99,12 +100,13 @@ class SKSBaseTracker(metaclass=ABCMeta):
                     rot_is_quaternion = False):
         """
         Called by derived classes to add data to the smoothing buffers
+
         :param port_handles: a list of port handles
         :param time_stamps: list of timestamps (cpu clock), one per tool
         :param frame_numbers: list of framenumbers (tracker clock) one per tool
         :param tracking_rot: list of tracking rotations
         :param tracking_trans: list of tracking translations
-        :param quality : list the tracking quality, one per tool.
+        :param quality: list the tracking quality, one per tool.
         :param rot_is_quaternion: True if rotation is a quaternion.
         """
         for your_index, port_handle in enumerate(port_handles):
