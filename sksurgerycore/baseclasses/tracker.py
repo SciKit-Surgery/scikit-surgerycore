@@ -67,11 +67,11 @@ class SKSBaseTracker(metaclass=ABCMeta):
             try:
                 my_index = self.port_handles.index(port_handle)
                 smth_handles.append(port_handle)
-                smth_times.append(self.time_stamps[my_index].getmean())
-                smth_frame_nos.append(self.frame_numbers[my_index].getmean())
+                smth_times.append(self.time_stamps[my_index].getmean()[0])
+                smth_frame_nos.append(self.frame_numbers[my_index].getmean()[0])
                 mean_quat = self.rvec_rolling_means[my_index].getmean()
                 mean_tvec = self.tvec_rolling_means[my_index].getmean()
-                smth_qual.append(self.qualities[my_index].getmean())
+                smth_qual.append(self.qualities[my_index].getmean()[0])
 
                 if self.use_quaternions:
                     output_matrix = np.full((7,1), np.nan)
