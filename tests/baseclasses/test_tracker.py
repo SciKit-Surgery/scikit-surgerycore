@@ -263,8 +263,8 @@ def test_tracker_quaternions():
     time_stamps = [1.6, 1.5]
     frame_numbers = [2, 2]
     tracking_rot = [_rvec_to_quaternion([0.0, 0.9, 0.0]),
-                    _rvec_to_quaternion([1.0, 0.0, 0.0])]
-    tracking_trans = [[50.0, -100.0, 70.0], [0.0, 100.0, 200.0]]
+                    _rvec_to_quaternion([0.6, 0.0, 0.0])]
+    tracking_trans = [[50.0, -100.0, 70.0], [0.0, 100.0, 100.0]]
     quality = [1.0, 0.5]
     rot_is_quaternion = True
 
@@ -290,3 +290,23 @@ def test_tracker_quaternions():
     transform[0:3,0] = [50.0, -100.0, 70.0]
     assert np.allclose(tracking[test_index], transform)
     assert tracking_quality[test_index] == 1.0
+    
+    port_handles = ["another body", "test rb"]
+
+    port_handles_out, time_stamps, frame_numbers, tracking, tracking_quality = \
+                     another_good_tracker.get_smooth_frame(port_handles)
+
+    assert len(port_handles_out) == 2
+
+    test_index = port_handles_out.index("test rb")
+    #this is wrong
+    assert np.allclose(time_stamps[test_index],np.array([1.4]))
+    assert frame_numbers[test_index] == 2
+    #not sure this next bit is right, seems odd that the average of a
+    #zero and non zero quaternion is just the non zero quaternion?
+    rotation = _rvec_to_quaternion([0.6, 0.00, 0.0])
+    transform[3:7,0] = rotation
+    transform[0:3,0] = [3.333333, 83.33333, 166.666667]
+    assert np.allclose(tracking[test_index], transform)
+    assert tracking_quality[test_index] == 0.5
+    
