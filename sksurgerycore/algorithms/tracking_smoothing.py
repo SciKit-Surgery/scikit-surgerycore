@@ -17,11 +17,17 @@ def _rvec_to_quaternion(rvec):
     :return: The quaternion (1x4)
     """
 
-    rvec_rs = np.reshape(rvec, (1, 3))
-    angle = np.linalg.norm(rvec_rs)
 
-    if angle <= 0.0:
-        return np.zeros(4)
+    rvec_rs = np.reshape(rvec, (1, 3))
+
+    if np.isnan(rvec_rs).any():
+        return np.full(4, np.NaN)
+
+    angle = np.linalg.norm(rvec_rs)
+    assert angle >= 0.0
+
+    if angle == 0.0:
+        return np.array([1.0, 0.0, 0.0, 0.0], dtype = float)
 
     rvec_norm = rvec_rs / angle
 

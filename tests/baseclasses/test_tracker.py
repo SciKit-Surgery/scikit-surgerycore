@@ -283,9 +283,7 @@ def test_tracker_quaternions():
     test_index = port_handles_out.index("another body")
     assert time_stamps[test_index] == 1.4
     assert frame_numbers[test_index] == 2
-    #not sure this next bit is right, seems odd that the average of a
-    #zero and non zero quaternion is just the non zero quaternion?
-    rotation = _rvec_to_quaternion([0.0, 0.90, 0.0])
+    rotation = _rvec_to_quaternion([0.0, 0.45, 0.0])
     transform[3:7,0] = rotation
     transform[0:3,0] = [50.0, -100.0, 70.0]
     assert np.allclose(tracking[test_index], transform)

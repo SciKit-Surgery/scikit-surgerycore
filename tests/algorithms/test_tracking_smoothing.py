@@ -156,8 +156,7 @@ def test_rolling_rot_four_values():
     rvec2 = [0.0, 0.0, -math.pi/2.0]
     rvec3 = [0.0, math.pi/3.0, 0.0]
 
-    expected_answer0 = [math.cos(math.pi/4.0), 0.0, 0.0,
-                        -1.0 * math.sin(math.pi/4.0)]
+    expected_answer0 = reg._rvec_to_quaternion([0.0, 0.0, -math.pi/4.0]) # pylint: disable=protected-access
     #the next ones more of a regression test, I haven't independently
     #calculated this answer.
     expected_answer1 = [-0.87602709, 0.0, -0.27843404, 0.39376519]
