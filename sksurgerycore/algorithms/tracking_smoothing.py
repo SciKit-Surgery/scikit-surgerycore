@@ -1,3 +1,5 @@
+#  -*- coding: utf-8 -*-
+
 """ Classes and functions for smoothing tracking data """
 
 import warnings
@@ -15,11 +17,17 @@ def _rvec_to_quaternion(rvec):
     :return: The quaternion (1x4)
     """
 
-    rvec_rs = np.reshape(rvec, (1, 3))
-    angle = np.linalg.norm(rvec_rs)
 
-    if angle <= 0.0:
-        return np.zeros(4)
+    rvec_rs = np.reshape(rvec, (1, 3))
+
+    if np.isnan(rvec_rs).any():
+        return np.full(4, np.NaN)
+
+    angle = np.linalg.norm(rvec_rs)
+    assert angle >= 0.0
+
+    if angle == 0.0:
+        return np.array([1.0, 0.0, 0.0, 0.0], dtype = float)
 
     rvec_norm = rvec_rs / angle
 
@@ -59,7 +67,7 @@ class RollingMean():
     """
     Performs rolling average calculations on numpy arrays
     """
-    def __init__(self, vector_size=3, buffer_size=1):
+    def __init__(self, vector_size=3, buffer_size=1, datatype = float):
         """
         Performs rolling average calculations on numpy arrays
 
@@ -70,8 +78,12 @@ class RollingMean():
         if buffer_size < 1:
             raise ValueError("Buffer size must be a least 1")
 
-        self._buffer = np.empty((buffer_size, vector_size), dtype=np.float64)
-        self._buffer[:] = np.NaN
+        self._buffer = np.empty((buffer_size, vector_size), dtype=datatype)
+        if datatype in [float, np.float32, np.float64]:
+            self._buffer[:] = np.NaN
+        else:
+            self._buffer[:] = -1
+
         self._vector_size = vector_size
 
     def pop(self, vector):
@@ -88,7 +100,7 @@ class RollingMean():
         Returns the mean vector across the buffer, ignoring  NaNs
         """
         with warnings.catch_warnings():
-            #nanmean raises a warning if all values are non,
+            #nanmean raises a warning if all values are nan,
             #we're not concerned with that, as long as it returns nan
             warnings.simplefilter("ignore", category=RuntimeWarning)
             return np.nanmean(self._buffer, 0)
@@ -106,15 +118,19 @@ class RollingMeanRotation(RollingMean):
         """
         super().__init__(4, buffer_size)
 
-    def pop(self, rvector):
+    def pop(self, rvector, is_quaternion = False):
         """
         Adds a new vector to the buffer, removing the oldest one.
 
         :params vector: A new rotation vector to place at the start of the
             buffer.
+        :params is_quaternion: if true treat the rvector as a quaternion
         """
-
-        quaternion = _rvec_to_quaternion(rvector)
+        quaternion = None
+        if is_quaternion:
+            quaternion = rvector
+        else:
+            quaternion = _rvec_to_quaternion(rvector)
         super().pop(quaternion)
 
     def getmean(self):

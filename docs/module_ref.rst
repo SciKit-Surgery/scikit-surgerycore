@@ -33,7 +33,7 @@ Procrustes Registration
 
 Tracker Data Smoothing
 ----------------------
-.. automodule:: sksurgerycore.algorithms.tracker_smoothing
+.. automodule:: sksurgerycore.algorithms.tracking_smoothing
     :members:
     :undoc-members:
     :show-inheritance:
