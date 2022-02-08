@@ -115,8 +115,8 @@ class TransformManager:
         added transform, and its own inverse.
         """
         before, after = self.is_valid_name(name)
-        return after in self.repository.keys() \
-            and before in self.repository[after].keys()
+        return after in self.repository \
+            and before in self.repository[after]
 
     def count(self):
         """
