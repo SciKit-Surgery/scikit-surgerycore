@@ -51,7 +51,7 @@ setup(
     ),
 
     install_requires=[
-        'numpy>=1.11',
+        'numpy',
     ],
 
 )
