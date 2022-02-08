@@ -28,10 +28,10 @@ def load_mps(file_name):
     ids = np.zeros(len(tmp.keys()), dtype=int)
     result = np.zeros((len(tmp.keys()), 3))
     counter = 0
-    for k in tmp:
-        ids[counter] = k
-        result[counter][0] = tmp[k][0]
-        result[counter][1] = tmp[k][1]
-        result[counter][2] = tmp[k][2]
+    for point_id, point_coord in tmp.items():
+        print(point_id)
+        print (point_coord)
+        ids[counter] = point_id
+        result[counter] = point_coord
         counter = counter + 1
     return ids, result
