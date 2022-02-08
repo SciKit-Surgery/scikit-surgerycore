@@ -2,6 +2,7 @@ scikit-surgerycore
 ===============================
 
 .. image:: https://github.com/SciKit-Surgery/scikit-surgerycore/raw/66-movetosk/skscore_logo.png
+i  :height: 200px
    :target: https://github.com/SciKit-Surgery/scikit-surgerycore
    :alt: Logo
 
