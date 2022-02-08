@@ -39,7 +39,7 @@ class ConfigurationManager:
         if write_on_setter:
             f.validate_is_writable_file(abs_file)
 
-        with open(abs_file, "r") as read_file:
+        with open(abs_file, "r", encoding='utf-8') as read_file:
             self.config_data = json.load(read_file)
 
         self.file_name = abs_file
@@ -91,5 +91,5 @@ class ConfigurationManager:
         """ Writes the internal data back to the filename
         provided during object construction.
         """
-        with open(self.file_name, "w") as write_file:
+        with open(self.file_name, "w", encoding = 'utf-8') as write_file:
             json.dump(self.config_data, write_file)

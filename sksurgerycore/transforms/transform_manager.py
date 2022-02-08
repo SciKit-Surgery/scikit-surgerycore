@@ -115,8 +115,8 @@ class TransformManager:
         added transform, and its own inverse.
         """
         before, after = self.is_valid_name(name)
-        return after in self.repository.keys() \
-            and before in self.repository[after].keys()
+        return after in self.repository \
+            and before in self.repository[after]
 
     def count(self):
         """
@@ -125,8 +125,8 @@ class TransformManager:
         so this method will count those matrices as well.
         """
         count = 0
-        for i in self.repository:
-            count += len(self.repository[i])
+        for _cs_item, transforms_item in self.repository.items():
+            count += len(transforms_item)
         return count
 
     def add(self, name, transform):
@@ -140,9 +140,9 @@ class TransformManager:
         """
         before, after = self.is_valid_name(name)
         self.is_valid_transform(transform)
-        if after not in self.repository.keys():
+        if after not in self.repository:
             self.repository[after] = {}
-        if before not in self.repository.keys():
+        if before not in self.repository:
             self.repository[before] = {}
         self.repository[before][after] = transform
         self.repository[after][before] = np.linalg.inv(transform)
@@ -186,8 +186,8 @@ class TransformManager:
         """
         before, after = self.is_valid_name(name)
 
-        if before not in self.repository.keys() \
-                or after not in self.repository.keys():
+        if before not in self.repository \
+                or after not in self.repository:
             raise ValueError("name:" + name + ", could not be found.")
 
         result = self.__get_direct(name)

@@ -1,30 +1,39 @@
 scikit-surgerycore
 ===============================
 
-.. image:: https://github.com/UCL/scikit-surgerycore /raw/master/weiss_logo.png
-   :target: https://github.com/UCL/scikit-surgerycore
+.. image:: https://github.com/SciKit-Surgery/scikit-surgerycore/raw/master/skscore_logo.png
+   :height: 200px
+   :target: https://github.com/SciKit-Surgery/scikit-surgerycore
    :alt: Logo
 
 | 
 
-.. image:: https://github.com/UCL/scikit-surgerycore/workflows/.github/workflows/ci.yml/badge.svg
-   :target: https://github.com/UCL/scikit-surgerycore/actions
+.. image:: https://github.com/SciKit-Surgery/scikit-surgerycore/workflows/.github/workflows/ci.yml/badge.svg
+   :target: https://github.com/SciKit-Surgery/scikit-surgerycore/actions
    :alt: GitHub Actions CI status
 
-.. image:: https://coveralls.io/repos/github/UCL/scikit-surgerycore/badge.svg?branch=master&service=github
-    :target: https://coveralls.io/github/UCL/scikit-surgerycore?branch=master
+.. image:: https://coveralls.io/repos/github/SciKit-Surgery/scikit-surgerycore/badge.svg?branch=master&service=github
+    :target: https://coveralls.io/github/SciKit-Surgery/scikit-surgerycore?branch=master
     :alt: Test coverage
 
 .. image:: https://readthedocs.org/projects/scikit-surgerycore/badge/?version=latest
     :target: http://scikit-surgerycore.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
+.. image:: https://img.shields.io/badge/Cite-SciKit--Surgery-informational
+   :target: https://doi.org/10.1007/s11548-020-02180-5
+   :alt: The SciKit-Surgery paper
+
+.. image:: https://img.shields.io/twitter/follow/scikit_surgery?style=social
+   :target: https://twitter.com/scikit_surgery?ref_src=twsrc%5Etfw
+   :alt: Follow scikit_surgery on twitter
+
 Description
 -----------
 
-scikit-surgerycore implements algorithms and tools that are common to all scikit-surgery packages.
+SciKit-SurgeryCore implements algorithms and tools that are common to all SciKit-Surgery packages.
 
-scikit-surgerycore is part of the `SNAPPY`_ software project, developed at the `Wellcome EPSRC Centre for Interventional and Surgical Sciences`_, part of `University College London (UCL)`_.
+SciKit-SurgeryCore is part of the `SciKit-Surgery`_ software project, developed at the `Wellcome EPSRC Centre for Interventional and Surgical Sciences`_, part of `University College London (UCL)`_.
 
 .. features-start
 
@@ -70,7 +79,7 @@ You can clone the repository using the following command:
 
 ::
 
-    git clone https://github.com/UCL/scikit-surgerycore.git
+    git clone https://github.com/SciKit-Surgery/scikit-surgerycore.git
 
 
 Running the tests
@@ -110,12 +119,12 @@ Supported by `Wellcome`_ and `EPSRC`_.
 
 
 .. _`Wellcome EPSRC Centre for Interventional and Surgical Sciences`: http://www.ucl.ac.uk/weiss
-.. _`source code repository`: https://github.com/UCL/scikit-surgerycore
+.. _`source code repository`: https://github.com/SciKit-Surgery/scikit-surgerycore
 .. _`Documentation`: https://scikit-surgerycore.readthedocs.io
-.. _`SNAPPY`: https://github.com/UCL/scikit-surgery/wiki
+.. _`SciKit-Surgery`: https://github.com/SciKit-Surgery/
 .. _`University College London (UCL)`: http://www.ucl.ac.uk/
 .. _`Wellcome`: https://wellcome.ac.uk/
 .. _`EPSRC`: https://www.epsrc.ac.uk/
-.. _`contributing guidelines`: https://github.com/UCL/scikit-surgerycore/blob/master/CONTRIBUTING.rst
-.. _`license file`: https://github.com/UCL/scikit-surgerycore/blob/master/LICENSE
+.. _`contributing guidelines`: https://github.com/SciKit-Surgery/scikit-surgerycore/blob/master/CONTRIBUTING.rst
+.. _`license file`: https://github.com/SciKit-Surgery/scikit-surgerycore/blob/master/LICENSE
 .. _`Arun et al., 1987`: http://doi.ieeecomputersociety.org/10.1109/TPAMI.1987.4767965
