@@ -208,10 +208,10 @@ def test_tracker_quaternions():
     test_index = port_handles_out.index("test rb")
     assert time_stamps[test_index] == 1.3
     assert frame_numbers[test_index] == 0
-    transform = np.full((7,1), np.nan)
+    transform = np.full((1,7), np.nan)
     rotation = _rvec_to_quaternion([1.0, 0.0, 0.0])
-    transform[0:4,0] = rotation
-    transform[4:7,0] = [0.0, 100.0, 200.0]
+    transform[0,0:4] = rotation
+    transform[0,4:7] = [0.0, 100.0, 200.0]
     assert np.allclose(tracking[test_index], transform)
     assert tracking_quality[test_index] == 0.5
 
@@ -244,8 +244,8 @@ def test_tracker_quaternions():
     assert frame_numbers[test_index] == 1
 
     rotation = _rvec_to_quaternion([0.6, 0.0, 0.0])
-    transform[0:4,0] = rotation
-    transform[4:7,0] = [5.0, 75.0, 200.0]
+    transform[0,0:4] = rotation
+    transform[0,4:7] = [5.0, 75.0, 200.0]
     assert np.allclose(tracking[test_index], transform)
     assert tracking_quality[test_index] == 0.65
 
@@ -254,8 +254,8 @@ def test_tracker_quaternions():
     assert frame_numbers[test_index] == 0
 
     rotation = _rvec_to_quaternion([0.0, 0.0, 0.0])
-    transform[0:4,0] = rotation
-    transform[4:7,0] = [50.0, -100.0, 70.0]
+    transform[0,0:4] = rotation
+    transform[0,4:7] = [50.0, -100.0, 70.0]
     assert np.allclose(tracking[test_index], transform)
     assert tracking_quality[test_index] == 1.0
 
@@ -284,8 +284,8 @@ def test_tracker_quaternions():
     assert time_stamps[test_index] == 1.4
     assert frame_numbers[test_index] == 2
     rotation = _rvec_to_quaternion([0.0, 0.45, 0.0])
-    transform[4:7,0] = [50.0, -100.0, 70.0]
-    transform[0:4,0] = rotation
+    transform[0,4:7] = [50.0, -100.0, 70.0]
+    transform[0,0:4] = rotation
     assert np.allclose(tracking[test_index], transform)
     assert tracking_quality[test_index] == 1.0
 
@@ -300,7 +300,7 @@ def test_tracker_quaternions():
     assert math.isclose(time_stamps[test_index],1.4)
     assert frame_numbers[test_index] == 2
     rotation = _rvec_to_quaternion([0.6, 0.00, 0.0])
-    transform[0:4,0] = rotation
-    transform[4:7,0] = [3.333333, 83.33333, 166.666667]
+    transform[0,0:4] = rotation
+    transform[0,4:7] = [3.333333, 83.33333, 166.666667]
     assert np.allclose(tracking[test_index], transform)
     assert tracking_quality[test_index] == 0.6
