@@ -118,7 +118,7 @@ class RollingMeanRotation(RollingMean):
         """
         super().__init__(4, buffer_size)
 
-    def pop(self, rvector, is_quaternion = False):
+    def pop(self, vector, is_quaternion = False):
         """
         Adds a new vector to the buffer, removing the oldest one.
 
@@ -128,9 +128,9 @@ class RollingMeanRotation(RollingMean):
         """
         quaternion = None
         if is_quaternion:
-            quaternion = rvector
+            quaternion = vector
         else:
-            quaternion = _rvec_to_quaternion(rvector)
+            quaternion = _rvec_to_quaternion(vector)
         super().pop(quaternion)
 
     def getmean(self):
