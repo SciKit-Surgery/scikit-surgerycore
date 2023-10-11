@@ -54,7 +54,8 @@ class SKSBaseTracker(metaclass=ABCMeta):
 
             tracking : list of 4x4 tracking matrices, rotation and position,
             or if use_quaternions is true, a list of tracking quaternions,
-            column 0-2 is x,y,z column 3-6 is the rotation as a quaternion.
+            column 0-3 is the rotation as a quaternion (qw, qx, qy, qz),
+            column 4-6 is the translation (x,y,z).
 
             tracking_quality : list the tracking quality, one per tool.
         """
@@ -74,9 +75,9 @@ class SKSBaseTracker(metaclass=ABCMeta):
                 smth_qual.append(self.qualities[my_index].getmean()[0])
 
                 if self.use_quaternions:
-                    output_matrix = np.full((7,1), np.nan)
-                    output_matrix[0:3,0] = mean_tvec
-                    output_matrix[3:7,0] = mean_quat
+                    output_matrix = np.full((1,7), np.nan)
+                    output_matrix[0,0:4] = mean_quat
+                    output_matrix[0,4:7] = mean_tvec
                     smth_tracking.append(output_matrix)
 
                 else:
@@ -155,7 +156,8 @@ class SKSBaseTracker(metaclass=ABCMeta):
 
             tracking : list of 4x4 tracking matrices, rotation and position,
             or if use_quaternions is true, a list of tracking quaternions,
-            column 0-2 is x,y,z column 3-6 is the rotation as a quaternion.
+            column 0-3 is the rotation as a quaternion (qw, qx, qy, qz),
+            column 4-6 is the translation (x,y,z).
 
             tracking_quality : list the tracking quality, one per tool.
             """
