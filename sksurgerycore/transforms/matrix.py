@@ -134,7 +134,8 @@ def construct_rotm_from_euler(
 
 
 def construct_rigid_transformation(rot_m, trans_v):
-    """Construct a 4x4 rigid-body transformation from a 3x3 rotation matrix and
+    """
+    Construct a 4x4 rigid-body transformation from a 3x3 rotation matrix and
     a 3x1 vector as translation
 
     :param rot_m: 3x3 rotation matrix, numpy array
@@ -148,8 +149,14 @@ def construct_rigid_transformation(rot_m, trans_v):
         for j in range(3):
             rigid_transformation[i][j] = rot_m[i][j]
 
-    rigid_transformation[0][3] = trans_v[0]
-    rigid_transformation[1][3] = trans_v[1]
-    rigid_transformation[2][3] = trans_v[2]
+    # While the specification is [3x1] which implies ndarray, the users
+    # may also pass in array (3,), ndarray (3, 1) or ndarray (1, 3).
+    # So, this will flatten all of them to the same array-like shape.
+    # In keeping with the rotation matrix, no range checking.
+    t_v = np.ravel(trans_v)
+
+    rigid_transformation[0][3] = t_v[0]
+    rigid_transformation[1][3] = t_v[1]
+    rigid_transformation[2][3] = t_v[2]
 
     return rigid_transformation
