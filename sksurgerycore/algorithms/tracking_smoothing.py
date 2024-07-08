@@ -80,7 +80,7 @@ class RollingMean():
 
         self._buffer = np.empty((buffer_size, vector_size), dtype=datatype)
         if datatype in [float, np.float32, np.float64]:
-            self._buffer[:] = np.NaN
+            self._buffer[:] = np.nan
         else:
             self._buffer[:] = -1
 
@@ -146,4 +146,4 @@ class RollingMeanRotation(RollingMean):
         if no_nan_buffer.shape[0] > 0:
             return average_quaternions(np.reshape(no_nan_buffer, (samples, 4)))
 
-        return [np.NaN, np.NaN, np.NaN, np.NaN]
+        return [np.nan, np.nan, np.nan, np.nan]
