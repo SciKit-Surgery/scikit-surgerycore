@@ -21,7 +21,7 @@ def _rvec_to_quaternion(rvec):
     rvec_rs = np.reshape(rvec, (1, 3))
 
     if np.isnan(rvec_rs).any():
-        return np.full(4, np.NaN)
+        return np.full(4, np.nan)
 
     angle = np.linalg.norm(rvec_rs)
     assert angle >= 0.0
@@ -31,7 +31,7 @@ def _rvec_to_quaternion(rvec):
 
     rvec_norm = rvec_rs / angle
 
-    quaternion = np.full(4, np.NaN)
+    quaternion = np.full(4, np.nan)
     quaternion[0] = math.cos(angle/2)
     quaternion[1] = rvec_norm[0][0] * math.sin(angle/2)
     quaternion[2] = rvec_norm[0][1] * math.sin(angle/2)
@@ -80,7 +80,7 @@ class RollingMean():
 
         self._buffer = np.empty((buffer_size, vector_size), dtype=datatype)
         if datatype in [float, np.float32, np.float64]:
-            self._buffer[:] = np.NaN
+            self._buffer[:] = np.nan
         else:
             self._buffer[:] = -1
 
@@ -97,7 +97,7 @@ class RollingMean():
 
     def getmean(self):
         """
-        Returns the mean vector across the buffer, ignoring  NaNs
+        Returns the mean vector across the buffer, ignoring  nans
         """
         with warnings.catch_warnings():
             #nanmean raises a warning if all values are nan,
@@ -135,7 +135,7 @@ class RollingMeanRotation(RollingMean):
 
     def getmean(self):
         """
-        Returns the mean quaternion across the buffer, ignoring NaNs
+        Returns the mean quaternion across the buffer, ignoring nans
         """
         no_nan_buffer = self._buffer[~np.isnan(self._buffer)]
         samples = int(no_nan_buffer.shape[0]/4)
@@ -146,4 +146,4 @@ class RollingMeanRotation(RollingMean):
         if no_nan_buffer.shape[0] > 0:
             return average_quaternions(np.reshape(no_nan_buffer, (samples, 4)))
 
-        return [np.NaN, np.NaN, np.NaN, np.NaN]
+        return [np.nan, np.nan, np.nan, np.nan]
