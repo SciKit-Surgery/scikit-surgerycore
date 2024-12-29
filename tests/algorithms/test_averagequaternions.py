@@ -11,7 +11,7 @@ def test_average_quat():
     Test average quaternions
     """
     quat0 = [0.0, 0.0, 0.0, 0.0]
-    quat1 = [np.NaN, np.NaN, np.NaN, np.NaN]
+    quat1 = [np.nan, np.nan, np.nan, np.nan]
     quat2 = [math.cos(math.pi/4.0), 0.0, 0.0, -1.0 * math.sin(math.pi/4.0)]
     quat3 = [math.cos(math.pi/8.0), 0.0, 1.0 * math.sin(math.pi/8.0), 0.0]
 
@@ -39,7 +39,7 @@ def test_weighted_average_quat():
     Test weighted average quaternions
     """
     quat0 = [0.0, 0.0, 0.0, 0.0]
-    quat1 = [np.NaN, np.NaN, np.NaN, np.NaN]
+    quat1 = [np.nan, np.nan, np.nan, np.nan]
     quat2 = [math.cos(math.pi/4.0), 0.0, 0.0, -1.0 * math.sin(math.pi/4.0)]
     quat3 = [math.cos(math.pi/8.0), 0.0, 1.0 * math.sin(math.pi/8.0), 0.0]
 

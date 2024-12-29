@@ -152,7 +152,7 @@ def test_rolling_rot_four_values():
     Test rolling mean returns vector value for single entry
     """
     rvec0 = [0.0, 0.0, 0.0]
-    rvec1 = [np.NaN, np.NaN, np.NaN]
+    rvec1 = [np.nan, np.nan, np.nan]
     rvec2 = [0.0, 0.0, -math.pi/2.0]
     rvec3 = [0.0, math.pi/3.0, 0.0]
 
