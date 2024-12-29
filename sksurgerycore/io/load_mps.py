@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Functions to load MITK's mps point set file. """
+""" Functions to load MITK's mps point set file. """
 
 import xml.etree.ElementTree as ET
 import numpy as np

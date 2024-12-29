@@ -96,6 +96,7 @@ class SKSBaseTracker(metaclass=ABCMeta):
         return smth_handles, smth_times, smth_frame_nos, smth_tracking, \
                         smth_qual
 
+    # pylint: disable=too-many-positional-arguments
     def add_frame_to_buffer(self, port_handles, time_stamps, frame_numbers,
                     tracking_rot, tracking_trans, quality,
                     rot_is_quaternion = False):
