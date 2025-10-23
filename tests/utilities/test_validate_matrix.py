@@ -54,6 +54,29 @@ def test_distortion_coefficients_invalid_because_not_two_dimensional():
         vm.validate_distortion_coefficients(np.ones((3, 3, 3)))
 
 
+def test_distortion_coefficients_invalid_because_1d_when_should_be_2():
+    with pytest.raises(ValueError):
+        matrix = np.ones(10)
+        vm.validate_distortion_coefficients(matrix, check_for_2d=True)
+
+
+def test_distortion_coefficients_valid_because_1d_and_relaxed_check():
+    matrix = np.ones(4)
+    assert vm.validate_distortion_coefficients(matrix, check_for_2d=False)
+
+
+def test_distortion_coefficients_invalid_because_1d_and_wrong_size():
+    with pytest.raises(ValueError):
+        matrix = np.ones(10)
+        vm.validate_distortion_coefficients(matrix, check_for_2d=False)
+
+
+def test_distortion_coefficients_invalid_because_should_be_1d_but_is_3d():
+    with pytest.raises(ValueError):
+        matrix = np.ones((3, 3, 3))
+        vm.validate_distortion_coefficients(matrix, check_for_2d=False)
+
+
 def test_distortion_coefficients_invalid_because_too_many_rows():
     with pytest.raises(ValueError):
         vm.validate_distortion_coefficients(np.ones((3, 4)))
@@ -109,6 +132,14 @@ def test_rotation_matrix_invalid_because_not_orthogonal():
     with pytest.raises(ValueError):
         vm.validate_rotation_matrix(
             np.array([[3.0, -4.0, 1.0], [5.0, 3.0, -7.0], [-9.0, 2.0, 6.0]]))
+
+
+def test_rotation_matrix_can_override_orthogonality_check():
+    matrix = np.eye(3)
+    matrix[0, 0] = 2.0  # Break orthogonality
+    assert vm.validate_rotation_matrix(matrix, tolerance=10.0)
+    with pytest.raises(ValueError):
+        vm.validate_rotation_matrix(matrix, tolerance=1e-6)
 
 
 def test_rotation_matrix_invalid_because_determinant_not_positive():

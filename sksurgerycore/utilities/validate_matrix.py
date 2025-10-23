@@ -32,33 +32,47 @@ def validate_camera_matrix(matrix):
 
 
 # pylint: disable=invalid-name
-def validate_distortion_coefficients(matrix):
+def validate_distortion_coefficients(matrix, check_for_2d=True):
     """
     Validates that a matrix is a set of OpenCV style distortion coefficients.
 
       1. Is a numpy array
-      2. Is 2D
-      3. Has 1 row
-      4. Has either 4, 5, 8, 12 or 14 columns
-
+      2. if check_for_2d
+           Is 2D
+           Has 1 row
+           Has either 4, 5, 8, 12 or 14 columns
+      3. else
+           Is 1D
+           Has either 4, 5, 8, 12 or 14 elements
 
     :param matrix: set of distortion coefficients
+    :param check_for_2d: whether to check that the matrix is 2D
     :raises: TypeError, ValueError if not
     :returns: True
     """
     if not isinstance(matrix, np.ndarray):
         raise TypeError("Distortion coefficients are not a numpy ndarray.")
-    if len(matrix.shape) != 2:
-        raise ValueError("Camera matrix should have 2 dimensions.")
-    if matrix.shape[0] != 1:
-        raise ValueError("Distortion coefficients should have 1 row.")
-    if matrix.shape[1] not in [4, 5, 8, 12, 14]:  # See OpenCV docs
-        raise ValueError("Distortion coefficients should have "
-                         + "4, 5, 8, 12 or 14 columns.")
+    if check_for_2d:
+        if len(matrix.shape) != 2:
+            raise ValueError(
+                "Distortion coefficients should have 2 dimensions.")
+        if matrix.shape[0] != 1:
+            raise ValueError("Distortion coefficients should have 1 row.")
+        if matrix.shape[1] not in [4, 5, 8, 12, 14]:  # See OpenCV docs
+            raise ValueError("Distortion coefficients should have "
+                             + "4, 5, 8, 12 or 14 columns.")
+    else:
+        if len(matrix.shape) != 1:
+            raise ValueError(
+                "Distortion coefficients should have 1 dimension.")
+        if matrix.shape[0] not in [4, 5, 8, 12, 14]:  # See OpenCV docs
+            raise ValueError("Distortion coefficients should have "
+                             + "4, 5, 8, 12 or 14 columns.")
+
     return True
 
 
-def validate_rotation_matrix(matrix):
+def validate_rotation_matrix(matrix, tolerance=2e-6):
     """
     Validates that a matrix is rotation matrix.
 
@@ -71,6 +85,7 @@ def validate_rotation_matrix(matrix):
            (improper rotation) if the determinant is negative (-1))
 
     :param matrix: rotation matrix
+    :param tolerance: tolerance for orthogonality check
     :raises: TypeError, ValueError if not
     :returns: True
     """
@@ -85,11 +100,11 @@ def validate_rotation_matrix(matrix):
 
     # Check the orthogonality: transpose(matrix) * matrix = identity matrix.
     mat = np.matmul(np.transpose(matrix), matrix)
-    tolerance = 2e-6
     identity = np.eye(3)
     residual = np.absolute(mat) - identity
-    if np.flatnonzero(np.where(
-            (residual < -tolerance) | (residual > tolerance))).shape[0] > 0:
+    outside_tolerance = np.asarray((residual < -tolerance)
+                                   | (residual > tolerance)).nonzero()
+    if len(outside_tolerance[0]) > 0 or len(outside_tolerance[1]) > 0:
         raise ValueError("Rotation matrix should be orthogonal.")
 
     # Check if the determinant is positive
