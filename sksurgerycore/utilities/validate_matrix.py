@@ -32,29 +32,43 @@ def validate_camera_matrix(matrix):
 
 
 # pylint: disable=invalid-name
-def validate_distortion_coefficients(matrix):
+def validate_distortion_coefficients(matrix, check_for_2d=True):
     """
     Validates that a matrix is a set of OpenCV style distortion coefficients.
 
       1. Is a numpy array
-      2. Is 2D
-      3. Has 1 row
-      4. Has either 4, 5, 8, 12 or 14 columns
-
+      2. if check_for_2d
+           Is 2D
+           Has 1 row
+           Has either 4, 5, 8, 12 or 14 columns
+      3. else
+           Is 1D
+           Has either 4, 5, 8, 12 or 14 elements
 
     :param matrix: set of distortion coefficients
+    :param check_for_2d: whether to check that the matrix is 2D
     :raises: TypeError, ValueError if not
     :returns: True
     """
     if not isinstance(matrix, np.ndarray):
         raise TypeError("Distortion coefficients are not a numpy ndarray.")
-    if len(matrix.shape) != 2:
-        raise ValueError("Camera matrix should have 2 dimensions.")
-    if matrix.shape[0] != 1:
-        raise ValueError("Distortion coefficients should have 1 row.")
-    if matrix.shape[1] not in [4, 5, 8, 12, 14]:  # See OpenCV docs
-        raise ValueError("Distortion coefficients should have "
-                         + "4, 5, 8, 12 or 14 columns.")
+    if check_for_2d:
+        if len(matrix.shape) != 2:
+            raise ValueError(
+                "Distortion coefficients should have 2 dimensions.")
+        if matrix.shape[0] != 1:
+            raise ValueError("Distortion coefficients should have 1 row.")
+        if matrix.shape[1] not in [4, 5, 8, 12, 14]:  # See OpenCV docs
+            raise ValueError("Distortion coefficients should have "
+                             + "4, 5, 8, 12 or 14 columns.")
+    else:
+        if len(matrix.shape) != 1:
+            raise ValueError(
+                "Distortion coefficients should have 1 dimension.")
+        if matrix.shape[0] not in [4, 5, 8, 12, 14]:  # See OpenCV docs
+            raise ValueError("Distortion coefficients should have "
+                             + "4, 5, 8, 12 or 14 columns.")
+
     return True
 
 
