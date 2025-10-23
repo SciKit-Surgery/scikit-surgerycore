@@ -72,7 +72,7 @@ def validate_distortion_coefficients(matrix, check_for_2d=True):
     return True
 
 
-def validate_rotation_matrix(matrix):
+def validate_rotation_matrix(matrix, tolerance=2e-6):
     """
     Validates that a matrix is rotation matrix.
 
@@ -85,6 +85,7 @@ def validate_rotation_matrix(matrix):
            (improper rotation) if the determinant is negative (-1))
 
     :param matrix: rotation matrix
+    :param tolerance: tolerance for orthogonality check
     :raises: TypeError, ValueError if not
     :returns: True
     """
@@ -99,11 +100,11 @@ def validate_rotation_matrix(matrix):
 
     # Check the orthogonality: transpose(matrix) * matrix = identity matrix.
     mat = np.matmul(np.transpose(matrix), matrix)
-    tolerance = 2e-6
     identity = np.eye(3)
     residual = np.absolute(mat) - identity
-    if np.flatnonzero(np.where(
-            (residual < -tolerance) | (residual > tolerance))).shape[0] > 0:
+    outside_tolerance = np.asarray((residual < -tolerance)
+                                   | (residual > tolerance)).nonzero()
+    if len(outside_tolerance[0]) > 0 or len(outside_tolerance[1]) > 0:
         raise ValueError("Rotation matrix should be orthogonal.")
 
     # Check if the determinant is positive
