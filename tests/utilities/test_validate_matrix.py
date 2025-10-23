@@ -205,3 +205,13 @@ def test_rigid_matrix_invalid_because_wrong_columns():
 
 def test_rigid_matrix_valid_because_identity():
     vm.validate_rigid_matrix(np.eye(4))
+
+
+def test_rigid_matrix_invalid_because_rotation_not_valid():
+    matrix = np.eye(4)
+    matrix[0][0] = 2.0  # Break rotation matrix
+    with pytest.raises(ValueError):
+        vm.validate_rigid_matrix(matrix)
+
+    # Should pass with a laxer tolerance
+    assert vm.validate_rigid_matrix(matrix, tolerance=10.0)

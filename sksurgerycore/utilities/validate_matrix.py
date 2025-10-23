@@ -68,7 +68,6 @@ def validate_distortion_coefficients(matrix, check_for_2d=True):
         if matrix.shape[0] not in [4, 5, 8, 12, 14]:  # See OpenCV docs
             raise ValueError("Distortion coefficients should have "
                              + "4, 5, 8, 12 or 14 columns.")
-
     return True
 
 
@@ -142,11 +141,12 @@ def validate_translation_column_vector(matrix):
     return True
 
 
-def validate_rigid_matrix(matrix):
+def validate_rigid_matrix(matrix, tolerance=2e-6):
     """
     Validates that a matrix is a 4x4 rigid transform.
 
     :param matrix: rigid transform
+    :param tolerance: tolerance for rotation matrix orthogonality check
     :raises: TypeError, ValueError if not
     :return: True
     """
@@ -158,4 +158,5 @@ def validate_rigid_matrix(matrix):
         raise ValueError("Rigid matrix  should have 4 rows.")
     if matrix.shape[1] != 4:
         raise ValueError("Rigid matrix  should have 4 columns.")
-    validate_rotation_matrix(matrix[0:3, 0:3])
+    return validate_rotation_matrix(matrix[0:3, 0:3],
+                                    tolerance=tolerance)
